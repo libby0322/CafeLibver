@@ -1,11 +1,7 @@
 {
     "host": "localhost",
     "user": "root",
-<<<<<<< HEAD
     "password": "carpediem1.",
-=======
-    "password": "1234",
->>>>>>> 54662dd180305ccb1d12f246dbfdc5bc45dc9492
     "port": "3306",
     "database": "cafe"
 }

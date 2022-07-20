@@ -51,7 +51,6 @@ const boardCtrl = {
         console.log('board getinfo');
         const sql = `SELECT * FROM board`;
         connection.query(sql, (error, rows)=>{
-            console.log(rows);
             if(error) throw error;
             res.send(200, {"rows": rows, "length": rows.length});
             // 여러개의 데이터를 뿌려줄 때

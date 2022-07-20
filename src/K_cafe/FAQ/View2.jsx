@@ -44,6 +44,13 @@ const Main_left = styled.div`
     display: none;    
 }
 `
+const CurrentBox = styled.div`
+  height: 200px;
+  margin-bottom: 20px;
+  background-image: url('/image/K_image/coffee9.jpg');
+  background-size : cover;
+  background-position: center;
+`
 
 const CurrentWriting = styled.div`
   font-size: 13px;
@@ -230,13 +237,14 @@ const View2 = () => {
   return (
     <Container>
         <Header>
-          <View2_title>자유게시판</View2_title>
+          <View2_title>CHK 게시판 ^_^</View2_title>
           <Write><Link to={"/membership/faq/write"}><button>글 작성</button></Link></Write>
         </Header>
         <Row>
         <Main>
           <Col md="3">
             <Main_left>
+              <CurrentBox />
               <div>최신 글</div>
               <CurrentWriting>
                 <List3 />

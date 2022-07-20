@@ -113,7 +113,7 @@ const Cup = (props) => {
     };
   return (
     <>
-    <Product modal={modal} setModal={setModal} subTop={subTop} setSubTop={setSubTop} />
+    {/* <Product modal={modal} setModal={setModal} subTop={subTop} setSubTop={setSubTop} /> */}
     <P_Cart mug={addList} setMug={setAddList} modal={modal} subList={subList} setSubList={setSubList} tt={tt} setTt={setTt} />
     <Styled.ProMenu style={{display: subTop? "flex" : "none"}} onMouseLeave={subTopClose}>
       <button type='button' className='proMenuBtn' onClick={onOneClick}>머그</button>

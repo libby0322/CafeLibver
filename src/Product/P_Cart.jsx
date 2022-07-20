@@ -3,7 +3,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import * as Styled from "./Style";
 import styled from "styled-components"
 import Cup from './Cup';
-import Data from './ProList.json';
 import P_Pay from './P_Pay';
 
 
@@ -242,8 +241,8 @@ const P_Cart = (props) => {
 
 
 const List1 = ({location}) => {
-  const navigate = useNavigate();
-  navigate(`/ppay`);
+  // const navigate = useNavigate();
+  // navigate(`/ppay`);
   let arr = [];
   addList.map((i, index)=>{
     console.log('map 실행');

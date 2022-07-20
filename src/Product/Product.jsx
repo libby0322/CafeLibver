@@ -72,7 +72,7 @@ const Product = ({ modal, setModal, subTop, setSubTop,subTop1, setSubTop1,subTop
       
       <Styled.productList>
     <Styled.topListItem> 
-      <StyledLink to="/cup" onMouseOver={subTopOpen}  >+12121</StyledLink>
+      <StyledLink to="/cup" onMouseOver={subTopOpen}  >Cup / Bottle</StyledLink>
       <StyledLink to="/acc" onMouseOver={subTopOpen1}>Acc</StyledLink>
       <StyledLink to="/packTea" onMouseOver={subTopOpen2}>Tea Package</StyledLink>
       <span><i className="fa-solid fa-cart-shopping" onClick={test} style={{fontSize: '30px'}}></i>

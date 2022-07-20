@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import * as Styled from "./Style";
 import styled from "styled-components"
 import Cup from './Cup';
 import Data from './ProList.json';
 import P_Pay from './P_Pay';
+
 
 
 
@@ -171,6 +172,7 @@ const P_Cart = (props) => {
   const [cost, setCost] = useState([]);
   const [costTest, setCostTest] = useState(Array.from((v, i) => i));
   const [wishTab, setWishTab] = useState(Array.from({length: 9}, () => 1));
+
  
  
   
@@ -216,25 +218,16 @@ const P_Cart = (props) => {
     //버튼 클릭시 아이템 삭제
  
 
-    const ll = cost.map(item => item.index).reduce((prev, curr) => prev + curr, 0);
-      console.log('ll',ll)
+
     const remove = (r,price,index)=>{
       let arr = [...addList];
+      let arr2 = [...wishTab];
+      arr2[r] = price * arr2[r]
       arr.splice(r,1, '');
-      cost.splice(r,1);
-     
       console.log('cost', cost);
       setAddList(arr);
-      setSum(cost);
+      setSum(sum - arr2[r])
     
-      // setSum(sum - costTest[i]);
-      // // test2[r] = test2[r]-aa[i];
-      // setTest(aa.splice(aa[i], i));
-      // setTest(bb.splice(bb[i], i));
-      // aa[i].filter(remove);
-      // bb[i].filter(remove);
-      // console.log('del addList: ', addList );    
-      // console.log('del i: ', i);
     }
  
 
@@ -248,7 +241,9 @@ const P_Cart = (props) => {
 
 
 
- const List1 = () => {
+const List1 = ({location}) => {
+  const navigate = useNavigate();
+  navigate(`/ppay`);
   let arr = [];
   addList.map((i, index)=>{
     console.log('map 실행');

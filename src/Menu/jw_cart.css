@@ -1,0 +1,99 @@
+.h-cart{
+    font-size: 30px;
+}
+.h_box{
+    width: 1000px;
+    height: 700px;
+    position:absolute;
+    scroll-behavior: inherit;
+    top:280px;
+    left: 23.9%;
+    z-index: 999;
+    background-color: #fff;
+    border: 2px solid none;
+    box-shadow: 10px 15px 10px 5px rgba(0,0,0,0.5);
+    font-size: 16px;
+}
+.h_box-top{
+    font-size: 18px;
+    font-weight: bold;
+    background-color: rgba(250, 250, 100);
+    padding: 1.5%;
+    position: absolute;
+    width: 100%;
+    top: 0;
+}
+.h_xmark{
+    font-weight: bold;
+    border: none;
+    background-color: transparent;
+    float: right;
+    margin-right: 1%;
+    cursor: pointer;
+}
+.h_box-in{
+    margin-top:57px;
+    
+}
+.h_box-in>p{
+    margin: 0;
+}
+
+.h_pick{
+    height: 582px;
+    overflow-y: auto;
+    padding: 20px;
+}
+.h_pick-pd{
+   display: inline-block;
+   /* border: 1px solid black;  */
+   padding: 10px 0;
+   width: 25%;
+}
+.h_pick-pd>li{
+    margin-top: 2%;
+    text-align: center;
+}
+.h_pick-pd>li>img{
+    /* border: 1px solid black;  */
+    width: 100%;
+}
+.h_pick-pd>li>button{
+    border: 1px solid;
+    border-radius: 4px;
+}
+.h_pick-pd>li>.h_cancle{
+    background-color: red;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    padding: 3px 10px;
+    border-radius: 4px;
+    display: block;
+    margin: auto;
+}
+.h_box-footer{
+    background-color: #d3d3d3;
+    width: 100%;
+    height:  60px;
+    display: block;
+    position : absolute;
+    bottom : 0;
+    
+}
+.h_box-footer p{
+    display: inline-block;
+    font-size: 25px;
+    margin-left: 1%;
+    transform: translateY(35%);
+}
+.h_box-footer_bt{
+    border: none;
+    width: 12%;
+    float: right;
+    margin-left: 1%;
+    border-radius: 4px;
+    padding: 9px;
+    margin-top: 1% ;
+    cursor: pointer;
+}

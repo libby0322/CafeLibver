@@ -1,0 +1,48 @@
+{
+    "MugList" : [
+       {"id":1, "url":"image/Mug/Mug_Classic.jpg" ,"title": "클래식 머그","Price":10000, "kind":"Mug"},
+       {"id":2, "url":"image/Mug/Mug_B.jpg" ,"title": "블랙 머그","Price":10000 , "kind":"Mug"},
+       {"id":3, "url":"image/Mug/Mug_G.jpg" ,"title": "그레이 머그","Price":10000 , "kind":"Mug"}
+    ],
+    "TumbList" : [
+      {"id":1, "url":"image/Mug/Tumb_01.jpg" ,"title": "민트 텀블러","Price":20000, "kind":"Tumb"},
+      {"id":2, "url":"image/Mug/Tumb_02.jpg" ,"title": "그린 텀블러","Price":20000, "kind":"Tumb"},
+      {"id":3, "url":"image/Mug/Tumb_03.jpg" ,"title": "레드 텀블러","Price":20000, "kind":"Tumb"}
+    ],
+    "GlaList" : [
+      {"id":1, "url":"image/Mug/Gla_01.jpg" ,"title": "더블월 글라스","Price":20000, "kind":"Gla"},
+      {"id":2, "url":"image/Mug/Gla_02.jpg" ,"title": "핸들 글라스","Price":20000, "kind":"Gla"},
+      {"id":3, "url":"image/Mug/Gla_03.jpg" ,"title": "찻잔 세트","Price":20000, "kind":"Gla"}
+    ],
+    "BagList" : [
+        {"id":1, "url":"image/Acc/Acc_Bag01.jpg" ,"title": "파우치 화이트","Price":30000, "kind":"Acc"},
+        {"id":2, "url":"image/Acc/Acc_Bag02.jpg" ,"title": "숄더백","Price":30000, "kind":"Acc"},
+        {"id":3, "url":"image/Acc/Acc_Bag03.jpg" ,"title": "파우치 블랙","Price":30000, "kind":"Acc"}
+       
+     ],
+     "CardList" : [
+      {"id":1, "url":"image/Acc/Acc_Card01.jpg" ,"title": "카드홀더 그린","Price":30000, "kind":"Acc"},
+      {"id":2, "url":"image/Acc/Acc_Card02.jpg" ,"title": "카드홀더 레드","Price":30000, "kind":"Acc"},
+      {"id":3, "url":"image/Acc/Acc_Card03.jpg" ,"title": "카드홀더 블랙","Price":30000, "kind":"Acc"}
+   ],
+   "EtcList" : [
+    {"id":1, "url":"image/Acc/Acc_ETC01.jpg" ,"title": "CHK 우산 화이트","Price":50000, "kind":"Acc"},
+    {"id":2, "url":"image/Acc/Acc_ETC02.jpg" ,"title": "CHK 트레이","Price":30000, "kind":"Acc"},
+    {"id":3, "url":"image/Acc/Acc_ETC03.jpg" ,"title": "CHK 아이스박스","Price":70000, "kind":"Acc"}
+ ],
+   "PackTeaList" : [
+    {"id":1, "url":"image/Packege/Pack_Tea01.jpg" ,"title": "얼그레이 티 12EA","Price":15000, "kind":"Packege"},
+    {"id":2, "url":"image/Packege/Pack_Tea02.jpg" ,"title": "유스베리 티 12EA","Price":15000, "kind":"Packege"},
+    {"id":3, "url":"image/Packege/Pack_Tea03.jpg" ,"title": "캐모마일 티 12EA","Price":15000, "kind":"Packege"}
+ ],
+   "PackCoffeeList" : [
+    {"id":1, "url":"image/Packege/Pack_Coffee01.jpg" ,"title": "오리지널 아메리카노 30EA","Price":15000, "kind":"Packege"},
+    {"id":2, "url":"image/Packege/Pack_Coffee02.jpg" ,"title": "마일드 아메리카노 30EA","Price":15000, "kind":"Packege"},
+    {"id":3, "url":"image/Packege/Pack_Coffee03.jpg" ,"title": "바닐라 라떼 30EA","Price":20000, "kind":"Packege"}
+ ],
+ "PackCapsuleList" : [
+  {"id":1, "url":"image/Packege/Pack_Capsule01.jpg" ,"title": "콜롬비아 슈프리모 10EA","Price":30000, "kind":"Packege"},
+  {"id":2, "url":"image/Packege/Pack_Capsule02.jpg" ,"title": "페르소나 블렌드 30EA","Price":30000, "kind":"Packege"},
+  {"id":3, "url":"image/Packege/Pack_Capsule03.jpg" ,"title": "에티오피아 리무 30EA","Price":30000, "kind":"Packege"}
+]
+}

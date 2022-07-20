@@ -1,0 +1,54 @@
+*{
+  font-family: 'GmarketSans-Medium';
+}
+body {
+  margin: 0;
+  color: #000;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+input:focus {outline:none;}
+
+
+div{
+  color: black;
+}
+a,a:hover, a:link{
+  color: #000;
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+}
+ul,li{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+button{
+  font-family: 'GmarketSans-Medium',sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: 'GmarketSans-Medium';
+  src: url('/public/GmarketSansTTFMedium.ttf');
+}
+@font-face {
+  font-family: 'GmarketSans-Light';
+  src: url('/public/GmarketSansTTFLight.ttf');
+}
+@font-face {
+  font-family: 'GmarketSans-Bold';
+  src: url('/public/GmarketSansTTFBold.ttf');
+}
+@font-face {
+  font-family: 'CookieRunOTF-Bold';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/CookieRunOTF-Bold00.woff') format('woff');
+}
+@font-face {
+  font-family: 'OKDDUNG';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-02@1.0/OKDDUNG.woff2') format('woff2');
+}

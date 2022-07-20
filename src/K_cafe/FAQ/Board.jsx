@@ -4,7 +4,7 @@ import {Row, Col} from 'reactstrap'
 import { Link, useParams, useLocation } from 'react-router-dom'
 import axios from 'axios'
 import cookies from 'react-cookies'
-import tt from './base.png'
+import base from './base.png'
 
 const Container = styled.div`
   width: 80%;
@@ -151,7 +151,6 @@ const Bottom = styled.div`
   }
 `
 const CurrentBox = styled.div`
-  border: 1px solid black;
   height: 200px;
   margin-bottom: 20px;
   background-image: url('/image/K_image/coffee9.jpg');
@@ -167,6 +166,7 @@ const Board = () => {
   const [infolength, setInfolength] = useState(info.length); // 게시판 길이
   const [sort, setSort] = useState(false); // 게시판 정렬
   const [number, setNumber] = useState([]); // 페이지넘어갈때 배경색깔
+  const [search, setSearch] = useState();
   console.log('info: ', info);
   console.log('comment info: ', comment_info);
   let { id } = useParams();
@@ -294,13 +294,13 @@ const Board = () => {
   }
 
   const base_image = (e) => {
-    e.target.src = tt;
+    e.target.src = base;
   }
+  const search_click = (e) => {
+    setSearch(e);
+  }
+  console.log('search: ', search);
   
-  const search = (e) => {
-    // console.log('콘솛ㅎㅎㅎ');
-    // console.log(e.target.value);
-  }
 
   let content3;
   if(sort === false){
@@ -317,9 +317,7 @@ const Board = () => {
         <Main>
           <Col md="3">
             <Main_left>
-              <CurrentBox>
-                
-              </CurrentBox>
+              <CurrentBox />
               <div>최신 글</div>
               <CurrentWriting>
                 <List5 />
@@ -344,7 +342,7 @@ const Board = () => {
                     <option>제목+내용</option>
                   </select>
                   <span>
-                    <input type="text" style={{width: "200px"}} onChange={search}></input>
+                    <input type="text" style={{width: "200px"}} name="id" onChange={(e) => search_click(e.target.value)}></input>
                     <button>검색</button>
                   </span>
                 </Top_right>

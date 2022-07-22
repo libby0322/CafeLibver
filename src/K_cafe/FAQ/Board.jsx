@@ -166,7 +166,8 @@ const Board = () => {
   const [infolength, setInfolength] = useState(info.length); // 게시판 길이
   const [sort, setSort] = useState(false); // 게시판 정렬
   const [number, setNumber] = useState([]); // 페이지넘어갈때 배경색깔
-  const [search, setSearch] = useState();
+  const [search, setSearch] = useState(); // search
+  
   console.log('info: ', info);
   console.log('comment info: ', comment_info);
   let { id } = useParams();

@@ -25,7 +25,7 @@ const commentCtrl = {
 
         switch(true){
             case writer === undefined : res.send("<script>alert('로그인부터 하시죠??'); location.href='/login';</script>"); break;
-            case content === '' : res.send("<script>alert('내용을 입력해주세요'); location.href='/membership/faq/view/19';</script>"); break;
+            case content === '' : res.send(`<script>alert('내용을 입력해주세요'); location.href='/membership/faq/view/${id}';</script>`); break;
             case writer !== undefined && content !== '' :
         
         
@@ -33,7 +33,7 @@ const commentCtrl = {
 
         connection.query(sql, (error, rows)=>{
             if(error) throw error;
-            res.send("<script>location.href='/membership/faq/view/19';</script>");
+            res.send(`<script>location.href='/membership/faq/view/${id}';</script>`);
           }); break;
         }
     }

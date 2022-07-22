@@ -8,7 +8,6 @@ const opacity = keyframes`
   0% {transform: scale(1);}
   100% {transform: scale(1.2);}
 `
-
 const Container = styled.div`
   height: 700px;
   background-image: url('image/K_image/coffee1.jpg');

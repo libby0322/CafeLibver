@@ -16,12 +16,13 @@ const JW_Cart2 = (props) => {
     let ppriceArr = document.getElementsByClassName("pprice"); //문서의 클레스 pprice를 "배열"에 싹 넣기 (변수 꼭 선언되야 배열에 넣는거임)
     let chTotal = 0;  //기본 총합 선언 = 0
     let _pprice;  //변수만 만듬
-
+    
     for (let i = 0; i <= ppriceArr.length; i++) {
       _pprice = ppriceArr[i].innerText;   //ex> _pprice =  "1000 \"
       _pprice = _pprice.replace(" \\", "");  //.replace( , ) = 앞에있는거를 뒤로 바꿈 => "1000" (문자)
       chTotal += parseInt(_pprice);     //parseInt(-) => 1000(숫자)
       setTotal(chTotal);
+      console.log('변경된 chTotal 값은', chTotal);
     }
   }
 
@@ -59,15 +60,15 @@ const JW_Cart2 = (props) => {
   const List = () => {
 
 
-    //삭제버튼
-    const del = (proNum) => {
-      if(window.confirm("장바구니에서 정말 삭제하시겠습니까?") == true){    //확인
-        let delPro = document.getElementById(proNum);
-        delPro.remove();
-      }else{   //취소
-          return false;
-      }
-    }
+    // //삭제버튼
+    // const del = (proNum) => {
+    //   if(window.confirm("장바구니에서 정말 삭제하시겠습니까?") == true){    //확인
+    //     let delPro = document.getElementById(proNum);
+    //     delPro.remove();
+    //   }else{   //취소
+    //       return false;
+    //   }
+    // }
 
     const list = [];
 
@@ -75,8 +76,11 @@ const JW_Cart2 = (props) => {
     for (let i of arr) {
       const pprice = i.price * number[i.idd];
 
-     
-
+      const del = (proNum) => {
+          let ccc = total-pprice;
+          alert(ccc);
+        }
+      
       list.push(
         <>
           <ul className="h_pick-pd" id={i.title}>
@@ -84,7 +88,7 @@ const JW_Cart2 = (props) => {
             <li className='proTitle'>{i.title}</li>
             <li className='pprice'>{pprice} \</li>  
             <li>수량: <button onClick={() => onIncrease(i.idd)}>+</button> {number[i.idd]} <button onClick={() => onDecrease(i.idd)}>-</button></li>
-            <li><button className="h_cancle" onClick={() => del(i.title)}> 삭 제 </button></li>
+            <li><button className="h_cancle" onClick={() => del(i.price)}> 삭 제 </button></li>
           </ul>
         </>
       )

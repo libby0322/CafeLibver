@@ -51,7 +51,10 @@ const Brrr = styled.span`
 `
 
 
-const Product = ({ modal, setModal, subTop, setSubTop,subTop1, setSubTop1,subTop2, setSubTop2, click}) => {
+const Product = ({ modal, setModal, subTop, setSubTop,subTop1, setSubTop1,subTop2, setSubTop2, cupClick, accClick, packClick, menuClick, main}) => {
+
+
+  
   const test = () => {
     setModal(!modal);
   }
@@ -70,16 +73,16 @@ const Product = ({ modal, setModal, subTop, setSubTop,subTop1, setSubTop1,subTop
   return (
     
     <> 
-      
-      <Styled.productList>
-    <Styled.topListItem> 
-      <span onMouseOver={subTopOpen} onClick={click} >Cup / Bottle</span>
-      <span onMouseOver={subTopOpen1}onClick={click} >Acc</span>
-      <span onMouseOver={subTopOpen2}onClick={click}>Tea Package</span>
+      <Styled.productList >
+    <Styled.topListItem onClick={menuClick}> 
+      <span onMouseOver={subTopOpen}><i className="fa-solid fa-house" onClick={main}></i></span>
+      <span onMouseOver={subTopOpen} onClick={cupClick} >Cup / Bottle</span>
+      <span onMouseOver={subTopOpen1}onClick={accClick} >Acc</span>
+      <span onMouseOver={subTopOpen2}onClick={packClick}>Tea Package</span>
       <span><i className="fa-solid fa-cart-shopping" onClick={test} style={{fontSize: '30px'}}></i>
       <Brrr><p className='brrr'>Click!</p></Brrr>
       </span>
-
+       
        </Styled.topListItem>
 </Styled.productList>
 </>

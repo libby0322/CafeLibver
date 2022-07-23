@@ -98,7 +98,7 @@ const Acc = (props) => {
   };
 return (
   <>
-  {/* <Product modal={modal} setModal={setModal}  subTop1={subTop1} setSubTop1={setSubTop1}/> */}
+  <Product modal={modal} setModal={setModal}  subTop1={subTop1} setSubTop1={setSubTop1}/>
   <Styled.ProMenu1 style={{display: subTop1? "flex" : "none"}} onMouseLeave={subTopClose1}>
     <button type='button' className='proMenuBtn1' onClick={onOneClick}>파우치</button>
     <button type='button' className='proMenuBtn1' onClick={onTwoClick}>카드홀더</button>

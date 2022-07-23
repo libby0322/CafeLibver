@@ -133,6 +133,7 @@ const P_Cart = (props) => {
 
   //상품 클릭시 장바구니에 리스트업
   const {mug, setMug} = props;
+  const {modal, setModal} = props;
   const {subList, setSubList} = props; 
 
   const [aa, setaa] = useState([]);
@@ -145,13 +146,13 @@ const P_Cart = (props) => {
   let arr3 = [];
   let arr4 = [];
 
-  if(mug.modal === aa){
+  if(modal === aa){
 
   }else{
     arr.push(mug.title);
     arr2.push(mug.url);
     arr3.push(mug.Price);
-    arr4.push(mug.modal);
+    arr4.push(modal);
     aa.push(arr[0]);
     bb.push(arr2[0]);
     cc.push(arr3[0]);

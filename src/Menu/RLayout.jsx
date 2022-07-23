@@ -1,14 +1,23 @@
 import React,{useState} from 'react'
 import { Link } from 'react-router-dom';
 import './menu.css';
+import Coffee from './Coffee'
 import $ from 'jquery';
+import { useEffect } from 'react';
 
 
 
 
 const RLayout = ({display2, setDisplay2}) => {
+  
+  useEffect(()=> {
+    console.log('useEffect 실행');
+    <Coffee style={{display: "none"}} info={kwon}/>
+  }, [])
 
-  console.log(display2);
+  const [kwon, setKwon] = useState(3);
+
+
   const test = () => {
     setDisplay2(!display2);
   }

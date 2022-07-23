@@ -41,25 +41,33 @@ const Fotter = styled.div`
 `
 const Modify = () => {
 
-  const info = useLocation().state;
- 
-  console.log('modify info: ',info);
+  const info = useLocation().state.info;
+  const id = useLocation().state.id;
+  console.log('id: ', typeof(id));
+  
+
+  useEffect(()=>{
+    console.log('modify useEffect');
+    const arr = info.filter((x, index) => {
+        if(x.id === parseInt(id)){
+            return x;
+        }
+    });
+    console.log('arr: ', arr);
+    setModify_info(arr);
+  }, []);
+
+  const [modify_info, setModify_info] = useState([]);
+  const [title, setTitle] = useState();
+  console.log('modify info: ',modify_info);
 
   const List = () => {
-    
-  }
-
-  const aa = () => {
-
-  }
-  
-return (
-  <Container>
-      <Header>글 쓰기</Header>
-      <form action="/api/board" method="post" encType='multipart/form-data'>
-      <Main>
-          <Title>
-              <input type="text" name="title" placeholder='제목' value="title" onChange={aa}
+    let arr = [];
+    modify_info.map(x => {
+    arr.push(
+        <div key={x.id}>
+        <Title>
+              <input type="text" name="title" value={x.title} onChange={aa}
               style={{
                   border: "none",
                   height: "80px",
@@ -68,13 +76,29 @@ return (
                   }}></input>
           </Title>
           <Content>
-              <input type="text" name="content" value="content" onChange={aa}
-              style={{
-                  width: "100%",
-                  height: "600px",
-                  paddingBottom: "570px"
-              }}></input>
-          </Content>
+          <input type="text" name="content" value={x.content} onChange={aa}
+          style={{
+              width: "100%",
+              height: "600px",
+              paddingBottom: "570px"
+          }}></input>
+      </Content>
+      </div>
+    )
+})
+    return arr;
+  }
+
+  const aa =() => {
+    
+  }
+  
+return (
+  <Container>
+      <Header>글 쓰기</Header>
+      <form action="/api/board" method="post" encType='multipart/form-data'>
+      <Main>
+          <List />
           <ImageAdd>
               <input type="file" name="image" placholder="이미지"></input>
           </ImageAdd>

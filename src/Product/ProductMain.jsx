@@ -1,9 +1,12 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import Product from './Product';
 import * as Styled from "./Style";
 import Cup from './Cup';
+import Acc from './Acc';
+import PackTea from './PackTea';
 import styled from "styled-components";
 import { Link } from 'react-router-dom';
+import P_Cart from './P_Cart';
 
 
 const StyledLink = styled(Link)`
@@ -25,17 +28,29 @@ const StyledLink = styled(Link)`
 `
 
 
-const ProductMain = () => {
-  
- const scrollRef = useRef<HTMLElement>(<Cup/>);
+const ProductMain = (props) => {
 
- const onNewClick = () => {
-   scrollRef.current?.scrollIntoView({ behavior: 'smooth'});
- };
+let [menu, setMenu] = useState(false);
+
+const cupClick = (props) => {
+  setMenu(true);
+  
+}
+  
+//  const scrollRef = useRef<HTMLElement>(<Cup/>);
+
+//  const onNewClick = () => {
+//    scrollRef.current?.scrollIntoView({ behavior: 'smooth'});
+//  };
 
   return (
     <div>
-        <Product />
+        <Product click={cupClick}/>
+        <div className='111' style={{display: menu? "block" : "none"}}>
+        <Cup style={{display: menu? "block" : "none"}}/>
+        <Acc style={{display: menu? "block" : "none"}}/>
+        <PackTea style={{display: menu? "block" : "none"}}/>
+        </div>
         <Styled.proMainBox>
         <Styled.mainText>
            <Styled.topText>상품</Styled.topText>

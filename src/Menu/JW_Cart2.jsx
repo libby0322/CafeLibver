@@ -16,7 +16,7 @@ const JW_Cart2 = (props) => {
     let ppriceArr = document.getElementsByClassName("pprice"); //문서의 클레스 pprice를 "배열"에 싹 넣기 (변수 꼭 선언되야 배열에 넣는거임)
     let chTotal = 0;  //기본 총합 선언 = 0
     let _pprice;  //변수만 만듬
-
+    
     for (let i = 0; i <= ppriceArr.length; i++) {
       _pprice = ppriceArr[i].innerText;   //ex> _pprice =  "1000 \"
       _pprice = _pprice.replace(" \\", "");  //.replace( , ) = 앞에있는거를 뒤로 바꿈 => "1000" (문자)
@@ -42,14 +42,13 @@ const JW_Cart2 = (props) => {
 
   // - 버튼 누르면 감소
   const onDecrease = (e) => {
-    console.log('e: ', e);
     let test2 = [...number];
     if (number[e] === 1) {   //수량이 1일때
       alert('최소 주문수량은 1개입니다. 주문을 완전 취소하시려면 "삭제"를 눌러주세욧!');
       return;
     }
     test2[e] -= 1;
-    console.log('test2: ', test2);
+    console.log('각 수량', test2);
     setNumber(test2);
     setTimeout(() => { updateTotal(); })
   }
@@ -58,33 +57,36 @@ const JW_Cart2 = (props) => {
   //장바구니에 담겨진 ul들
   const List = () => {
 
-
-    //삭제버튼
-    const del = (proNum) => {
-      if(window.confirm("장바구니에서 정말 삭제하시겠습니까?") == true){    //확인
-        let delPro = document.getElementById(proNum);
-        delPro.remove();
-      }else{   //취소
-          return false;
-      }
-    }
-
     const list = [];
 
     //list 배열안에 push
     for (let i of arr) {
       const pprice = i.price * number[i.idd];
 
-     
-
+      const del = (proNum, title) => {
+        if(window.confirm("장바구니에서 정말 삭제하시겠습니까?") == true){    //확인
+              const test = number[i.idd];
+              const proPri = $('.j_total').text();
+              const totalVal= parseInt(proPri)-(proNum*test);  
+              $('.j_total').text(totalVal);
+              
+              const delPro = document.getElementById(title);
+              delPro.remove();
+              
+            }else{   //취소
+                return false;
+            }
+          
+        }
+      
       list.push(
         <>
           <ul className="h_pick-pd" id={i.title}>
             <li><img src={i.url} alt="product" /></li>
             <li className='proTitle'>{i.title}</li>
             <li className='pprice'>{pprice} \</li>  
-            <li>수량: <button onClick={() => onIncrease(i.idd)}>+</button> {number[i.idd]} <button onClick={() => onDecrease(i.idd)}>-</button></li>
-            <li><button className="h_cancle" onClick={() => del(i.title)}> 삭 제 </button></li>
+            <li>수량: <button className="uuu" onClick={() => onIncrease(i.idd)}>+</button> {number[i.idd]} <button onClick={() => onDecrease(i.idd)}>-</button></li>
+            <li><button className="h_cancle"  onClick={() => del(i.price,i.title)}> 삭 제 </button></li>
           </ul>
         </>
       )

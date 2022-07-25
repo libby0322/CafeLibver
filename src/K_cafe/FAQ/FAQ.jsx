@@ -6,8 +6,8 @@ const ani = keyframes`
   100% {opacity: 1;}
 `
 const angle1 = keyframes`
-  0% {transform: rotate(0deg);}
-  100% {transform: rotate(180deg);}
+  0% {transform: rotate(360deg);}
+  100% {transform: rotate(540deg);}
 `
 const angle2 = keyframes`
   0% {transform: rotate(180deg);}
@@ -67,11 +67,14 @@ const Res = styled.div`
   animation-duration: 1s;
   display: none;
 `
-const Footer = styled.div`
+const Line = styled.div`
   border-top: 1px solid #ddd;
-  height: 300px;
   margin-top: 50px;
   padding-top: 50px;
+`
+const Footer = styled.div`
+  border: 1px solid black;
+  height: 200px;
 `
 
 const FAQ = () => {
@@ -85,6 +88,7 @@ const FAQ = () => {
     setArrow(arr);
     let arr2 = [...arrow2];
     arr2[e] = !arr2[e];
+    console.log('arr2: ', arr2);
     setArrow2(arr2);
   }
 
@@ -94,16 +98,17 @@ const FAQ = () => {
       <Header>FAQ</Header>
       <Main>
         <Box1>자주하는 질문 1.</Box1>
-        <Bar1><ArrowBox arrow2={arrow2}><i className="fa-solid fa-angle-down" onClick={()=>slide(0)}></i></ArrowBox ></Bar1>
+        <Bar1><ArrowBox arrow2={arrow2[0]}><i className="fa-solid fa-angle-down" onClick={()=>slide(0)}></i></ArrowBox ></Bar1>
         <Res style={{display: arrow[0] ? "flex" : "none"}}>대답1</Res>
 
         <Box1>자주하는 질문 2.</Box1>
-        <Bar1><ArrowBox arrow2={arrow2}><i className="fa-solid fa-angle-down" onClick={()=>slide(1)}></i></ArrowBox ></Bar1>
+        <Bar1><ArrowBox arrow2={arrow2[1]}><i className="fa-solid fa-angle-down" onClick={()=>slide(1)}></i></ArrowBox ></Bar1>
         <Res style={{display: arrow[1] ? "flex" : "none"}}>대답2</Res>
         
         <Box1>자주하는 질문 3.</Box1>
-        <Bar1><ArrowBox arrow2={arrow2}><i className="fa-solid fa-angle-down" onClick={()=>slide(2)}></i></ArrowBox ></Bar1>
+        <Bar1><ArrowBox arrow2={arrow2[2]}><i className="fa-solid fa-angle-down" onClick={()=>slide(2)}></i></ArrowBox ></Bar1>
         <Res style={{display: arrow[2] ? "flex" : "none"}}>대답3</Res>
+        <Line></Line>
         <Footer></Footer>
       </Main>
     </Container>

@@ -312,7 +312,7 @@ const Board = () => {
     <Container>
         <Header>
           <BB>CHK 게시판 ^_^</BB>
-          <Write><List3 /></Write>
+          <Write><button>등급 관련 안내</button><List3 /></Write>
         </Header>
         <Row>
         <Main>

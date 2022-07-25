@@ -74,9 +74,21 @@ const Main_right = styled.div`
 const Top1 = styled.div`
   height: 50px;
   font-size: 30px;
+  display: flex;
+`
+const Top1_left = styled.div`
+  flex: 0 0 88%;
+`
+const Top1_right = styled.div`
+  flex: 0 0 12%;
+  font-size: 15px;
+
+  button{
+    width: 80%;
+    height: 30px;
+  }
 `
 const Top2 = styled.div`
-  border-bottom: 1px solid #ddd;
   height: 30px;
   display: flex;
 `
@@ -86,6 +98,7 @@ const Top2_left = styled.div`
 const Top2_right = styled.div`
   flex: 0 0 12%;
   font-size: 15px;
+  padding-left: 5px;
 `
 const Middle = styled.div`
   padding-top: 20px;
@@ -173,7 +186,10 @@ const View2 = () => {
         console.log('view2 image: ', x.image);
         arr2.push(
           <DD key={x.id}>
-            <Top1>{x.title}</Top1>
+            <Top1>
+              <Top1_left>{x.title}</Top1_left>
+              <Top1_right><Link to="/membership/faq/board/1"><button>목록으로</button></Link></Top1_right>
+            </Top1>
             <Top2>
               <Top2_left>{x.writer}&nbsp; | &nbsp;{x.date}</Top2_left>
               <Top2_right style={{display: revise}}><Link to="/membership/faq/modify" state={{"info": info, "id": id}}>수정</Link> | <a href={`/api/board?id=${x.content}&delete=true`}>삭제</a></Top2_right>
@@ -216,6 +232,7 @@ const View2 = () => {
     }
     return arr;
   }
+
   const List4 = () => { // 최신 댓글
     let arr= [];
     let count = 0;

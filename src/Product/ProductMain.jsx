@@ -41,31 +41,36 @@ let [menu2, setMenu2] = useState(false);
 let [menuCup, setMenuCup] = useState(false);
 let [menuAcc, setMenuAcc] = useState(false);
 let [menuPack, setMenuPack] = useState(false);
+let [modal, setModal] = useState(false);
 
-const menuClick = (props) => {
-  setMenu(!menu);
-  setMenu1(!menu1);
-}
+
+
 const main = (props) => {
-  setMenu(false);
   setMenu1(true);
+  setMenu(true);
   setMenuCup(false);
   setMenuAcc(false);
   setMenuPack(false);
 }
 
 const cupClick = (props) => {
+  setMenu1(false);
   setMenuCup(true);
   setMenuAcc(false);
   setMenuPack(false);
-  setMenu1(false);
-  setMenu(false);
+  
 }
 const accClick = (props) => {
-  setMenuAcc(!menuAcc);
+  setMenuCup(false);
+  setMenuAcc(true);
+  setMenuPack(false);
+  setMenu1(false);
 }
 const packClick = (props) => {
-  setMenuPack(!menuPack);
+  setMenuCup(false);
+  setMenuAcc(false);
+  setMenuPack(true);
+  setMenu1(false);
 }
 
   
@@ -76,8 +81,8 @@ const packClick = (props) => {
 //  };
 
   return (
-    <div>
-        <Product cupClick={cupClick} accClick={accClick} packClick={packClick} menuClick={menuClick} main={main}/>
+    <>
+        <Product cupClick={cupClick} accClick={accClick} packClick={packClick} main={main} />
         <PageWrap >
         <div className='111' style={{display: menuCup? "block" : "none"}}>
         <Cup />
@@ -89,15 +94,15 @@ const packClick = (props) => {
         <PackTea />
         </div>
         </PageWrap>
-        <Styled.proMainBox style={{display: menu1? "block" : "block"}}>
-        <Styled.mainText>
+        <Styled.proMainBox style={{display: menu1? "block" : "none"}}>
+        <Styled.mainText >
            <Styled.topText>상품</Styled.topText>
            <Styled.bText>CHK만의 색다른 매력이 담긴 새로운 상품들을 만나보세요!</Styled.bText>
           </Styled.mainText>
         <img src="image/Product/Main01.jpg" alt="proMainBox"/>
         <StyledLink to="/cup" ><button type="button" className='newProBtn' >더 많은 상품이 궁금하다면?</button></StyledLink>
         </Styled.proMainBox>
-    <Styled.newProBox style={{display: menu1? "block" : "block"}}>
+    <Styled.newProBox style={{display: menu1? "block" : "none"}}>
     <p className="newProduct" >이 달의 신제품</p>
     <ul className="contentBox" >
     <StyledLink to="/cup" ><img src="image/Mug/Mug_B.jpg" alt="contentBox" className="newProImg" /></StyledLink>
@@ -107,8 +112,7 @@ const packClick = (props) => {
     </ul>
 
     </Styled.newProBox>
-
-     </div>
+     </>
         )
 
   };

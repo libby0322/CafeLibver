@@ -4,6 +4,7 @@ import * as Styled from "./Style";
 import styled from "styled-components";
 import Cup from './Cup';
 import P_Cart from './P_Cart';
+import ProductMain from './ProductMain';
 
 const StyledLink = styled(Link)`
   display: flex;
@@ -54,8 +55,10 @@ const Brrr = styled.span`
 const Product = ({ modal, setModal, subTop, setSubTop,subTop1, setSubTop1,subTop2, setSubTop2, cupClick, accClick, packClick, menuClick, main}) => {
 
 
+
+
   
-  const test = () => {
+  const test = (props) => {
     setModal(!modal);
   }
 
@@ -74,11 +77,11 @@ const Product = ({ modal, setModal, subTop, setSubTop,subTop1, setSubTop1,subTop
     
     <> 
       <Styled.productList >
-    <Styled.topListItem onClick={menuClick}> 
+    <Styled.topListItem > 
       <span onMouseOver={subTopOpen}><i className="fa-solid fa-house" onClick={main}></i></span>
       <span onMouseOver={subTopOpen} onClick={cupClick} >Cup / Bottle</span>
-      <span onMouseOver={subTopOpen1}onClick={accClick} >Acc</span>
-      <span onMouseOver={subTopOpen2}onClick={packClick}>Tea Package</span>
+      <span onMouseOver={subTopOpen1} onClick={accClick} >Acc</span>
+      <span onMouseOver={subTopOpen2} onClick={packClick}>Tea Package</span>
       <span><i className="fa-solid fa-cart-shopping" onClick={test} style={{fontSize: '30px'}}></i>
       <Brrr><p className='brrr'>Click!</p></Brrr>
       </span>

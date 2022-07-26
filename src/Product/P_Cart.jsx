@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import * as Styled from "./Style";
 import styled from "styled-components"
 import Cup from './Cup';
+import Data from './ProList.json';
 import P_Pay from './P_Pay';
-
 
 
 
@@ -126,15 +126,13 @@ const StyledLink = styled(Link)`
 `
 
 
-const P_Cart = (props) => {
+const P_Cart = ({modal, setModal, addList, setAddList}) => {
 
-  console.log(props.libby);
+console.log('cartAdd: ' , addList);
 
 
   //상품 클릭시 장바구니에 리스트업
-  const {mug, setMug} = props;
-  const {modal, setModal} = props;
-  const {subList, setSubList} = props; 
+
 
   const [aa, setaa] = useState([]);
   const [bb, setbb] = useState([]);
@@ -146,19 +144,19 @@ const P_Cart = (props) => {
   let arr3 = [];
   let arr4 = [];
 
-  if(modal === aa){
+  // if(mug.modal === aa){
 
-  }else{
-    arr.push(mug.title);
-    arr2.push(mug.url);
-    arr3.push(mug.Price);
-    arr4.push(modal);
-    aa.push(arr[0]);
-    bb.push(arr2[0]);
-    cc.push(arr3[0]);
-    dd.push(arr4[1]);
-    mug.modal = aa;
-  }
+  // }else{
+  //   arr.push(mug.title);
+  //   arr2.push(mug.url);
+  //   arr3.push(mug.Price);
+  //   arr4.push(mug.modal);
+  //   aa.push(arr[0]);
+  //   bb.push(arr2[0]);
+  //   cc.push(arr3[0]);
+  //   dd.push(arr4[1]);
+  //   mug.modal = aa;
+  // }
 
   
   
@@ -167,38 +165,36 @@ const P_Cart = (props) => {
   //장바구니 제품 수량 관련
 
   const [sum, setSum] = useState(0);
-  const [addList, setAddList] = useState([]);
+
   const [number, setNumber] = useState(1);
   const [cost, setCost] = useState([]);
   const [costTest, setCostTest] = useState(Array.from((v, i) => i));
   const [wishTab, setWishTab] = useState(Array.from({length: 9}, () => 1));
-
  
  
   
   useEffect(()=> {
-    console.log('useEffect');
-    addList.push(mug);
-    cost.push(mug.Price);
+
+
+    // cost.push(addList.Price);
     setCostTest(cc);
     for(let i=0; i<cc.length; i++){
       if(cc[i] !== undefined){
         setSum(sum + cc[i]);
       }
     }
-    console.log('use끝');
-  }, [mug]);
+
+  }, [addList]);
 
 
   useEffect(()=>{
-    console.log('useEffect2');
-    addList.shift();
+
+    // addList.shift();
     cost.shift();
   }, [])
 
   const plus = (e, price) => {
-    console.log(e);
-    console.log(price);
+
     let arr = [...wishTab];
     arr[e] = arr[e] +1;
     cost[e] = cost[e] + price;
@@ -218,38 +214,42 @@ const P_Cart = (props) => {
     //버튼 클릭시 아이템 삭제
  
 
-
+    const ll = cost.map(item => item.index).reduce((prev, curr) => prev + curr, 0);
+      // console.log('ll',ll)
     const remove = (r,price,index)=>{
       let arr = [...addList];
-      let arr2 = [...wishTab];
-      arr2[r] = price * arr2[r]
       arr.splice(r,1, '');
-      console.log('cost', cost);
+      cost.splice(r,1);
+     
+
       setAddList(arr);
-      setSum(sum - arr2[r])
+      setSum(cost);
     
+      // setSum(sum - costTest[i]);
+      // // test2[r] = test2[r]-aa[i];
+      // setTest(aa.splice(aa[i], i));
+      // setTest(bb.splice(bb[i], i));
+      // aa[i].filter(remove);
+      // bb[i].filter(remove);
+      // console.log('del addList: ', addList );    
+      // console.log('del i: ', i);
     }
  
 
-  console.log('addList: ', addList);
-  console.log('sum: ', sum);
-  console.log('cost: ', cost);
-  console.log('wish: ', wishTab);
-  console.log('dd: ', dd);
+ 
 
 
 
 
 
-const List1 = ({location}) => {
-  // const navigate = useNavigate();
-  // navigate(`/ppay`);
+ const List1 = () => {
   let arr = [];
   addList.map((i, index)=>{
     console.log('map 실행');
-    if(i !== ''){
+    console.log('i: ', i);
+
    arr.push(
-            <ListBox style={{display: props.subList? "block" : "none"}} key={index}>
+            <ListBox  key={index}>
             <button className='del' onClick={()=>remove(index, i.Price)}  ><i className="fa-solid fa-xmark"/></button>
             <span style={{display:"none"}}>{dd[i]}</span>
             <div className='subListBox'>
@@ -264,7 +264,7 @@ const List1 = ({location}) => {
             <span className='listPrice'>금액 : {i.Price} 원</span>
             </ListBox>
     )
-   }
+  
 
    })
   
@@ -272,10 +272,6 @@ const List1 = ({location}) => {
 
  }
 
- const k = ()=>{
-  console.log('k');
-  props.setLibby(2);
- }
   
 
    
@@ -288,10 +284,10 @@ const List1 = ({location}) => {
 
   return (
     <>
-  <CartList style={{display: props.modal? "inline-block" : "none"}}>
-    <button onClick={k}>button</button>
+  <CartList style={{display: modal? "inline-block" : "none"}}>
+    <button >button</button>
     <h3>🎁 Wish List 🎁</h3>
-  <p style={{display: props.subList? "none" : "flex"}}>선택한 상품이 없습니다. <br/> 상품을 클릭해 담아보세요😊</p>
+  <p >선택한 상품이 없습니다. <br/> 상품을 클릭해 담아보세요😊</p>
     <List1 />
     <Cost>
      Total: {sum} 원

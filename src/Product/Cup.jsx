@@ -9,14 +9,13 @@ import styled from "styled-components";
 
 
 
-const Cup = (props) => {
+const Cup = ({subTop, subTopClose, addList, setAddList}) => {
 
-  const [addList, setAddList] = useState({});
-  const [test, setTest] = useState(1);
+
   let [modal, setModal] = useState(false);
   let [subList, setSubList] = useState(false);
   let [tt, setTt] = useState(true);
-  let [subTop, setSubTop] = useState(false);
+
 
   let [libby, setLibby] = useState(1);
 
@@ -24,46 +23,42 @@ const Cup = (props) => {
     setSubList(true);
     setTt(false);
   }
-  const subTopClose = (props) =>{
-    setSubTop(false);
-  }
+  
  
   
   
 
   const mugAdd = (r) => {
-    const arr = [];
-    setTest(test+1);
+    console.log('r', r);
+    let arr = [...addList];
     for(let i=0; i<MugList.MugList.length; i++){
       if(MugList.MugList[i].id === r){
         arr.push(MugList.MugList[i]);
       }
     }
-    setAddList(...arr);
+    setAddList(arr);
     
   }
-  console.log('cupaddList: ', addList);
+
 
   const tumbAdd = (r) => {
-    const arr = [];
-    setTest(test+1);
+    let arr = [...addList];
     for(let i=0; i<TumbList.TumbList.length; i++){
       if(TumbList.TumbList[i].id === r){
         arr.push(TumbList.TumbList[i]);
       }
     }
-    setAddList(...arr);
+    setAddList(arr);
   }
 
   const glaAdd = (r) => {
-    const arr = [];
-    setTest(test+1);
+    let arr = [...addList];
     for(let i=0; i<GlaList.GlaList.length; i++){
       if(GlaList.GlaList[i].id === r){
         arr.push(GlaList.GlaList[i]);
       }
     }
-    setAddList(...arr);
+    setAddList(arr);
   }
 
 
@@ -113,8 +108,7 @@ const Cup = (props) => {
     };
   return (
     <>
-    <Product  modal={modal} setModal={setModal} subTop={subTop} setSubTop={setSubTop} />
-    <P_Cart mug={addList} setMug={setAddList} modal={modal} setModal={setModal} subList={subList} setSubList={setSubList} tt={tt} setTt={setTt} />
+    {/* <P_Cart mug={addList} setMug={setAddList} modal={modal} subList={subList} setSubList={setSubList} tt={tt} setTt={setTt} /> */}
     <Styled.ProMenu style={{display: subTop? "flex" : "none"}} onMouseLeave={subTopClose}>
       <button type='button' className='proMenuBtn' onClick={onOneClick}>머그</button>
       <button type='button' className='proMenuBtn' onClick={onTwoClick}>텀블러</button>

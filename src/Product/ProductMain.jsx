@@ -1,12 +1,12 @@
 import React, { useRef, useState } from 'react';
 import Product from './Product';
 import * as Styled from "./Style";
+import styled from "styled-components";
+import { Link } from 'react-router-dom';
 import Cup from './Cup';
 import Acc from './Acc';
 import PackTea from './PackTea';
-import styled from "styled-components";
-import { Link } from 'react-router-dom';
-import P_Cart from './P_Cart';
+import Footer from '../Menu/Footer';
 
 
 const StyledLink = styled(Link)`
@@ -26,83 +26,53 @@ const StyledLink = styled(Link)`
    }
 
 `
-
-const PageWrap = styled.div`
+  const PageWrap = styled.div`
 
 
 `
 
 
-const ProductMain = (props) => {
 
-let [menu, setMenu] = useState(false);
-let [menu1, setMenu1] = useState(true);
-let [menu2, setMenu2] = useState(false);
-let [menuCup, setMenuCup] = useState(false);
-let [menuAcc, setMenuAcc] = useState(false);
-let [menuPack, setMenuPack] = useState(false);
-let [modal, setModal] = useState(false);
+
+const ProductMain = (menu, setMenu, menu1,setMenu1, main , cupClick) => {
 
 
 
-const main = (props) => {
-  setMenu1(true);
-  setMenu(true);
-  setMenuCup(false);
-  setMenuAcc(false);
-  setMenuPack(false);
-}
+// const subTopClose = (props) =>{
+//   setSubTop(false);
+// } 
+// const subTopClose1 = (props) =>{
+//   setSubTop1(false);
+// } 
+// const subTopClose2 = (props) =>{
+//   setSubTop2(false);
+// } 
 
-const cupClick = (props) => {
-  setMenu1(false);
-  setMenuCup(true);
-  setMenuAcc(false);
-  setMenuPack(false);
-  
-}
-const accClick = (props) => {
-  setMenuCup(false);
-  setMenuAcc(true);
-  setMenuPack(false);
-  setMenu1(false);
-}
-const packClick = (props) => {
-  setMenuCup(false);
-  setMenuAcc(false);
-  setMenuPack(true);
-  setMenu1(false);
-}
 
-  
+
+
 //  const scrollRef = useRef<HTMLElement>(<Cup/>);
 
 //  const onNewClick = () => {
 //    scrollRef.current?.scrollIntoView({ behavior: 'smooth'});
 //  };
 
+const ProRef = useRef();
+const refClick = () => {
+  ProRef.current?.scrollIntoView({ behavior: 'smooth'});
+};
   return (
     <>
-        <Product cupClick={cupClick} accClick={accClick} packClick={packClick} main={main} />
-        <PageWrap >
-        <div className='111' style={{display: menuCup? "block" : "none"}}>
-        <Cup />
-        </div>
-        <div className='222' style={{display: menuAcc? "block" : "none"}}>
-        <Acc />
-        </div>
-        <div className='333' style={{display: menuPack? "block" : "none"}}>
-        <PackTea />
-        </div>
-        </PageWrap>
-        <Styled.proMainBox style={{display: menu1? "block" : "none"}}>
+        
+        <Styled.proMainBox style={{display: menu? "block" : "none"}}>
         <Styled.mainText >
            <Styled.topText>상품</Styled.topText>
            <Styled.bText>CHK만의 색다른 매력이 담긴 새로운 상품들을 만나보세요!</Styled.bText>
           </Styled.mainText>
         <img src="image/Product/Main01.jpg" alt="proMainBox"/>
-        <StyledLink to="/cup" ><button type="button" className='newProBtn' >더 많은 상품이 궁금하다면?</button></StyledLink>
+        <span ><button type="button" className='newProBtn' onClick={refClick}>찾아오시는 길 / 상품문의 안내</button></span>
         </Styled.proMainBox>
-    <Styled.newProBox style={{display: menu1? "block" : "none"}}>
+    <Styled.newProBox style={{display: menu? "block" : "none"}}>
     <p className="newProduct" >이 달의 신제품</p>
     <ul className="contentBox" >
     <StyledLink to="/cup" ><img src="image/Mug/Mug_B.jpg" alt="contentBox" className="newProImg" /></StyledLink>
@@ -112,6 +82,9 @@ const packClick = (props) => {
     </ul>
 
     </Styled.newProBox>
+    <div ref={ProRef}>
+    <Footer />
+    </div>
      </>
         )
 

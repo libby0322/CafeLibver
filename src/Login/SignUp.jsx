@@ -4,19 +4,23 @@ import axios from 'axios'
 
 
 const Container = styled.div`
-    height: 600px;
-`
-const Box1 = styled.div`
-    border: 2px solid black;
+    width: 80%;
+    height: 800px;
     margin: auto;
-    width: 700px;
-    height: 380px;
+    border: 1px solid black;
     margin-top: 100px;
 `
-const Box2 = styled.div`
-    border: 1px solid black;
+const Header = styled.div`
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    border-bottom: 1px solid black;
+`
+const Main = styled.div`
     padding: 30px;
-    height: 330px;
+    height: 500px;
     position: relative;
 `
 const Id = styled.div`
@@ -88,9 +92,8 @@ const SignUp = () => {
     
   return (
     <Container>
-        <Box1>
-            <h2 style={{textAlign: "center"}}>회원가입</h2>
-            <Box2>
+        <Header>회원가입</Header>
+            <Main>
                 <form action='/api/signup' method='post'>
                 <Id><div>아이디: </div><input type="text" name="id" placeholder='아이디' onChange={(e) => setId(e.target.value)}></input></Id>
                 <Overlap_box style={{display: asociate_diplay, color: asociate ? "green" : "red"}}><span>{asociate ? "사용가능한 아이디입니다." : "중복인 아이디 입니다."}</span></Overlap_box>
@@ -103,8 +106,7 @@ const SignUp = () => {
                 <Overlap>
                     <button onClick={overlap}>중복검사</button>
                 </Overlap>
-            </Box2>
-        </Box1>
+            </Main>
     </Container>
   )
 }

@@ -40,11 +40,16 @@ const boardCtrl = {
             console.log('삭제합니다.');
             console.log('id: ', id);
             console.log(req.query.delete);
-            const sql = `DELETE FROM board WHERE content = "${id}"`
-            // connection.query(sql, (error, rows)=>{
-            //     if(error) throw error;
-            //     res.send("<script>alert('삭제완료!!'); location.href='/membership/faq/board/1';</script>");
-            //   })
+            const sql = `DELETE FROM board WHERE id = ${id};`+
+            `ALTER TABLE board AUTO_INCREMENT=1;`+
+            `SET @COUNT = 0; `+
+            `UPDATE board SET id = @COUNT:=@COUNT+1;`;
+            
+ 
+            connection.query(sql, (error, rows)=>{
+                if(error) throw error;
+                res.send("<script>alert('삭제완료!!'); location.href='/membership/faq/board/1';</script>");
+              })
         }
         
         else if(req.query.delete !== true){

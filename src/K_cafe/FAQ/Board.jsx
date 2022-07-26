@@ -1,10 +1,11 @@
 import React, {useState, useEffect} from 'react'
 import styled, { keyframes } from "styled-components"
 import {Row, Col} from 'reactstrap'
-import { Link, useParams, useLocation } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import axios from 'axios'
 import cookies from 'react-cookies'
 import base from './base.png'
+import Rank from './Rank'
 
 const Container = styled.div`
   width: 80%;
@@ -131,6 +132,7 @@ const Notice2 = styled(Notice1)`
   text-align: left;
   font-size: 20px;
   padding-left: 10px;
+  text-align: center;
 `
 const Notice3 = styled(Notice1)`
   flex: 0 0 30%;
@@ -167,9 +169,12 @@ const Board = () => {
   const [sort, setSort] = useState(false); // 게시판 정렬
   const [number, setNumber] = useState([]); // 페이지넘어갈때 배경색깔
   const [search, setSearch] = useState(); // search
+  const [rank_display, setRank_display] = useState(false); // 등급 관련 안내 display
+  const [notice_info, setNotice_info] = useState([]);
   
   console.log('info: ', info);
   console.log('comment info: ', comment_info);
+  console.log('notice info', notice_info);
   let { id } = useParams();
   console.log('쿼리스트링: ', id);
   // 쿼리스트링 page
@@ -196,8 +201,15 @@ const Board = () => {
       console.log('댓글 데이터');
       setComment_info(response.data.rows.reverse());
     }
+
+    async function c(){
+      const response = await axios.get('/api/notice');
+      console.log('공지사항 데이터');
+      setNotice_info(response.data.rows);
+    }
     a();
     b();
+    c();
     }, []);
     // useEffect 동작방식: set을 만나면 기억해뒀다가 effect 안을 다 실행하고 component를 다시 실행한다!!
 
@@ -256,7 +268,7 @@ const Board = () => {
     {/* Link to로하면 새로고침이 되지않고 페이지 이동이되지만 바뀐 쿼리스트링 page는 그대로다. */}
     return arr;
   }
-  const List5 = () => {
+  const List5 = () => { // 최신 글
     let arr = [];
     let count = 0;
     for(let i of info){
@@ -269,8 +281,8 @@ const Board = () => {
     }
     return arr;
   }
-  const List6 = () => {
-    let arr= [];
+  const List6 = () => { // 최신 댓글
+    let arr = [];
     let count = 0;
     for(let i of comment_info){
       if(count !== 5){
@@ -279,6 +291,20 @@ const Board = () => {
         )
         count++;
       }else break;
+    }
+    return arr;
+  }
+
+  const List7 = () => {
+    let arr = [];
+    for(let i of notice_info){
+      arr.push(
+        <Notice_Bar>
+          <Notice1><img src="/image/Logo/Logo.png" width="50px"></img></Notice1>
+          <Notice2><Link to={`/membership/faq/notice/${i.id}`} state={notice_info}>{i.title}</Link></Notice2>
+          <Notice3>CHK</Notice3>
+        </Notice_Bar>
+      )
     }
     return arr;
   }
@@ -310,9 +336,10 @@ const Board = () => {
   
   return (
     <Container>
+      <Rank rank_display={rank_display} setRank_display={setRank_display}/>
         <Header>
           <BB>CHK 게시판 ^_^</BB>
-          <Write><button>등급 관련 안내</button><List3 /></Write>
+          <Write><button onClick={()=>setRank_display(!rank_display)}>등급 관련 안내</button><List3 /></Write>
         </Header>
         <Row>
         <Main>
@@ -360,16 +387,7 @@ const Board = () => {
                   <Title>제목</Title>
                   <Writer style={{flex: "0 0 30%"}}>이미지</Writer>
                 </Bar>
-                <Notice_Bar>
-                  <Notice1><img src="/image/Logo/Logo.png" width="50px"></img></Notice1>
-                  <Notice2>[공지] 공지사항입니다1.</Notice2>
-                  <Notice3>CHK</Notice3>
-                </Notice_Bar>
-                <Notice_Bar>
-                  <Notice1><img src="/image/Logo/Logo.png" width="50px"></img></Notice1>
-                  <Notice2>[공지] 공지사항입니다2.</Notice2>
-                  <Notice3>CHK</Notice3>
-                </Notice_Bar>
+                <List7 />
                   {content3}
               </Middle>
             </Main_right>

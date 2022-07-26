@@ -10,6 +10,7 @@ import FAQ from './K_cafe/FAQ/FAQ'
 import View2 from './K_cafe/FAQ/View2'
 import Write from './K_cafe/FAQ/Write'
 import Modify from './K_cafe/FAQ/Modify'
+import Notice from './K_cafe/FAQ/Notice'
 import Tea from './Menu/Tea'
 import Desert from './Menu/Desert'
 import Bread from './Menu/Bread'
@@ -47,7 +48,8 @@ const App = () => {
         <Route path='/membership/faq' element={<MembershipFaq />}/>
         <Route path='/membership/faq/board/:id' element={<Board />}/>
         <Route path='/membership/faq/faq' element={<FAQ />}/>
-        <Route path='/membership/faq/view/:id' element={<View2 />}/>  
+        <Route path='/membership/faq/view/:id' element={<View2 />}/>
+        <Route path='/membership/faq/notice/:id' element={<Notice />}/>  
         <Route path='/membership/faq/write' element={<Write />}/>
         <Route path='/membership/faq/modify' element={<Modify/>}/>
         <Route path='/productMain' element={<ProductMain />} />

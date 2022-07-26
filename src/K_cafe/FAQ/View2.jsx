@@ -6,7 +6,7 @@ import { useLocation } from 'react-router-dom'
 import cookies from 'react-cookies'
 // import kk from '/image/Logo/Logo.png'
 import axios from 'axios'
-import tt from './base.png'
+import tt  from './base.png'
 
 const Container = styled.div`
   width: 80%;
@@ -104,10 +104,7 @@ const Middle = styled.div`
   padding-top: 20px;
   margin-bottom: 20px;
 `
-const Bottom = styled.div`
-
-
-`
+const Bottom = styled.div``
 const Comment_Box = styled.div`
   margin-top: 100px;
   background-color: #ddd;
@@ -192,7 +189,9 @@ const View2 = () => {
             </Top1>
             <Top2>
               <Top2_left>{x.writer}&nbsp; | &nbsp;{x.date}</Top2_left>
-              <Top2_right style={{display: revise}}><Link to="/membership/faq/modify" state={{"info": info, "id": id}}>수정</Link> | <a href={`/api/board?id=${x.content}&delete=true`}>삭제</a></Top2_right>
+              <Top2_right style={{display: revise}}><Link to="/membership/faq/modify" state={{"info": info, "id": id}}>수정</Link> | <span onClick={() =>Delete(x.id)}>삭제</span></Top2_right>
+
+              {/* <a href={`/api/board?id=${x.id}&delete=true`}>삭제</a> */}
             </Top2>
             <Middle>{x.content}</Middle>
             <Bottom><img src={x.image} width="300px" height="200px" alt="" onError={base_image}></img></Bottom>
@@ -249,6 +248,13 @@ const View2 = () => {
 
   const base_image = (e) => {
     e.target.src = tt;
+  }
+  const Delete = (e) => {
+    console.log('kwon');
+    if(window.confirm('삭제하시겠습니까??') === true){
+      console.log('삭제합니다');
+      window.location.href=`/api/board?id=${e}&delete=true`;
+    }
   }
 
   return (

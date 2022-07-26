@@ -9,7 +9,9 @@ const signupCtrl = {
 
       
         const {id, password, name, age, address} = req.body; // 구조분해할당
-        const sql = `INSERT INTO member(id, password, name, age, address) VALUES("${id}", "${password}", "${name}", ${age}," ${address}");`
+        console.log(req.body);
+        const grade = 1;
+        const sql = `INSERT INTO member(id, password, name, age, address, grade) VALUES("${id}", "${password}", "${name}", ${age}, "${address}", ${grade});`
         // INSERT는 if(!req.body.id){return ...} 리턴을 해줌으로써 오류응답을 서버와 클라이언트에서 2번하지않게해준다.
         switch(true){
           case !req.body.id: return res.send("<script>alert('아이디를 입력해주세요.'); location.href='/signup';</script>");

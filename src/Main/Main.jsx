@@ -13,6 +13,7 @@ import Slide3 from './Slide3'
 import Box1 from './Box1'
 import Box2 from './Box2'
 import Box3 from './Box3'
+import PopUp1 from './PopUp1'
 
 const Container = styled.div`
   height: 2000px;
@@ -62,7 +63,6 @@ const Main = () => {
   }, [])
 
 
-
   const settings = {
     dots: true,
     infinite: true,
@@ -77,6 +77,7 @@ const Main = () => {
   
   return (
     <Container>
+      <PopUp1 />
       <Row>
       <StyledSlider {...settings}> {/* 기본 display가 inline-block로 상속, color 등등도 안먹는다 그래서 다른 컴포넌트에서 불러옴 */}
         <Slide2></Slide2>

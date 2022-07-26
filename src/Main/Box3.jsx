@@ -44,6 +44,12 @@ const Dev_box = styled.div`
     animation: ${props => props.active ? ani1 : ani2};
     animation-duration: 1s; 
     animation-fill-mode: forwards;
+
+    @media screen and (max-width: 768px) {
+        width: 250px;
+        height: 250px;
+        margin-bottom: 50px;
+    }
 `
 const Profile = styled.div`
     

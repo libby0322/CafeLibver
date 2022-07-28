@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react'
 import styled, { keyframes } from "styled-components"
-import {Row, Col} from 'reactstrap'
 
 const Container = styled.div`
     border: 1px solid black;

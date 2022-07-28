@@ -7,6 +7,7 @@ const Container = styled.div`
     height: 500px;
     background-color: white;
     z-index: 100;
+    top: 200px;
     left: 100px;
 `
 const Header = styled.div`
@@ -50,6 +51,7 @@ const Content = styled.div`
         justify-content: center;
         font-size: 15px;
         margin: 5px;
+        box-shadow: 3px 3px 1px 1px black;
     }
 `
 const Footer = styled.div`
@@ -68,8 +70,8 @@ const PopUp1 = () => {
 
     const scroll = () => {
         window.scroll({top:(0, 2060), behavior: 'smooth'});
-
     }
+
   return (
     <Container style={{display: display ? "none" : "block"}}>
         <Header>
@@ -79,8 +81,9 @@ const PopUp1 = () => {
         <Main>
             <Title>사용된 프레임워크 및 라이브러리</Title>
             <Content>
-                <div>JavaScript</div>
+                <div>HTML</div>
                 <div>CSS</div>
+                <div>JavaScript</div>
                 <div>Jquery</div>
                 <div>React</div>
                 <div>ReactStrap</div>
@@ -88,9 +91,8 @@ const PopUp1 = () => {
                 <div>MySQL</div>
                 <div>AWS</div>
                 <div>Linux</div>
-                <div></div>
-                <div></div>
-                <div></div>
+                <div>-</div>
+                <div>-</div>
             </Content>
         </Main>
         <Footer onClick={scroll}><div>제작자 보러가기 <i className="fa-solid fa-angle-right"></i></div></Footer>

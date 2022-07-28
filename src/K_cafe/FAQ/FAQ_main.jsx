@@ -41,6 +41,7 @@ const Box1 = styled(Link)`
   align-items: center;
   justify-content: center;
   cursor: pointer;
+
   // animation: ${props => (props.active ? activeAnim : "")} ${props => (props.active2 ? activeAnim : "")};
   // animation-duration: 1s; 
   // animation-fill-mode: forwards;
@@ -64,9 +65,9 @@ const FAQ_main = () => {
         <Header>FAQ/게시판</Header>
       </Row>
       <Main>
-        <Box1 to={'/membership/faq/faq'}>FAQ</Box1>
+        <Box1 to="/membership/faq/faq">FAQ</Box1>
         {/* <Box2 info={info} as="a" href={`/membership/faq/board/1`}>게시판</Box2> */}
-        <Box2 to={`/membership/faq/board/1`}>게시판</Box2>
+        <Box2 to="/membership/faq/board/1">게시판</Box2>
       </Main>
     </Container>
   )

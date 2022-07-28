@@ -1,14 +1,15 @@
 import React, {useState, useEffect} from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
+import DaumPostCode from 'react-daum-postcode';
 
 
 const Container = styled.div`
     width: 80%;
-    height: 800px;
+    height: 600px;
     margin: auto;
     border: 1px solid black;
-    margin-top: 100px;
+    margin-top: 50px;
 `
 const Header = styled.div`
     height: 70px;
@@ -36,7 +37,7 @@ const Id = styled.div`
 const Password = styled(Id)`
     div{
         width: 80px;
-        line-height: 25px;
+        line-height: 28px;
     }
 `
 const Loginbutton = styled.div`
@@ -55,9 +56,15 @@ const Overlap = styled.div`
     height: 30px;
     position: absolute;
     top: 30px;
-    right: 100px;
+    right: 270px;
 `
-
+const Daum = styled.div`
+    width: 80px;
+    height: 30px;
+    position: absolute;
+    top: 230px;
+    right: 270px;
+`
 
 const SignUp = () => {
 
@@ -88,6 +95,21 @@ const SignUp = () => {
         setAsociate_display('flex');
         }
     }
+
+    const handleComplete = (data) => { // daum api
+        let fullAddress = data.address;
+        let extraAddress = '';
+        if (data.addressType === 'R') {
+            if (data.bname !== '') {
+                extraAddress += data.bname;
+            }
+            if (data.buildingName !== '') {
+                extraAddress += (extraAddress !== '' ? `, ${data.buildingName}` : data.buildingName);
+            }
+            fullAddress += (extraAddress !== '' ? ` (${extraAddress})` : '');
+        }
+        //fullAddress -> 전체 주소반환
+    }
     
     
   return (
@@ -100,12 +122,20 @@ const SignUp = () => {
                 <Password><div>비밀번호: </div><input type="password" name="password" placeholder='비밀번호'></input></Password>
                 <Password><div>이름: </div><input type="text" name="name" placeholder='이름'></input></Password>
                 <Password><div>나이: </div><input type="text" name="age" placeholder='나이'></input></Password>
-                <Password><div>주소: </div><input type="text" name="address" placeholder='주소'></input></Password>
+                <Password><div>우편번호: </div><input style={{backgroundColor: '#ddd'}} type="text" name="address" readOnly></input></Password>
+                <Password><div>주소: </div><input style={{backgroundColor: '#ddd'}} type="text" name="address" readOnly></input></Password>
+                <Password><div>상세주소: </div><input type="text" name="" placeholder='상세주소'></input></Password>
                 <Loginbutton><input type="submit" value="회원가입"></input></Loginbutton>
                 </form>
                 <Overlap>
                     <button onClick={overlap}>중복검사</button>
+                    {/* <Modal>
+                        <DaumPostCode onComplete={handleComplete} />
+                    </Modal> */}
                 </Overlap>
+                <Daum>
+                    <button onClick={handleComplete}>주소검색</button>
+                </Daum>
             </Main>
     </Container>
   )

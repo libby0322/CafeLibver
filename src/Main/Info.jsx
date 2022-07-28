@@ -50,7 +50,7 @@ const Info = (props) => {
 
 
   return (
-    <Container  active={props.active1} test={test}>
+    <Container active={props.active1} test={test}>
         <Header><button onClick={()=>slide(props)}>닫기</button></Header>
     </Container>
   )

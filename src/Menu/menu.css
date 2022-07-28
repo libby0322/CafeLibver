@@ -184,7 +184,7 @@ li.b_icon{
     scroll-behavior: smooth;
     top: 30%;
     right: 10px;
-    z-index: 999;
+    z-index: 990;
     background-color: #fff;
     box-shadow: 10px 15px 10px 5px rgba(0,0,0,0.5);
     font-size: 16px;

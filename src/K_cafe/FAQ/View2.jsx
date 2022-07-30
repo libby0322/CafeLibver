@@ -94,6 +94,7 @@ const Top2 = styled.div`
 `
 const Top2_left = styled.div`
   flex: 0 0 88%;
+  display: flex;
 `
 const Top2_right = styled.div`
   flex: 0 0 12%;
@@ -134,12 +135,24 @@ const Comment_bottom = styled.div`
   margin-top: 30px;
 `
 const Comment = styled.div`
-  margin-top: 10px;
+  margin-top: 20px;
 
   div{
-    padding: 5px;
+    display: flex;
+    margin-left: 10px;
   }
 `
+const Score = styled.div`
+  background-color: pink;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  margin-right: 3px;
+`
+
 const View2 = () => { 
 
   // const info = useLocation().state;
@@ -161,8 +174,13 @@ const View2 = () => {
       const response = await axios.get('/api/board');
       setInfo(response.data.rows.reverse());
     }
+    async function c(){
+      const response = await axios.get('/api/login');
+      setMember_info(response.data.rows.reverse());
+    }
     a();
     b();
+    c();
     }, []);
 
   const [info, setInfo] = useState([]);
@@ -170,17 +188,27 @@ const View2 = () => {
   const [revise, setRevise] = useState('none'); // 수정 | 삭제 유무
   const [comment_count, setComment_count] = useState(0); // 댓글 총갯수
   const [image_Display, setImage_Display] = useState('none');
+  const [member_info, setMember_info] = useState([]);
   
   console.log('view2 comment: ', comment_info);
   console.log('id: ', id);
   console.log('view2 comment 길이: ', comment_info.length);
   console.log('info: ', info);
+  console.log('member info: ', member_info);
 
   const List = () => {
     const arr2 = [];
+    let rank = '';
     info.map((x, index)=>{
-      if(info.length - parseInt(id) === index){
+      member_info.map(i => {
+      if(info.length - parseInt(id) === index && i.id === x.writer){
         console.log('view2 image: ', x.image);
+        switch(true){
+          case i.score < 200 : rank = 1; break;
+          case i.score > 500 : rank = 2; break;
+          default : rank = 3; break;
+        }
+
         arr2.push(
           <DD key={x.id}>
             <Top1>
@@ -188,7 +216,7 @@ const View2 = () => {
               <Top1_right><Link to="/membership/faq/board/1"><button>목록으로</button></Link></Top1_right>
             </Top1>
             <Top2>
-              <Top2_left>{x.writer}&nbsp; | &nbsp;{x.date}</Top2_left>
+              <Top2_left><Score>{rank}</Score>{x.writer}&nbsp; | &nbsp;{x.date}</Top2_left>
               <Top2_right style={{display: revise}}><Link to="/membership/faq/modify" state={{"info": info, "id": id}}>수정</Link> | <span onClick={() =>Delete(x.id)}>삭제</span></Top2_right>
 
               {/* <a href={`/api/board?id=${x.id}&delete=true`}>삭제</a> */}
@@ -198,6 +226,7 @@ const View2 = () => {
           </DD>
         )
       }
+    })
       if(x.writer === cookies.load('key')){;
         setRevise('block');
       }
@@ -207,14 +236,24 @@ const View2 = () => {
 
   const List2 = () => {
     let arr = [];
-    for(let i of comment_info){
+    let rank = '';
+    comment_info.map(i => {
+      member_info.map(x => {
+        if(i.writer === x.id){
+          switch(true){
+            case x.score < 200 : rank = 1; break;
+            case x.score > 500 : rank = 2; break;
+            default : rank = 3; break;
+          }
       arr.push(
         <Comment key={i.id}>
-          <div>{i.writer} &nbsp;|&nbsp; {i.date}</div>
+          <div><Score>{rank}</Score>{i.writer} &nbsp;|&nbsp; {i.date}</div>
           <div style={{background: "skyblue", display: "inline-block", marginLeft: "20px", fontSize: "15px"}}>{i.content}</div>
         </Comment>
       )
-    }
+        }
+        })
+    })
     return arr;
   }
 

@@ -7,6 +7,19 @@ const date = year + '-' + month  + '-' + day; // 2021-07-01
 
 const boardCtrl = {
     insertInfo: async(req, res)=>{
+        if(req.query.modify !== undefined){ // 수정 눌렀을 때
+            console.log('수정합니다.');
+            const id = req.query.id;
+            const {title, content} = req.body;
+            const sql = `UPDATE board SET title = "${title}", content = "${content}" WHERE id = ${id};`
+
+            connection.query(sql, (error, rows)=>{
+                if(error) throw error;
+                res.send("<script>alert('수정완료!!'); location.href='/membership/faq/board/1';</script>");
+              })
+        }
+
+        else if(req,query.modify === undefined){
         console.log('insert');
         console.log('req.body: ', req.body);
         console.log('file: ', req.file);
@@ -18,7 +31,8 @@ const boardCtrl = {
             image = '/uploads/' + req.file.filename;
         }
         const {title, content} = req.body; // 구조분해할당
-        const sql = `INSERT INTO board(title, content, writer, date, image) VALUES("${title}", "${content}", "${writer}", "${date}", "${image}");`
+        const sql = `INSERTa INTO board(title, content, writer, date, image) VALUES("${title}", "${content}", "${writer}", "${date}", "${image}");`+
+        `UPDATE member SET score = score + 20 WHERE id = "${writer}";`
 
         // app.post('/api/board', upload.single('image'), (req, res)=>{
         //     console.log(req.file, req.body);
@@ -33,6 +47,7 @@ const boardCtrl = {
           if(error) throw error;
           res.send("<script>alert('게시판 등록 완료!!'); location.href='/membership/faq/board/1';</script>");
         })
+        }
     },
     getInfo: async(req, res)=>{
         if(req.query.delete !== undefined){ // 삭제 눌렀을 때

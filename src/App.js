@@ -28,16 +28,20 @@ import Login from './Login/Login_page'
 import SignUp from './Login/SignUp'
 import P_Pay from './Product/P_Pay'
 import './app.css'
+import Auth from './Auth'
+
+
 
 
 const App = () => {
-
   
   return (
+    
     <BrowserRouter>
       <Topnav />
       <Routes>
         <Route path='/' element = {<Main />} />
+        <Route path='/oauth/kakao/callback' element = {<Auth />} />
         <Route path='/coffee' element= {<Coffee/>}/>
         <Route path='/noncoffee' element={<Tea/>} />
         <Route path="/desert" element={<Desert/>}/>

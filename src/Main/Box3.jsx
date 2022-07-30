@@ -40,6 +40,7 @@ const Dev_box = styled.div`
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    border-radius: 10px;
 
     animation: ${props => props.active ? ani1 : ani2};
     animation-duration: 1s; 
@@ -58,15 +59,14 @@ const Profile = styled.div`
 const Box3 = () => {
     
     const [active1, setActive1] = useState(false); // DevBox 애니메이션 on off
-    const [active2, setActive2] = useState(false); // info display on off
+    const [name, setName] = useState();
+ 
 
-    const slide = () => {
+    const slide = (e) => {
         setActive1(!active1);
-        setActive2(!active2);
+        setName(e);
     }
 
-    console.log('active1: ', active1);
-    console.log('active2: ', active2);
 
   return (
    <Container>
@@ -74,28 +74,28 @@ const Box3 = () => {
     <Dev>
         <Row>
         <Col md="3" xs="6">
-            <Dev_box active={active1} onClick={slide}>
+            <Dev_box active={active1} onClick={()=>slide(0)}>
                 <Profile>Developer : 권~태~훈~</Profile>
             </Dev_box>
         </Col>
         <Col md="3" xs="6">
-            <Dev_box active={active1} onClick={slide}>
+            <Dev_box active={active1} onClick={()=>slide(1)}>
             <Profile>Developer : 최◆보◆은</Profile>
             </Dev_box>
             
         </Col>
         <Col md="3" xs="6">
-            <Dev_box active={active1} onClick={slide}>
+            <Dev_box active={active1} onClick={()=>slide(2)}>
             <Profile>Developer : 홍★지★우</Profile>
             </Dev_box>
         </Col>
         <Col md="3" xs="6">
-            <Dev_box active={active1} onClick={slide}>
+            <Dev_box active={active1} onClick={()=>slide(3)}>
             <Profile>Developer : 임♪리♪비</Profile>
             </Dev_box>
         </Col>
         </Row>
-        <Info active1={active1} active2={active2} setActive1={setActive1} setActive2={setActive2}></Info>
+        <Info active1={active1} setActive1={setActive1} name={name}></Info>
     </Dev>
    </Container>
   )

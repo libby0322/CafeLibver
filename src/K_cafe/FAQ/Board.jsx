@@ -24,6 +24,16 @@ const BB = styled.div`
   flex: 0 0 80%;
   padding: 15px;
 `
+const Score = styled.div`
+  background-color: pink;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  border-radius: 5px;
+  margin-right: 3px;
+  line-height: 22px;
+  border: 1px solid #grey;
+`
 const Write = styled.div`
   flex: 0 0 20%;
   display: flex;
@@ -170,11 +180,13 @@ const Board = () => {
   const [number, setNumber] = useState([]); // 페이지넘어갈때 배경색깔
   const [search, setSearch] = useState(); // search
   const [rank_display, setRank_display] = useState(false); // 등급 관련 안내 display
-  const [notice_info, setNotice_info] = useState([]);
+  const [notice_info, setNotice_info] = useState([]); // 공지사항 정보
+  const [member_info, setMember_info] = useState([]); // 멤버 정보
   
   console.log('info: ', info);
   console.log('comment info: ', comment_info);
   console.log('notice info', notice_info);
+  console.log('member info: ', member_info);
   let { id } = useParams();
   console.log('쿼리스트링: ', id);
   // 쿼리스트링 page
@@ -185,6 +197,7 @@ const Board = () => {
     async function a(){
       const response = await axios.get('/api/board/'+id);
       console.log('데이터받아왔니??');
+      console.log(response.data);
       setInfo(response.data.rows.reverse());
 
       setInfolength(response.data.length);
@@ -207,48 +220,75 @@ const Board = () => {
       console.log('공지사항 데이터');
       setNotice_info(response.data.rows);
     }
+    async function d(){
+      const response = await axios.get('/api/login');
+      console.log('멤버 데이터');
+      setMember_info(response.data.rows);
+    }
     a();
     b();
     c();
+    d();
     }, []);
     // useEffect 동작방식: set을 만나면 기억해뒀다가 effect 안을 다 실행하고 component를 다시 실행한다!!
 
     
 
   const List = () => {
+
     let arr = [];
+    let rank = '';
     let count = info2.length+1;
-    for(let i of info2){
+    info2.map(i => {
+      member_info.map(x => {
+        if(i.writer === x.id){
+          switch(true){
+            case x.score < 200 : rank = 1; break;
+            case x.score > 500 : rank = 2; break;
+            default : rank = 3; break;
+          }
       count--;
       arr.push(
         <Bar key={count}>
           <Number>{i.id}</Number>
-          <Title><Link to={`/membership/faq/view/${i.id}`} state={info}>{i.title}</Link></Title>
-          <Writer>{i.writer}</Writer>
+          <Title><Link to={`/membership/faq/view/${i.id}`}>{i.title}</Link></Title>
+          <Writer><Score>{rank}</Score>{i.writer}</Writer>
           <Date>{i.date}</Date>
         </Bar>
       )
-    }
+        }
+      })
+    })
     return arr;
   }
 
   const List2 = () => {
     let arr = [];
+    let rank = '';
     let count = info2.length+1;
-    for(let i of info2){
+    info2.map((i, index) => {
+      member_info.map(x => {
+        if(i.writer === x.id){
+          switch(true){
+            case x.score < 200 : rank = 1; break;
+            case x.score > 500 : rank = 2; break;
+            default : rank = 3; break;
+          }
       count--;
       arr.push(
         <Bar style={{height: "200px"}} key={count}>
           <Number>{i.id}</Number>
           <Content>
-            <div><Link to={`/membership/faq/view/${i.id}`} state={info}>{i.title}</Link></div>
+            <div><Link to={`/membership/faq/view/${i.id}`}>{i.title}</Link></div>
             <div style={{color: "#ddd"}}>{i.content}</div>
-            <div style={{fontSize: "12px", paddingTop: "10px"}}>등급 {i.writer}</div>
+            <div style={{fontSize: "12px", paddingTop: "10px", display: "flex"}}><Score>{rank}</Score>{i.writer}</div>
           </Content>
           <Writer style={{flex: "0 0 30%"}}><img src={i.image} onError={base_image} alt="" width="220px" height="180px"></img></Writer>
         </Bar>
       )
-    }
+        }
+      })
+    })
     return arr;
   }
   
@@ -268,6 +308,7 @@ const Board = () => {
     {/* Link to로하면 새로고침이 되지않고 페이지 이동이되지만 바뀐 쿼리스트링 page는 그대로다. */}
     return arr;
   }
+
   const List5 = () => { // 최신 글
     let arr = [];
     let count = 0;
@@ -281,6 +322,7 @@ const Board = () => {
     }
     return arr;
   }
+
   const List6 = () => { // 최신 댓글
     let arr = [];
     let count = 0;

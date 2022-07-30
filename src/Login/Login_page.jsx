@@ -6,12 +6,12 @@ import cookies from 'react-cookies'
 
 const Login_page = () => {
 
-    const [loginid, setLoginid] = useState({});
+    const [loginid, setLoginid] = useState([]);
 
     useEffect(()=>{
       async function a(){
         const response = await axios.get('/api/login')
-        setLoginid(response.data);
+        setLoginid(response.data.rows);
         // console.log('aaa: ', cookies.load('loginId'));
       }
       a()

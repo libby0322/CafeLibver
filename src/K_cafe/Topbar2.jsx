@@ -82,7 +82,7 @@ const Topbar2 = () => {
                 <Link to="/coffee"><div>메뉴</div></Link>
                 <Link to= "/product"><div>상품</div></Link>
                 <Link to="/membership"><div>멤버쉽</div></Link>
-                <Link to="/login"><div>마이페이지</div></Link>
+                <Link to="/login/"><div>마이페이지</div></Link>
             </Nav_left>
             <Nav_right>
                 

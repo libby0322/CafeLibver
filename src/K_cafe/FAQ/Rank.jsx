@@ -24,10 +24,20 @@ const Box1 = styled.div`
 `
 const Left = styled.div`
     flex: 20%;
-    text-align: center;
-    line-height: 100px;
-    font-size: 35px;
-    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    div{
+        font-size: 20px;
+        background-color: pink;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+    }
 `
 const Right = styled(Left)`
     flex: 80%;
@@ -49,15 +59,15 @@ const Rank = ({rank_display, setRank_display}) => {
         <Header><button onClick={()=>setRank_display(!rank_display)}>닫기</button></Header>
         <Main>
             <Box1>
-                <Left><i className="fa-solid fa-face-meh"></i></Left>
+                <Left><div>1</div></Left>
                 <Right>-</Right>
             </Box1> 
             <Box1>
-                <Left><i className="fa-solid fa-face-smile"></i></Left>
+                <Left><div>2</div></Left>
                 <Right>활동점수 200점 이상</Right>
             </Box1>
             <Box1>
-                <Left><i className="fa-solid fa-face-laugh-beam"></i></Left>
+                <Left><div>3</div></Left>
                 <Right>활동점수 500점 이상</Right>
             </Box1>
             <Info>

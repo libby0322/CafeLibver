@@ -69,7 +69,7 @@ const PopUp1 = () => {
     const [display, setDisplay] = useState(false);
 
     const scroll = () => {
-        window.scroll({top:(0, 2060), behavior: 'smooth'});
+        window.scroll({top:(0, 2200), behavior: 'smooth'});
     }
 
   return (

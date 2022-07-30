@@ -1,7 +1,7 @@
-const testCtrl = require("../controllers/testCtrl");
+const kakaoCtrl = require("../controllers/kakaoCtrl");
 const router = require('express').Router();
 
 router.route('/')
-    .get(testCtrl.getInfo)
+    .get(kakaoCtrl.getInfo)
 
 module.exports = router;

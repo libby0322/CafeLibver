@@ -42,6 +42,10 @@ const Login = () => {
 
    
     const [maintain, setMaintain] = useState(); // 로그인 상태유지 색상
+    
+    const REST_API_KEY ="1ab930298baa3406dee898231822f512";
+    const REDIRECT_URI = "http://localhost:3000/oauth/kakao/callback";
+    const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
 
     const color1 = () => {
         setMaintain(!maintain);
@@ -64,6 +68,7 @@ const Login = () => {
                 <div style={{color: "gray", cursor: "pointer"}} onClick={color1}><i className="fa-solid fa-circle-check" style={{color: maintain ? "black" : "gray"}}></i>로그인 상태 유지</div>
                 <Result onClick={test}><input type="submit" value="로그인" style={{backgroundColor: "yellow", width: "100%", height: "100%", cursor: "pointer"}}></input></Result>
                 <SignUp><Link to={"/signup"}><button>회원가입</button></Link></SignUp>
+                <SignUp><a href={KAKAO_AUTH_URL}>카카오 로그인</a></SignUp>
                 </form>
             </Box2>
         </Box1>

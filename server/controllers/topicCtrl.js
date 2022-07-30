@@ -21,7 +21,7 @@ const topicCtrl = {
         connection.query(sql, (error, rows)=>{
             if(error) throw error;
             console.log(rows);
-            res.send(rows);
+            res.send(200, {"rows": rows, "length": rows.length});
         })
     }
     // insertMovie: async(req, res)=>{

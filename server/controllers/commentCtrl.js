@@ -21,7 +21,6 @@ const commentCtrl = {
         const id = req.query.id;
         const writer = req.cookies.key;
         const {content} = req.body; // 구조분해할당
-        console.log('content: ', content);
 
         switch(true){
             case writer === undefined : res.send("<script>alert('로그인부터 하시죠??'); location.href='/login';</script>"); break;
@@ -29,7 +28,8 @@ const commentCtrl = {
             case writer !== undefined && content !== '' :
         
         
-        const sql = `INSERT INTO comment(board_number, content, writer) VALUES("${id}", "${content}", "${writer}");`
+        const sql = `INSERT INTO comment(board_number, content, writer) VALUES("${id}", "${content}", "${writer}");`+
+        `UPDATE member SET score = score + 5 WHERE id = "${writer}";`
 
         connection.query(sql, (error, rows)=>{
             if(error) throw error;

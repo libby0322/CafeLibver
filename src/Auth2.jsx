@@ -2,6 +2,8 @@ import React, {useState} from 'react'
 import axios from 'axios'
 import qs from 'qs'
 
+
+// https://dev-seolleung2.netlify.app/Final%20Project/FinalProject-KakaoLogin/
 const Auth2 = () => {
 
     const REST_API_KEY ="1ab930298baa3406dee898231822f512";

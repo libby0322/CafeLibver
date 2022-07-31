@@ -19,7 +19,7 @@ const Loginok = (props) => {
   return (
     <Container>
       {loginid.name}
-      <form action="/api/logout">
+      <form action="/api/logout" method='get'>
       <input type="submit" value="로그아웃"></input>
       </form>
     </Container>

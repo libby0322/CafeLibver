@@ -26,6 +26,10 @@ const Id = styled.div`
 const Password = styled(Id)``
 
 const Result = styled.div`
+    display: flex;
+`
+const Login2 = styled.div`
+    flex: 0 0 50%;
     height: 50px;
     display: flex;
     align-items: center;
@@ -33,9 +37,15 @@ const Result = styled.div`
     background-color: yellow;
     cursor: pointer;
 `
+const Kakao = styled.a`
+    flex: 0 0 50%;
+    border: 2px solid black;
+    background-image: url('image/K_image/kakao_login.png');
+    background-size: cover;
+    background-position: center; 
+`
 const SignUp = styled.div`
     height: 30px;
-    
 `
 
 const Login = () => {
@@ -66,9 +76,11 @@ const Login = () => {
                 <Id><div style={{width: "80px"}}>아이디: </div><input type="text" id="id" name="id" placeholder='아이디'></input></Id>
                 <Password><div style={{width: "80px"}}>비밀번호: </div><input type="password" name="password" placeholder='비밀번호'></input></Password>
                 <div style={{color: "gray", cursor: "pointer"}} onClick={color1}><i className="fa-solid fa-circle-check" style={{color: maintain ? "black" : "gray"}}></i>로그인 상태 유지</div>
-                <Result onClick={test}><input type="submit" value="로그인" style={{backgroundColor: "yellow", width: "100%", height: "100%", cursor: "pointer"}}></input></Result>
+                <Result>
+                    <Login2 onClick={test}><input type="submit" value="로그인" style={{backgroundColor: "yellow", width: "100%", height: "100%", cursor: "pointer"}}></input></Login2>
+                    <Kakao href={KAKAO_AUTH_URL}></Kakao>
+                </Result>
                 <SignUp><Link to={"/signup"}><button>회원가입</button></Link></SignUp>
-                <SignUp><a href={KAKAO_AUTH_URL}>카카오 로그인</a></SignUp>
                 </form>
             </Box2>
         </Box1>

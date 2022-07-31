@@ -39,7 +39,7 @@ const Main = styled.div`
 `
 const Left = styled.div`
     flex: 0 0 40%;
-    border: 1px solid white;
+
 `
 const Right = styled.div`
     flex: 0 0 60%;
@@ -47,21 +47,16 @@ const Right = styled.div`
     padding: 20px;
 `
 const Left_Top = styled.div`
-    border: 1px solid white;
+    border: 1px solid black;
     height: 300px;
     display: flex;
     align-items: center;
     justify-content: center;
-
-    img{
-        width: 300px;
-        height: 300px;
-        border-radius: 50%;
-    }
+    font-size: 200px;
+    color: white;
 `
 const Left_Bottom = styled.div`
     height: 50px;
-    border: 1px solid white;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -134,8 +129,7 @@ const Kwon = ({active1, setActive1, arr}) => {
         <Main>
             <Left>
                 <Left_Top>
-                    <img src={info[1]}></img>
-                    {/* <i className="fa-solid fa-user-large"></i> */}
+                    <i className="fa-solid fa-user-large"></i>
                 </Left_Top>
                 <Left_Bottom>Developer: {info[0]}</Left_Bottom>
             </Left>

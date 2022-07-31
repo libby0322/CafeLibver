@@ -1,10 +1,13 @@
 import React, {useState, useEffect} from 'react'
+import { useCookies } from "react-cookie";
+import { remove } from 'react-cookies';
 
 
 const Auth = () => {
 
 
     const [info, setInfo] = useState([]);
+    const [cookies, setCookie, removeCookie] = useCookies(['key']);
 
     const {Kakao} = window;
 
@@ -18,7 +21,6 @@ const Auth = () => {
 
     useEffect(()=> {
 
-    
     Kakao.Auth.login({
         scope: 'profile_nickname, profile_image', // 동의항목 페이지에 있는 개인정보 보호 테이블의 활성화된 ID값을 넣습니다.
         success: function(response) {
@@ -45,11 +47,45 @@ const Auth = () => {
     });
 }, [])
 
+console.log('token: ', Kakao.Auth.getAccessToken());
+
+function kakaoLogout() {
+    if (window.Kakao.Auth.getAccessToken()) {
+        window.Kakao.API.request({
+          url: '/v1/user/unlink',
+          success: function (response) {
+            console.log(response);
+          },
+          fail: function (error) {
+            console.log(error);
+          },
+        });
+        alert('로그아웃이 완료되었습니다.');
+        window.location.href='/'
+      }
+
+
+    // Kakao.API.request({
+    //     url: '/v1/user/unlink',
+    //     success: function(response){
+    //         console.log(response);
+    //     }
+    // })
+
+    // Kakao.Auth.logout(function(response) {
+    //     removeCookie('key', {path: '/'});
+    //     removeCookie('rememberText');
+    //     removeCookie('webid',  {domain: 'http://.kakao.com'});
+    //     window.location.href='/api/logout?kakao=true'
+    // });
+};
+
   return (
     <>
         <div>{code}</div>
         <div>{info[0]}</div>
         <div><img src={info[1]}></img></div>
+        <div onClick={kakaoLogout}>로그아웃</div>
     </>
   )
 }

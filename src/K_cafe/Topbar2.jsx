@@ -81,7 +81,7 @@ const Topbar2 = () => {
                 <div><i className="fa-solid fa-bars-staggered" onClick={() => setDisplay(!display)}></i></div>
                 <Link to="/coffee"><div>메뉴</div></Link>
                 <Link to= "/product"><div>상품</div></Link>
-                <Link to="/membership"><div>멤버쉽</div></Link>
+                <Link to="/membership/faq"><div>게시판</div></Link>
                 <Link to="/login/"><div>마이페이지</div></Link>
             </Nav_left>
             <Nav_right>

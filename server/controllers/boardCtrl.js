@@ -19,11 +19,18 @@ const boardCtrl = {
               })
         }
 
-        else if(req,query.modify === undefined){
+        else if(req.query.modify === undefined){
         console.log('insert');
         console.log('req.body: ', req.body);
         console.log('file: ', req.file);
-        const writer = req.cookies.key;
+        console.log('kakao: ', req.query.kakao);
+
+        let writer = '';
+        if(req.query.kakao !== 'null'){
+            writer = req.query.kakao;
+        }else{
+            writer = req.cookies.key;
+        }
         let image = '';
         if(req.file === undefined){
             image = '/';
@@ -31,7 +38,7 @@ const boardCtrl = {
             image = '/uploads/' + req.file.filename;
         }
         const {title, content} = req.body; // 구조분해할당
-        const sql = `INSERTa INTO board(title, content, writer, date, image) VALUES("${title}", "${content}", "${writer}", "${date}", "${image}");`+
+        const sql = `INSERT INTO board(title, content, writer, date, image) VALUES("${title}", "${content}", "${writer}", "${date}", "${image}");`+
         `UPDATE member SET score = score + 20 WHERE id = "${writer}";`
 
         // app.post('/api/board', upload.single('image'), (req, res)=>{

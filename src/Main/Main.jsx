@@ -1,10 +1,10 @@
-import React, {useEffect} from 'react'
+import React, {useState, useEffect} from 'react'
 import Slider from "react-slick"
 import styled from "styled-components"
 import 'bootstrap/dist/css/bootstrap.min.css'
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
-import {Row, Col} from 'reactstrap'
+import {Row} from 'reactstrap'
 import AOS from "aos";
 import "aos/dist/aos.css"
 import Slide1 from './Slide1'
@@ -61,7 +61,6 @@ const Main = () => {
   useEffect(() => {
     AOS.init();
   }, [])
-
 
   const settings = {
     dots: true,

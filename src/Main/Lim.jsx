@@ -68,6 +68,7 @@ const Title = styled.div`
     height: 50px;
     color: white;
     font-size: 30px;
+    margin-bottom: 10px;
 `
 const Content = styled.div`
     height: 100px;
@@ -78,7 +79,11 @@ const Content = styled.div`
     }
 `
 const Title2 = styled(Title)``
-const Content2 = styled(Content)``
+const Content2 = styled(Content)`
+    div{
+        padding-bottom: 10px;
+    }
+`
 
 const Lim = ({active1, setActive1, arr}) => {
   return (
@@ -94,12 +99,14 @@ const Lim = ({active1, setActive1, arr}) => {
             <Right>
                 <Title>SKILLS</Title>
                 <Content>
-                    <div>HTML, CSS, Javascript, React, React-Strap, Git, GitHub, Mui, Styled-Component </div>
-                    <div>Node, MySQL, AWS, Linux</div>
+                    <div>HTML, CSS, Javascript, React, Git, GitHub, Styled-Component, Photoshop</div>
                 </Content>
                 <Title2>POSITION</Title2>
                 <Content2>
-                    <div>ㅎㅎ</div>
+                    <div><i className="fa-solid fa-share"></i>&nbsp; 상품(Cup/Bottle, Acc, Tea Package) 페이지 제작</div>
+                    <div><i className="fa-solid fa-share"></i>&nbsp;  Footer 제작</div>
+                    <div><i className="fa-solid fa-share"></i>&nbsp; 상품 장바구니 구현</div>
+                    <div><i className="fa-solid fa-share"></i>&nbsp;  상품 장바구니 상세내용 구현</div>
                 </Content2>
             </Right>
         </Main>

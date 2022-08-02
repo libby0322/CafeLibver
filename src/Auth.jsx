@@ -1,13 +1,11 @@
 import React, {useState, useEffect} from 'react'
 import { useCookies } from "react-cookie";
-import { remove } from 'react-cookies';
 
 
 const Auth = () => {
 
 
     const [info, setInfo] = useState([]);
-    const [cookies, setCookie, removeCookie] = useCookies(['key']);
 
     const {Kakao} = window;
 
@@ -32,11 +30,12 @@ const Auth = () => {
                     console.log('kakao_account: ', kakao_account);
                     const nickname = kakao_account.profile.nickname;
                     const profile = kakao_account.profile.profile_image_url;
-                    console.log(nickname);
-                    console.log(profile);
+                    // document.cookie = `key=${nickname}`;
+                    localStorage.setItem('code', nickname);
+                    localStorage.setItem('token', response.access_token);
                     let member = [nickname, profile];
-                    console.log('member: ', member);
                     setInfo(member);
+                    window.location.href = `/api/kakao?id=${nickname}`;
                 }
             });
             // window.location.href='/ex/kakao_login.html' //리다이렉트 되는 코드
@@ -82,10 +81,9 @@ function kakaoLogout() {
 
   return (
     <>
-        <div>{code}</div>
+        {/* <div>{code}</div> */}
         <div>{info[0]}</div>
-        <div><img src={info[1]}></img></div>
-        <div onClick={kakaoLogout}>로그아웃</div>
+        <button onClick={kakaoLogout}>로그아웃</button>
     </>
   )
 }

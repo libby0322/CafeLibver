@@ -41,7 +41,7 @@ const App = () => {
       <Topnav />
       <Routes>
         <Route path='/' element = {<Main />} />
-        <Route path='/oauth/kakao/callback' element = {<Auth />} />
+        <Route path='/kakao/callback' element = {<Auth />} />
         <Route path='/coffee' element= {<Coffee/>}/>
         <Route path='/noncoffee' element={<Tea/>} />
         <Route path="/desert" element={<Desert/>}/>

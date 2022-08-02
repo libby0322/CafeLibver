@@ -77,4 +77,4 @@ app.use('/api/test', upload.single('image'), require('./routes/testRouter'));
 app.use('/api/membership/faq/view', require('./routes/viewRouter'));
 app.use('/api/comment', require('./routes/commentRouter'));
 app.use('/api/notice', require('./routes/noticeRouter'));
-app.use('/api/oauth/kakao/callback', require('./routes/kakaoRouter'));
+app.use('/api/kakao', require('./routes/kakaoRouter'));

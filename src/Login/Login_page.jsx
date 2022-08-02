@@ -6,30 +6,32 @@ import cookies from 'react-cookies'
 
 const Login_page = () => {
 
-    const [loginid, setLoginid] = useState([]);
+    const [login_info, setLogin_info] = useState([]);
+    const [login_key, setLogin_key] = useState([]);
 
     useEffect(()=>{
       async function a(){
         const response = await axios.get('/api/login')
-        setLoginid(response.data.rows);
+        setLogin_info(response.data.rows);
         // console.log('aaa: ', cookies.load('loginId'));
       }
       a()
       }, [])
-      
-      for(let i=0; i<loginid.length; i++){
-        if(loginid[i].id === cookies.load('key')){
-          setLoginid(loginid[i]);
-        }
-      }
-      console.log('key: ', loginid);
+    
+
+      // console.log('key: ', cookies.load('key'));
 
       const List = () => {
-        if(cookies.load('key') === undefined){return <Login />}
-          else return <Loginok loginid={loginid} />
+
+        // console.log('localStorage: ', localStorage.getItem('token'));
+
+        switch(true){
+          case cookies.load('key') !== undefined: return <Loginok />
+          case localStorage.getItem('token') !== null: return <Loginok token={true}/>
+          default: return <Login />
+        }
       }
 
-     
   return (
     <>
     <List />

@@ -173,7 +173,7 @@ const CurrentBox = styled.div`
 const Board = () => {
 
   const [info, setInfo] = useState([]); // 게시판 글
-  const [info2, setInfo2] = useState([]); // 한 페이지에 글 10개씩(서버에서 필터하지않고 프론트에서 필터)
+  const [info2, setInfo2] = useState([]); // 한 페이지에 글 15개씩(서버에서 필터하지않고 프론트에서 필터)
   const [comment_info, setComment_info] = useState([]);
   const [infolength, setInfolength] = useState(info.length); // 게시판 길이
   const [sort, setSort] = useState(false); // 게시판 정렬
@@ -182,8 +182,13 @@ const Board = () => {
   const [rank_display, setRank_display] = useState(false); // 등급 관련 안내 display
   const [notice_info, setNotice_info] = useState([]); // 공지사항 정보
   const [member_info, setMember_info] = useState([]); // 멤버 정보
+
+  const localstorage = localStorage.getItem('token');
+  console.log(localstorage !== undefined);
+  console.log(localstorage === null);
   
   console.log('info: ', info);
+  console.log('info2: ', info2);
   console.log('comment info: ', comment_info);
   console.log('notice info', notice_info);
   console.log('member info: ', member_info);
@@ -293,7 +298,7 @@ const Board = () => {
   }
   
   const List3 = () => {
-    if(cookies.load('key') !== undefined){
+    if(cookies.load('key') !== undefined || localstorage !== null){
       return <Link to={"/membership/faq/write"}><button>글 작성</button></Link>
     }else {return <Link to={"/login"}><button>글 작성</button></Link>}
   }
@@ -339,9 +344,11 @@ const Board = () => {
 
   const List7 = () => {
     let arr = [];
+    let count = 0;
     for(let i of notice_info){
+      count++;
       arr.push(
-        <Notice_Bar>
+        <Notice_Bar key={count}>
           <Notice1><img src="/image/Logo/Logo.png" width="50px"></img></Notice1>
           <Notice2><Link to={`/membership/faq/notice/${i.id}`} state={notice_info}>{i.title}</Link></Notice2>
           <Notice3>CHK</Notice3>

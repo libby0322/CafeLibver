@@ -42,6 +42,9 @@ const Write = () => {
 
     const [state, setState] = useState();
 
+    const kakao_writer = localStorage.getItem('code');
+    console.log(kakao_writer);
+
     const test = (e) => {
         console.log(e.target.value);
         setState(e.target.value);
@@ -51,7 +54,7 @@ const Write = () => {
   return (
     <Container>
         <Header>글 쓰기</Header>
-        <form action="/api/board" method="post" encType='multipart/form-data'>
+        <form action={`/api/board?kakao=${kakao_writer}`} method="post" encType='multipart/form-data'>
         <Main>
             <Title>
                 <input type="text" name="title" placeholder='제목' onChange={test}

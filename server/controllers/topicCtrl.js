@@ -2,6 +2,7 @@ const connection = require('../config');
 
 const topicCtrl = {
     getTopics: async(req, res)=>{
+        console.log('login gogo');
         const id = req.body.id;
         const password = req.body.password;
         const sql = `SELECT * FROM member WHERE id ='${id}'`;
@@ -16,11 +17,9 @@ const topicCtrl = {
         })
     },
     getInfo: async(req, res)=>{
-        console.log('어서오세요22');
         const sql = `SELECT * FROM member`;
         connection.query(sql, (error, rows)=>{
             if(error) throw error;
-            console.log(rows);
             res.send(200, {"rows": rows, "length": rows.length});
         })
     }

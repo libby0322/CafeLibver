@@ -74,7 +74,7 @@ const show =(listVal)=>{
   let list = [];
   
   for(let i =0 ; i < coffeeList.coffeeList.length;i++){
-    // console.log(coffeeList.coffeeList[i]);
+
     list.push(
         <>
             <li className='b_flexList' onClick={()=>show(i)} key={coffeeList.coffeeList[i].id}>

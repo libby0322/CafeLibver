@@ -1,5 +1,4 @@
 import React,{ useState }  from 'react';
-import { Link } from 'react-router-dom';
 import * as Styled from "./Style";
 import styled from "styled-components";
 import P_Cart from './P_Cart';
@@ -7,27 +6,7 @@ import ProductMain from './ProductMain';
 import Cup from './Cup';
 import Acc from './Acc';
 import PackTea from './PackTea';
-import Footer from '../Menu/Footer';
 
-const StyledLink = styled(Link)`
-  display: flex;
-   width: 60%;
-   padding: 0;
-   font-size: 20px;
-   span{
-    display: flex;
-   width: 60%;
-   padding: 0;
-   font-size: 20px;
-   }
-   p{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content:center;
-    margin-top:20px;
-}
-`
 const Brrr = styled.span`
     display:block;
     font-size:15px;
@@ -64,7 +43,6 @@ const Product = () => {
   
 let [menu, setMenu] = useState(true);
 let [menu1, setMenu1] = useState(true);
-let [menu2, setMenu2] = useState(false);
 let [menuCup, setMenuCup] = useState(false);
 let [menuAcc, setMenuAcc] = useState(false);
 let [menuPack, setMenuPack] = useState(false);
@@ -73,9 +51,6 @@ let [subTop1, setSubTop1] = useState(false);
 let [subTop2, setSubTop2] = useState(false);
 let [modal, setModal] = useState(false);
 const [addList, setAddList] = useState([]);
-
-console.log('mainmodal: ' , modal);
-console.log('mainadd: ' , addList);
 
 
 const main = (props) => {

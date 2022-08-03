@@ -1,14 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import * as Styled from "./Style";
 import styled from "styled-components"
-import Cup from './Cup';
-import Data from './ProList.json';
-import P_Pay from './P_Pay';
-
-
-
-
 
 const CartList = styled.div`
 width: 300px;
@@ -128,21 +120,13 @@ const StyledLink = styled(Link)`
 
 const P_Cart = ({modal, setModal, addList, setAddList}) => {
 
-console.log('cartAdd: ' , addList);
 
 
   //상품 클릭시 장바구니에 리스트업
 
 
-  const [aa, setaa] = useState([]);
-  const [bb, setbb] = useState([]);
   const [cc, setcc] = useState([]);
   const [dd, setdd] = useState([]);
-
-  let arr = [];
-  let arr2 = [];
-  let arr3 = [];
-  let arr4 = [];
 
   // if(mug.modal === aa){
 
@@ -166,9 +150,7 @@ console.log('cartAdd: ' , addList);
 
   const [sum, setSum] = useState(0);
 
-  const [number, setNumber] = useState(1);
   const [cost, setCost] = useState([]);
-  const [costTest, setCostTest] = useState(Array.from((v, i) => i));
   const [wishTab, setWishTab] = useState(Array.from({length: 9}, () => 1));
  
  
@@ -177,7 +159,6 @@ console.log('cartAdd: ' , addList);
 
 
     // cost.push(addList.Price);
-    setCostTest(cc);
     for(let i=0; i<cc.length; i++){
       if(cc[i] !== undefined){
         setSum(sum + cc[i]);
@@ -213,10 +194,7 @@ console.log('cartAdd: ' , addList);
   }
     //버튼 클릭시 아이템 삭제
  
-
-    const ll = cost.map(item => item.index).reduce((prev, curr) => prev + curr, 0);
-      // console.log('ll',ll)
-    const remove = (r,price,index)=>{
+    const remove = (r)=>{
       let arr = [...addList];
       arr.splice(r,1, '');
       cost.splice(r,1);
@@ -225,14 +203,6 @@ console.log('cartAdd: ' , addList);
       setAddList(arr);
       setSum(cost);
     
-      // setSum(sum - costTest[i]);
-      // // test2[r] = test2[r]-aa[i];
-      // setTest(aa.splice(aa[i], i));
-      // setTest(bb.splice(bb[i], i));
-      // aa[i].filter(remove);
-      // bb[i].filter(remove);
-      // console.log('del addList: ', addList );    
-      // console.log('del i: ', i);
     }
  
 
@@ -245,8 +215,6 @@ console.log('cartAdd: ' , addList);
  const List1 = () => {
   let arr = [];
   addList.map((i, index)=>{
-    console.log('map 실행');
-    console.log('i: ', i);
 
    arr.push(
             <ListBox  key={index}>

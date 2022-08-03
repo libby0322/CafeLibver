@@ -8,7 +8,6 @@ const date = year + '-' + month  + '-' + day; // 2021-07-01
 const boardCtrl = {
     insertInfo: async(req, res)=>{
         if(req.query.modify !== undefined){ // 수정 눌렀을 때
-            console.log('수정합니다.');
             const id = req.query.id;
             const {title, content} = req.body;
             const sql = `UPDATE board SET title = "${title}", content = "${content}" WHERE id = ${id};`
@@ -20,10 +19,6 @@ const boardCtrl = {
         }
 
         else if(req.query.modify === undefined){
-        console.log('insert');
-        console.log('req.body: ', req.body);
-        console.log('file: ', req.file);
-        console.log('kakao: ', req.query.kakao);
 
         let writer = '';
         if(req.query.kakao !== 'null'){
@@ -40,11 +35,6 @@ const boardCtrl = {
         const {title, content} = req.body; // 구조분해할당
         const sql = `INSERT INTO board(title, content, writer, date, image) VALUES("${title}", "${content}", "${writer}", "${date}", "${image}");`+
         `UPDATE member SET score = score + 20 WHERE id = "${writer}";`
-
-        // app.post('/api/board', upload.single('image'), (req, res)=>{
-        //     console.log(req.file, req.body);
-        //     console.log('파일 업로드');
-        // });
         
         switch(true){
           case !req.body.title: return res.send("<script>alert('제목을 입력해주세요.'); location.href='/membership/faq/write';</script>");
@@ -59,9 +49,6 @@ const boardCtrl = {
     getInfo: async(req, res)=>{
         if(req.query.delete !== undefined){ // 삭제 눌렀을 때
             const id = req.query.id;
-            console.log('삭제합니다.');
-            console.log('id: ', id);
-            console.log(req.query.delete);
             const sql = `DELETE FROM board WHERE id = ${id};`+
             `ALTER TABLE board AUTO_INCREMENT=1;`+
             `SET @COUNT = 0; `+
@@ -75,7 +62,6 @@ const boardCtrl = {
         }
         
         else if(req.query.delete !== true){
-        console.log('board getinfo');
         const sql = `SELECT * FROM board`;
         connection.query(sql, (error, rows)=>{
             if(error) throw error;

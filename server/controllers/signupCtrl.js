@@ -3,8 +3,6 @@ const connection = require('../config');
 const signupCtrl = {
   
     insertInfo: async(req, res)=>{
-      console.log('여긴 signup입니다.');
-      console.log(req.query.overlap);
 
         const {id, password, name, age, address1, address2, address3} = req.body; // 구조분해할당
         const score = 0;

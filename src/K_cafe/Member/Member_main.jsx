@@ -208,21 +208,6 @@ const select_button = (s) => { // bronze, sliver, gold 버튼
   setColor([...arr2]);
 }
 
-// window.addEventListener('scroll', () => {
-// 	let scrollLocation = document.documentElement.scrollTop; // 현재 스크롤바 위치
-
-//   if(scrollLocation > 500){
-//     let arr = ['flex', 'none', 'none'];
-//   if(scrollLocation > 500){ // 스크롤바 위치에따라 info123 diplay 변경
-//     setSelect([...arr]);
-//   }
-//   if(scrollLocation < 150 || scrollLocation > 1100){
-//     arr = ['none', 'none', 'none'];
-//     setSelect([...arr]);
-//   }
-// }
-// });
-
   return (
     <Container>
       <Header>Membership</Header>

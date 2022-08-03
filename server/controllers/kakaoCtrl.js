@@ -17,7 +17,6 @@ const kakaoCtrl = {
        
         connection.query(sql, (error, rows)=>{
             if(error) throw error;
-            console.log(rows);
             if(rows.length === 0){
                 sql = `INSERT INTO member(id, password, name, age, address1, address2, address3, score) VALUES("${id}", "${password}", "${name}", ${age}, "${address1}", "${address2}", "${address3}", ${score});`
                 connection.query(sql, (error, rows)=>{
@@ -26,16 +25,6 @@ const kakaoCtrl = {
                 })
             }else res.send("<script>alert('카카오로그인 완료!!'); location.href='/';</script>")
         })
-    
-
-    //     const sql = `INSERT INTO member(id, password, name, age, address1, address2, address3, score) VALUES("${id}", "${password}", "${name}", ${age}, "${address1}", "${address2}", "${address3}", ${score});`
-    //     // INSERT는 if(!req.body.id){return ...} 리턴을 해줌으로써 오류응답을 서버와 클라이언트에서 2번하지않게해준다.
-       
-    //     connection.query(sql, (error, rows)=>{
-    //       if(error) throw error;
-    //       res.send("<script>alert('카카오로그인 완료!!'); location.href='/login';</script>");
-    //     })
-    // }
 }
 }
 

@@ -19,16 +19,12 @@ const Juice = () =>{
   
   const addCart = (a)=> {
     let arr = [];
-    // console.log('a', a); 
-    // alert("장바구니에 추가되었습니다.");
     for(let i =0;i<fruit.fruit.length;i++){
       if(a === fruit.fruit[i].id){
         arr.push(fruit.fruit[i]);
       }
     }
-    // console.log('arr: ', arr);
     setCartList(...arr);
-    // console.log('cartList: ', cartList);
   }
   
   const plusLike = (i) => {
@@ -68,7 +64,6 @@ const Juice = () =>{
   
     let list = [];
     for(let i =0 ; i < fruit.fruit.length;i++){
-      // console.log(fruit.fruit[i]);
       list.push(
           <>
               <li className='b_flexList' onClick={()=>show(i)} key={fruit.fruit[i].id}>

@@ -2,9 +2,7 @@ import React, {useState, useEffect} from 'react'
 import styled from "styled-components"
 import {Row, Col} from 'reactstrap'
 import { Link, useParams } from 'react-router-dom'
-import { useLocation } from 'react-router-dom'
 import cookies from 'react-cookies'
-// import kk from '/image/Logo/Logo.png'
 import axios from 'axios'
 import tt  from './base.png'
 
@@ -186,8 +184,6 @@ const View2 = () => {
   const [info, setInfo] = useState([]);
   const [comment_info, setComment_info] = useState([]); // 댓글 테이블 정보
   const [revise, setRevise] = useState('none'); // 수정 | 삭제 유무
-  const [comment_count, setComment_count] = useState(0); // 댓글 총갯수
-  const [image_Display, setImage_Display] = useState('none');
   const [member_info, setMember_info] = useState([]);
   
   console.log('view2 comment: ', comment_info);

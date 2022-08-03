@@ -16,7 +16,6 @@ const ani2 = keyframes`
   0% {}
   100% {opacity: 1;}
 `
-
 const Container = styled.div`
   position: absolute;
   width: 90%;

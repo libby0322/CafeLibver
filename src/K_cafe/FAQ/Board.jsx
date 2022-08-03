@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import styled, { keyframes } from "styled-components"
+import styled from "styled-components"
 import {Row, Col} from 'reactstrap'
 import { Link, useParams } from 'react-router-dom'
 import axios from 'axios'

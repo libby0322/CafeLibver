@@ -2,24 +2,16 @@ import React, { useState, useRef } from 'react';
 import PackTeaList  from './ProList.json';
 import PackCoffeeList from './ProList.json';
 import PackCapsuleList from './ProList.json';
-import Product from './Product';
 import * as Styled from "./Style";
-import P_Cart from './P_Cart';
+
 
 const PackTea = ({subTop2, setSubTop2, addList, setAddList}) => {
 
-  console.log('packaddList: ', addList);
-
   const [test, setTest] = useState(1);
-  let [modal, setModal] = useState(false);
-  let [subList, setSubList] = useState(false);
-  let [tt, setTt] = useState(true);
 
   const add = () => {
-    setSubList(true);
-    setTt(false);
   }
-  const subTopClose2 = (props) =>{
+  const subTopClose2 = () =>{
     setSubTop2(false);
   }
 

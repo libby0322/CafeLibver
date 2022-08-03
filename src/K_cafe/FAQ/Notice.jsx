@@ -2,8 +2,6 @@ import React, {useState, useEffect} from 'react'
 import styled from "styled-components"
 import {Row, Col} from 'reactstrap'
 import { Link, useParams } from 'react-router-dom'
-import { useLocation } from 'react-router-dom'
-// import kk from '/image/Logo/Logo.png'
 import axios from 'axios'
 import tt from './base.png'
 

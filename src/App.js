@@ -2,9 +2,9 @@ import React from 'react'
 import Main from './Main/Main_page'
 import Topnav from './K_cafe/Topbar2'
 import Coffee from './Menu/Coffee'
-import Membership from './K_cafe/Member/Member_page'
-import MembershipApp from './K_cafe/App/App_page'
-import MembershipFaq from './K_cafe/FAQ/FAQ_page'
+import Membership from './K_cafe/Member/Member_main'
+import MembershipApp from './K_cafe/App/App_main'
+import MembershipFaq from './K_cafe/FAQ/FAQ_main'
 import Board from './K_cafe/FAQ/Board'
 import FAQ from './K_cafe/FAQ/FAQ'
 import View2 from './K_cafe/FAQ/View2'
@@ -23,7 +23,6 @@ import Acc from './Product/Acc'
 import PackTea from './Product/PackTea'
 import { BrowserRouter,Routes,Route } from "react-router-dom";
 import Cart from './Menu/Cart';
-import HPay from './Hee/HPay';
 import Login from './Login/Login_page'
 import SignUp from './Login/SignUp'
 import P_Pay from './Product/P_Pay'
@@ -63,7 +62,6 @@ const App = () => {
         <Route path='/cup' element={<Cup />}/>
         <Route path='/acc' element={<Acc />} />
         <Route path='/packTea' element={<PackTea />} />
-        <Route path='/pay' element= {<HPay/>}/>
         <Route path="/cart" element={<Cart/>}/>
         <Route path="/login" element={<Login />}/>
         <Route path="/signup" element={<SignUp />}/>

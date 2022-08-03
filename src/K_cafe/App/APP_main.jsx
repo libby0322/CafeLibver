@@ -3,7 +3,6 @@ import styled, { keyframes } from "styled-components"
 import {Row, Col} from 'reactstrap'
 import AOS from "aos"
 import "aos/dist/aos.css"
-import './app.css'
 
 const BoxSlide1 = keyframes`
   0% {left: -1000px;}
@@ -185,18 +184,8 @@ const InfoBox2 = styled.div`
 
 const APP_main = () => {
 
-  const [number, setNumber] = useState(1);
-  const [active, setActive] = useState(false);
-  const [info, setInfo] = useState(false);
-
-const arr = [
-    {id: 1, number: "Step 1", content: "빠르고 스마트한 주문"},
-    {id: 2, number: "Step 2", content: "스탬프 적립"},
-    {id: 3, number: "Step 3", content: "간단한 결제 서비스"},
-    {id: 4, number: "Step 4", content: "다양한 쿠폰 발급"},
-    {id: 5, number: "Step 5", content: "멤버십에 따른 혜택"},
-    {id: 6, number: "Step 6", content: "선물하기"}
-  ]
+  const [number, setNumber] = useState(1); // 스크롤 값
+  const [active, setActive] = useState(false); // 애니메이션 props
 
 
   useEffect(() => {
@@ -254,14 +243,12 @@ const arr = [
             </SelectBox2>
           </MainBox1Bottom>
       </MainBox1>
-
       <MainBox2>
         <MainBox2Top>
           <InfoBox1 active={active}>
             <SubBox1>첫번째 슬라이드</SubBox1>
             <SubBox2></SubBox2>
           </InfoBox1>
-
           <InfoBox2 active={active}>
           <Row>
             <Col md="2" xs="4">

@@ -3,8 +3,6 @@ const cookie = require('cookie');
 
 const logoutCtrl = {
     getInfo: async(req, res)=>{
-        console.log('로그아웃 컨트롤 입니다.');
-        console.log(req.query.kakao);
 
         if(req.query.id === undefined){
             

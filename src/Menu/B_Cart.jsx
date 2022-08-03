@@ -2,7 +2,6 @@ import React,{useState,useEffect} from 'react'
 import './menu.css';
 import $ from 'jquery';
 import Cart from './Cart';
-import { Link } from 'react-router-dom';
 
 
 

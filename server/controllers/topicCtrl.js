@@ -2,7 +2,6 @@ const connection = require('../config');
 
 const topicCtrl = {
     getTopics: async(req, res)=>{
-        console.log('login gogo');
         const id = req.body.id;
         const password = req.body.password;
         const sql = `SELECT * FROM member WHERE id ='${id}'`;
@@ -23,16 +22,6 @@ const topicCtrl = {
             res.send(200, {"rows": rows, "length": rows.length});
         })
     }
-    // insertMovie: async(req, res)=>{
-    //     const {id, name, age} = req.body;
-    //     const sql = `INSERT INTO member(id, password, name, age, address, picture) VALUES(${id},"${name}",${age});`
-
-    //     connection.query(sql, (error, rows)=>{
-    //         if(error) throw error;
-    //         res.send(rows);
-    //         console.log(rows);
-    //     })
-    // }
 }
 
 module.exports = topicCtrl

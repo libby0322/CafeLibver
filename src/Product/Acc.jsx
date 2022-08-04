@@ -6,18 +6,13 @@ import Product from './Product';
 import * as Styled from "./Style";
 import P_Cart from './P_Cart';
 
-const Acc = ({subTop1, setSubTop1, addList, setAddList}) => {
+const Acc = ({subTop1, setSubTop1, addList, setAddList, add}) => {
 
   // console.log('accaddList: ', addList);
 
   const [test, setTest] = useState(1);
   let [modal, setModal] = useState(false);
-  let [subList, setSubList] = useState(false);
-  let [tt, setTt] = useState(true);
-  const add = () => {
-    setSubList(true);
-    setTt(false);
-  }
+ 
   const subTopClose1 = (props) =>{
     setSubTop1(false);
   }

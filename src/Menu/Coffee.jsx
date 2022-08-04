@@ -21,8 +21,6 @@ const [display2, setDisplay2] = useState(false);
 const addCart = (a)=> {
   let arr = [];
 
-  // console.log('a', a); 
-  // alert("장바구니에 추가되었습니다.");
   for(let i = 0;i<coffeeList.coffeeList.length;i++){
    if(a === coffeeList.coffeeList[i].id){
       arr.push(coffeeList.coffeeList[i]);
@@ -74,7 +72,6 @@ const show =(listVal)=>{
   let list = [];
   
   for(let i =0 ; i < coffeeList.coffeeList.length;i++){
-    // console.log(coffeeList.coffeeList[i]);
     list.push(
         <>
             <li className='b_flexList' onClick={()=>show(i)} key={coffeeList.coffeeList[i].id}>
@@ -98,8 +95,6 @@ const show =(listVal)=>{
             </div>
         </>
      )
-
-// console.log(coffeeList.coffeeList[0].title);
 
   }
   return (

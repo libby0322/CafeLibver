@@ -14,7 +14,6 @@ const Cup = ({subTop, subTopClose, addList, setAddList, add}) => {
 
 
   const mugAdd = (r) => {
-    console.log('r', r);
     let arr = [...addList];
     for(let i=0; i<MugList.MugList.length; i++){
       if(MugList.MugList[i].id === r){

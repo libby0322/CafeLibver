@@ -11,7 +11,6 @@ import { useEffect } from 'react';
 const RLayout = ({display2, setDisplay2}) => {
   
   useEffect(()=> {
-    console.log('useEffect 실행');
     <Coffee style={{display: "none"}} info={kwon}/>
   }, [])
 

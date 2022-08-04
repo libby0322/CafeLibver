@@ -5,7 +5,6 @@ import $ from 'jquery';
 const JW_Cart2 = (props) => {
 
   const info = props.jw; // 받아온 것 = info
-  console.log('info: ', info);
 
   const [number, setNumber] = useState(Array.from({ length: 14 }, () => { return 1 })); //14개의 방, 수량의 기본값은 1
   const [arr, setArr] = useState([]); //list 전체를 배열에 넣기
@@ -26,15 +25,12 @@ const JW_Cart2 = (props) => {
   }
 
   useEffect(() => {
-    console.log('useEffect 실행');
     arr.push(info); //배열의 끝에 info를 넣는다. 
   }, [info]);
-  console.log('arr', arr);  //list 전체를 배열에 넣기
 
   // + 버튼 누르면 증가
   const onIncrease = (e) => {   //i.id를 매개변수 e로 가져오기
     let test2 = [...number];  //수량 복사 
-    console.log('각 수량', test2);  //[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
     test2[e] += 1;   //``각 인덱스의 수량이 1씩 증가
     setNumber(test2);  //화면에 출력됨    
     setTimeout(() => { updateTotal(); })
@@ -48,7 +44,6 @@ const JW_Cart2 = (props) => {
       return;
     }
     test2[e] -= 1;
-    console.log('각 수량', test2);
     setNumber(test2);
     setTimeout(() => { updateTotal(); })
   }

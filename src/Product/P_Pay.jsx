@@ -107,15 +107,10 @@ const P_Pay = (location) => {
   const info = useLocation().state; //카트 정보를 받아옴
 
   useEffect(()=>{
-    console.log(info);
   }, [info]);
   
-  console.log('info: ', info);
-
 
   const plus = (e, price) => {
-    console.log(e);
-    console.log(price);
     let arr = [...wishTab];
     arr[e] = arr[e] +1;
     cost[e] = cost[e] + price;
@@ -123,8 +118,6 @@ const P_Pay = (location) => {
     setSum(sum + price);
    
   }
-
-  console.log('sum:', sum);
   const minus = (t, price) => {
     let arr = [...wishTab];
     arr[t] = arr[t] -1;
@@ -134,8 +127,6 @@ const P_Pay = (location) => {
     
   }
     //버튼 클릭시 아이템 삭제
- 
-    console.log('wish:', wishTab);
 
     const remove = (r,price,index)=>{
       let arr = [...info];
@@ -147,13 +138,10 @@ const P_Pay = (location) => {
     
     }
  
-    console.log('wish:',wishTab);
-
   
 const PayList = () => {
   let arr = [];
   info.map((i, index)=>{
-    console.log('map 실행');
     if(i !== ''){
    arr.push(
             <ListBox key={index}>
@@ -178,8 +166,6 @@ const PayList = () => {
   return arr;
 
  }
-
-  console.log('wish:', wishTab);
 
 
   

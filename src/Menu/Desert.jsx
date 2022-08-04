@@ -18,16 +18,12 @@ const Desert = () => {
   
   const addCart = (a)=> {
     let arr = [];
-    // console.log('a', a); 
-    // alert("장바구니에 추가되었습니다.");
     for(let i = 0;i<desertList.desert.length;i++){
       if(a === desertList.desert[i].id){
         arr.push(desertList.desert[i]);
       }
     }    
     setCartList(...arr);
-    // console.log('arr: ', arr);
-    // console.log('cartList: ', cartList);
   }
   
   const plusLike = (i) => {
@@ -67,7 +63,6 @@ const Desert = () => {
   
     let list = [];
     for(let i =0 ; i < desertList.desert.length;i++){
-      // console.log(desertList.desert[i]);
       list.push(
           <>
               <li className='flexList-dessert' onClick={()=>show(i)} key={desertList.desert[i].id}>

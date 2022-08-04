@@ -16,24 +16,12 @@ const topicCtrl = {
         })
     },
     getInfo: async(req, res)=>{
-        console.log('어서오세요22');
         const sql = `SELECT * FROM member`;
         connection.query(sql, (error, rows)=>{
             if(error) throw error;
-            console.log(rows);
-            res.send(rows);
+            res.send(200, {"rows": rows, "length": rows.length});
         })
     }
-    // insertMovie: async(req, res)=>{
-    //     const {id, name, age} = req.body;
-    //     const sql = `INSERT INTO member(id, password, name, age, address, picture) VALUES(${id},"${name}",${age});`
-
-    //     connection.query(sql, (error, rows)=>{
-    //         if(error) throw error;
-    //         res.send(rows);
-    //         console.log(rows);
-    //     })
-    // }
 }
 
 module.exports = topicCtrl

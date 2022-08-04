@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import styled, { keyframes } from "styled-components"
-import {Row, Col} from 'reactstrap'
+import styled from "styled-components"
 import { useLocation } from 'react-router-dom'
 
 const Container = styled.div`
@@ -43,7 +42,7 @@ const Modify = () => {
 
   const info = useLocation().state.info;
   const id = useLocation().state.id;
-  console.log('id: ', typeof(id));
+  console.log('id: ', id);
   
 
   useEffect(()=>{
@@ -58,7 +57,6 @@ const Modify = () => {
   }, []);
 
   const [modify_info, setModify_info] = useState([]);
-  const [title, setTitle] = useState();
   console.log('modify info: ',modify_info);
 
   const List = () => {
@@ -67,7 +65,7 @@ const Modify = () => {
     arr.push(
         <div key={x.id}>
         <Title>
-              <input type="text" name="title" value={x.title} onChange={aa}
+              <input type="text" name="title" placeholder={x.title} onChange={aa}
               style={{
                   border: "none",
                   height: "80px",
@@ -76,7 +74,7 @@ const Modify = () => {
                   }}></input>
           </Title>
           <Content>
-          <input type="text" name="content" value={x.content} onChange={aa}
+          <input type="text" name="content" placeholder={x.content} onChange={aa}
           style={{
               width: "100%",
               height: "600px",
@@ -96,7 +94,7 @@ const Modify = () => {
 return (
   <Container>
       <Header>글 쓰기</Header>
-      <form action="/api/board" method="post" encType='multipart/form-data'>
+      <form action={`/api/board?modify=true&id=24`} method="post" encType='multipart/form-data'>
       <Main>
           <List />
           <ImageAdd>

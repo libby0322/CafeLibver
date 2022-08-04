@@ -1,10 +1,10 @@
-import React, {useEffect} from 'react'
+import React, {useState, useEffect} from 'react'
 import Slider from "react-slick"
 import styled from "styled-components"
 import 'bootstrap/dist/css/bootstrap.min.css'
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
-import {Row, Col} from 'reactstrap'
+import {Row} from 'reactstrap'
 import AOS from "aos";
 import "aos/dist/aos.css"
 import Slide1 from './Slide1'
@@ -13,6 +13,7 @@ import Slide3 from './Slide3'
 import Box1 from './Box1'
 import Box2 from './Box2'
 import Box3 from './Box3'
+import PopUp1 from './PopUp1'
 
 const Container = styled.div`
   height: 2000px;
@@ -61,8 +62,6 @@ const Main = () => {
     AOS.init();
   }, [])
 
-
-
   const settings = {
     dots: true,
     infinite: true,
@@ -77,6 +76,7 @@ const Main = () => {
   
   return (
     <Container>
+      <PopUp1 />
       <Row>
       <StyledSlider {...settings}> {/* 기본 display가 inline-block로 상속, color 등등도 안먹는다 그래서 다른 컴포넌트에서 불러옴 */}
         <Slide2></Slide2>

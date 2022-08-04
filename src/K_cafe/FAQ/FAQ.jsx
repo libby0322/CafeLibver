@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import styled, { keyframes } from "styled-components"
 
 const ani = keyframes`
@@ -46,8 +46,6 @@ const Bar1 = styled(Bar)`
 
   i{
     cursor: pointer;
-    
-
   }
 `
 const ArrowBox = styled.div`

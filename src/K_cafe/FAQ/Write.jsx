@@ -1,6 +1,5 @@
-import React, {useState, useEffect} from 'react'
-import styled, { keyframes } from "styled-components"
-import {Row, Col} from 'reactstrap'
+import React, {useState} from 'react'
+import styled from "styled-components"
 
 const Container = styled.div`
     border: 1px solid black;
@@ -41,7 +40,10 @@ const Fotter = styled.div`
 
 const Write = () => {
 
-    const [state, setState] = useState();
+    const [state, setState] = useState(); // text 입력시 변환된 text 바로 출력
+
+    const kakao_writer = localStorage.getItem('code');
+    console.log(kakao_writer);
 
     const test = (e) => {
         console.log(e.target.value);
@@ -52,7 +54,7 @@ const Write = () => {
   return (
     <Container>
         <Header>글 쓰기</Header>
-        <form action="/api/board" method="post" encType='multipart/form-data'>
+        <form action={`/api/board?kakao=${kakao_writer}`} method="post" encType='multipart/form-data'>
         <Main>
             <Title>
                 <input type="text" name="title" placeholder='제목' onChange={test}

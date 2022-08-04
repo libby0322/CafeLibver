@@ -1,14 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import * as Styled from "./Style";
 import styled from "styled-components"
-import Cup from './Cup';
-import Data from './ProList.json';
-import P_Pay from './P_Pay';
-
-
-
-
 
 const CartList = styled.div`
 width: 300px;
@@ -128,23 +120,24 @@ const StyledLink = styled(Link)`
 
 const P_Cart = ({modal, setModal, addList, setAddList, tt}) => {
 
-console.log('cartAdd: ' , addList);
 
 
   //상품 클릭시 장바구니에 리스트업
 
 
-  const [aa, setaa] = useState([]);
-  const [bb, setbb] = useState([]);
   const [cc, setcc] = useState([]);
   const [dd, setdd] = useState([]);
 
+<<<<<<< HEAD
   let arr = [];
   let arr2 = [];
   let arr3 = [];
   let arr4 = [];
 
   if(addList.modal === aa){
+=======
+  // if(mug.modal === aa){
+>>>>>>> c37c733121ed7b5ed0ab964b0acf4ed2420d806b
 
   }else{
     arr.push(addList.title);
@@ -166,9 +159,13 @@ console.log('cartAdd: ' , addList);
 
   const [sum, setSum] = useState(0);
 
+<<<<<<< HEAD
   const [number, setNumber] = useState(1);
   const [cost, setCost] = useState(0);
   const [costTest, setCostTest] = useState(Array.from((v, i) => i));
+=======
+  const [cost, setCost] = useState([]);
+>>>>>>> c37c733121ed7b5ed0ab964b0acf4ed2420d806b
   const [wishTab, setWishTab] = useState(Array.from({length: 9}, () => 1));
 
   console.log('cost: ', cost);
@@ -184,7 +181,6 @@ console.log('cartAdd: ' , addList);
       setSum(sum + x.Price);
     })
     // cost.push(addList.Price);
-    setCostTest(cc);
     for(let i=0; i<cc.length; i++){
       if(cc[i] !== undefined){
         setSum(sum + cc[i]);
@@ -219,7 +215,15 @@ console.log('cartAdd: ' , addList);
   }
     //버튼 클릭시 아이템 삭제
  
+<<<<<<< HEAD
 
+=======
+    const remove = (r)=>{
+      let arr = [...addList];
+      arr.splice(r,1, '');
+      cost.splice(r,1);
+     
+>>>>>>> c37c733121ed7b5ed0ab964b0acf4ed2420d806b
 
       // console.log('ll',ll)
     const remove = (r,index)=>{
@@ -229,6 +233,7 @@ console.log('cartAdd: ' , addList);
       arr.splice(r,1);
       arr2.splice(r,1);
       setAddList(arr);
+<<<<<<< HEAD
       setWishTab(arr2);
       
 
@@ -240,6 +245,10 @@ console.log('cartAdd: ' , addList);
       // bb[i].filter(remove);
       // console.log('del addList: ', addList );    
       // console.log('del i: ', i);
+=======
+      setSum(cost);
+    
+>>>>>>> c37c733121ed7b5ed0ab964b0acf4ed2420d806b
     }
  
 
@@ -252,8 +261,6 @@ console.log('cartAdd: ' , addList);
  const List1 = () => {
   let arr = [];
   addList.map((i, index)=>{
-    console.log('map 실행');
-    console.log('i: ', i);
 
    arr.push(
             <ListBox  key={index}>

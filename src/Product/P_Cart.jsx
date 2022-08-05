@@ -128,28 +128,27 @@ const P_Cart = ({modal, setModal, addList, setAddList, tt}) => {
   const [cc, setcc] = useState([]);
   const [dd, setdd] = useState([]);
 
-<<<<<<< HEAD
+
   let arr = [];
   let arr2 = [];
   let arr3 = [];
   let arr4 = [];
 
-  if(addList.modal === aa){
-=======
-  // if(mug.modal === aa){
->>>>>>> c37c733121ed7b5ed0ab964b0acf4ed2420d806b
+  // if(addList.modal === aa){
 
-  }else{
-    arr.push(addList.title);
-    arr2.push(addList.url);
-    arr3.push(addList.Price);
-    arr4.push(addList.modal);
-    aa.push(arr[0]);
-    bb.push(arr2[0]);
-    cc.push(arr3[0]);
-    dd.push(arr4[1]);
-    addList.modal = aa;
-  }
+
+  // }else{
+  //   arr.push(addList.title);
+  //   arr2.push(addList.url);
+  //   arr3.push(addList.Price);
+  //   arr4.push(addList.modal);
+    
+  //   // aa.push(arr[0]);
+  //   // bb.push(arr2[0]);
+  //   // cc.push(arr3[0]);
+  //   // dd.push(arr4[1]);
+  //   addList.modal = aa;
+  // }
 
   
   
@@ -159,13 +158,12 @@ const P_Cart = ({modal, setModal, addList, setAddList, tt}) => {
 
   const [sum, setSum] = useState(0);
 
-<<<<<<< HEAD
+
   const [number, setNumber] = useState(1);
   const [cost, setCost] = useState(0);
   const [costTest, setCostTest] = useState(Array.from((v, i) => i));
-=======
-  const [cost, setCost] = useState([]);
->>>>>>> c37c733121ed7b5ed0ab964b0acf4ed2420d806b
+
+  // const [cost, setCost] = useState([]);
   const [wishTab, setWishTab] = useState(Array.from({length: 9}, () => 1));
 
   console.log('cost: ', cost);
@@ -215,15 +213,6 @@ const P_Cart = ({modal, setModal, addList, setAddList, tt}) => {
   }
     //버튼 클릭시 아이템 삭제
  
-<<<<<<< HEAD
-
-=======
-    const remove = (r)=>{
-      let arr = [...addList];
-      arr.splice(r,1, '');
-      cost.splice(r,1);
-     
->>>>>>> c37c733121ed7b5ed0ab964b0acf4ed2420d806b
 
       // console.log('ll',ll)
     const remove = (r,index)=>{
@@ -233,22 +222,8 @@ const P_Cart = ({modal, setModal, addList, setAddList, tt}) => {
       arr.splice(r,1);
       arr2.splice(r,1);
       setAddList(arr);
-<<<<<<< HEAD
-      setWishTab(arr2);
-      
-
-      // setSum(sum - costTest[i]);
-      // // test2[r] = test2[r]-aa[i];
-      // setTest(aa.splice(aa[i], i));
-      // setTest(bb.splice(bb[i], i));
-      // aa[i].filter(remove);
-      // bb[i].filter(remove);
-      // console.log('del addList: ', addList );    
-      // console.log('del i: ', i);
-=======
       setSum(cost);
     
->>>>>>> c37c733121ed7b5ed0ab964b0acf4ed2420d806b
     }
  
 

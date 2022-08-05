@@ -1,4 +1,4 @@
-import React,{ useState }  from 'react';
+import React,{ useState, Link }  from 'react';
 import * as Styled from "./Style";
 import styled from "styled-components";
 import P_Cart from './P_Cart';
@@ -7,7 +7,7 @@ import Cup from './Cup';
 import Acc from './Acc';
 import PackTea from './PackTea';
 
-<<<<<<< HEAD
+
 const StyledLink = styled(Link)` //스타일 컴포넌트로 라우터
   display: flex;
    width: 60%;
@@ -28,9 +28,7 @@ const StyledLink = styled(Link)` //스타일 컴포넌트로 라우터
 }
 `
 const Brrr = styled.span` // 클릭표시 애니메이션 효과
-=======
-const Brrr = styled.span`
->>>>>>> c37c733121ed7b5ed0ab964b0acf4ed2420d806b
+
     display:block;
     font-size:15px;
     width:10px;
@@ -75,17 +73,12 @@ let [subTop2, setSubTop2] = useState(false);
 let [modal, setModal] = useState(false);
 const [addList, setAddList] = useState([]);
 
-<<<<<<< HEAD
 const [tt, setTt] = useState(true);
 
 const add = () => {
   setTt(false);
 }
 
-
-
-=======
->>>>>>> c37c733121ed7b5ed0ab964b0acf4ed2420d806b
 
 const main = (props) => {
   setMenu(true);

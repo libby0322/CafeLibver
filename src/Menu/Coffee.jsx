@@ -34,7 +34,8 @@ const addCart = (a)=> {
 
 const plusLike = (i) => {
 //   let _likeArr = [...likeArr];    //[296, 296, 296, 296, 296, 296...]
-  let element = document.getElementsByClassName("fa-heart");
+
+  
 
 //   if(_likeArr[i] == 296){   // 배열에서 인덱스 i인 제품의 좋아요의 값이 296이니까 +1
 //     _likeArr[i] += 1;    
@@ -47,7 +48,7 @@ const plusLike = (i) => {
 //     element[i].className = 'fa-regular fa-heart'; //클래스 이름 수정
 //   }  
 
-  element[i].className = 'fa-solid fa-heart';
+
 
 }
 

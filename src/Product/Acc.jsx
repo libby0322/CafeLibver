@@ -9,12 +9,15 @@ const Acc = ({subTop1, setSubTop1, addList, setAddList}) => {
   const [test, setTest] = useState(1);
   let [modal, setModal] = useState(false);
  
+<<<<<<< HEAD
   let [subList, setSubList] = useState(false);
   let [tt, setTt] = useState(true);
   const add = () => {
     setSubList(true);
     setTt(false);
   }
+=======
+>>>>>>> 646df68ad36d4047dc37d6dfdcac340e289cb147
   const subTopClose1 = (props) =>{
     setSubTop1(false);
   }

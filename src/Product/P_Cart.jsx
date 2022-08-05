@@ -123,18 +123,25 @@ const P_Cart = ({modal, setModal, addList, setAddList, tt}) => {
 
 
   //상품 클릭시 장바구니에 리스트업
-
-
+  const [aa, setaa] = useState([]);
+  const [bb, setbb] = useState([]);
   const [cc, setcc] = useState([]);
   const [dd, setdd] = useState([]);
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 646df68ad36d4047dc37d6dfdcac340e289cb147
   let arr = [];
   let arr2 = [];
   let arr3 = [];
   let arr4 = [];
 
+<<<<<<< HEAD
   // if(addList.modal === aa){
+=======
+  if(addList.modal === aa){
+>>>>>>> 646df68ad36d4047dc37d6dfdcac340e289cb147
 
 
   // }else{
@@ -158,12 +165,18 @@ const P_Cart = ({modal, setModal, addList, setAddList, tt}) => {
 
   const [sum, setSum] = useState(0);
 
+<<<<<<< HEAD
 
   const [number, setNumber] = useState(1);
   const [cost, setCost] = useState(0);
   const [costTest, setCostTest] = useState(Array.from((v, i) => i));
 
   // const [cost, setCost] = useState([]);
+=======
+  const [number, setNumber] = useState(1);
+  const [cost, setCost] = useState(0);
+  const [costTest, setCostTest] = useState(Array.from((v, i) => i));
+>>>>>>> 646df68ad36d4047dc37d6dfdcac340e289cb147
   const [wishTab, setWishTab] = useState(Array.from({length: 9}, () => 1));
 
   console.log('cost: ', cost);
@@ -222,8 +235,22 @@ const P_Cart = ({modal, setModal, addList, setAddList, tt}) => {
       arr.splice(r,1);
       arr2.splice(r,1);
       setAddList(arr);
+<<<<<<< HEAD
       setSum(cost);
     
+=======
+      setWishTab(arr2);
+      
+
+      // setSum(sum - costTest[i]);
+      // // test2[r] = test2[r]-aa[i];
+      // setTest(aa.splice(aa[i], i));
+      // setTest(bb.splice(bb[i], i));
+      // aa[i].filter(remove);
+      // bb[i].filter(remove);
+      // console.log('del addList: ', addList );    
+      // console.log('del i: ', i);
+>>>>>>> 646df68ad36d4047dc37d6dfdcac340e289cb147
     }
  
 

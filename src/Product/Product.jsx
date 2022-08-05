@@ -8,6 +8,7 @@ import Acc from './Acc';
 import PackTea from './PackTea';
 
 
+<<<<<<< HEAD
 const StyledLink = styled(Link)` //스타일 컴포넌트로 라우터
   display: flex;
    width: 60%;
@@ -29,6 +30,28 @@ const StyledLink = styled(Link)` //스타일 컴포넌트로 라우터
 `
 const Brrr = styled.span` // 클릭표시 애니메이션 효과
 
+=======
+// const StyledLink = styled(Link)` //스타일 컴포넌트로 라우터
+//   display: flex;
+//    width: 60%;
+//    padding: 0;
+//    font-size: 20px;
+//    span{
+//     display: flex;
+//    width: 60%;
+//    padding: 0;
+//    font-size: 20px;
+//    }
+//    p{
+//     width: 100%;
+//     height: 100%;
+//     display: flex;
+//     justify-content:center;
+//     margin-top:20px;
+// }
+// `
+const Brrr = styled.span` // 클릭표시 애니메이션 효과
+>>>>>>> 646df68ad36d4047dc37d6dfdcac340e289cb147
     display:block;
     font-size:15px;
     width:10px;
@@ -80,6 +103,11 @@ const add = () => {
 }
 
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 646df68ad36d4047dc37d6dfdcac340e289cb147
 const main = (props) => {
   setMenu(true);
   setMenu1(true);

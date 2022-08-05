@@ -20,7 +20,7 @@ const move = keyframes`
 
 const Container = styled.div`
   width: 100%;
-  height: 2200px;
+  height: 1500px;
   margin: auto;
 `
 const Header = styled.div`
@@ -35,8 +35,7 @@ const Header = styled.div`
 const MainBox0 = styled.div`
   width: 100%;
   height: 350px;
-  background-image: url('image/K_image/cafe1.jpg');
-  background-size : cover;
+  background-color: skyblue;
 `
 const Main = styled.div`
   width: 80%;
@@ -157,7 +156,7 @@ const WaterInG = styled(WaterInB)`
 `
 const MainBox3 = styled.div`
   margin-top: 30px;
-  height: 190px;
+  height: 170px;
   background-color: #ddd;
   padding: 30px;
 `
@@ -166,8 +165,11 @@ const Main3Content = styled.div`
   font-size: 14px;
   padding: 5px;
 `
-const MainBox4 = styled(MainBox3)`
-  height: 220px;
+const MainBox4 = styled.div`
+  margin-top: 30px;
+  height: 200px;
+  background-color: #ddd;
+  padding: 30px;
 `
 const Main4Title = styled.div``
 const Main4Content = styled(Main3Content)``
@@ -207,6 +209,21 @@ const select_button = (s) => { // bronze, sliver, gold 버튼
   arr2[s] = 'skyblue';
   setColor([...arr2]);
 }
+
+// window.addEventListener('scroll', () => {
+// 	let scrollLocation = document.documentElement.scrollTop; // 현재 스크롤바 위치
+
+//   if(scrollLocation > 500){
+//     let arr = ['flex', 'none', 'none'];
+//   if(scrollLocation > 500){ // 스크롤바 위치에따라 info123 diplay 변경
+//     setSelect([...arr]);
+//   }
+//   if(scrollLocation < 150 || scrollLocation > 1100){
+//     arr = ['none', 'none', 'none'];
+//     setSelect([...arr]);
+//   }
+// }
+// });
 
   return (
     <Container>

@@ -184,7 +184,7 @@ li.b_icon{
     scroll-behavior: smooth;
     top: 30%;
     right: 10px;
-    z-index: 990;
+    z-index: 999;
     background-color: #fff;
     box-shadow: 10px 15px 10px 5px rgba(0,0,0,0.5);
     font-size: 16px;
@@ -232,12 +232,9 @@ tr:first-child:not(.cartName){
     width: 100%;
     text-align: center;
 }
-#list td{
-    width: 100px;
-}
+
 .cartNames td{
     padding: 30px ;
-    width: 100px;
 }
 .b_cartBoxs tr:not(.cartName){
     line-height: 200px;

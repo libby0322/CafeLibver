@@ -7,25 +7,10 @@ const date = year + '-' + month  + '-' + day; // 2021-07-01
 
 const boardCtrl = {
     insertInfo: async(req, res)=>{
-        if(req.query.modify !== undefined){ // 수정 눌렀을 때
-            const id = req.query.id;
-            const {title, content} = req.body;
-            const sql = `UPDATE board SET title = "${title}", content = "${content}" WHERE id = ${id};`
-
-            connection.query(sql, (error, rows)=>{
-                if(error) throw error;
-                res.send("<script>alert('수정완료!!'); location.href='/membership/faq/board/1';</script>");
-              })
-        }
-
-        else if(req.query.modify === undefined){
-
-        let writer = '';
-        if(req.query.kakao !== 'null'){
-            writer = req.query.kakao;
-        }else{
-            writer = req.cookies.key;
-        }
+        console.log('insert');
+        console.log('req.body: ', req.body);
+        console.log('file: ', req.file);
+        const writer = req.cookies.key;
         let image = '';
         if(req.file === undefined){
             image = '/';
@@ -33,8 +18,12 @@ const boardCtrl = {
             image = '/uploads/' + req.file.filename;
         }
         const {title, content} = req.body; // 구조분해할당
-        const sql = `INSERT INTO board(title, content, writer, date, image) VALUES("${title}", "${content}", "${writer}", "${date}", "${image}");`+
-        `UPDATE member SET score = score + 20 WHERE id = "${writer}";`
+        const sql = `INSERT INTO board(title, content, writer, date, image) VALUES("${title}", "${content}", "${writer}", "${date}", "${image}");`
+
+        // app.post('/api/board', upload.single('image'), (req, res)=>{
+        //     console.log(req.file, req.body);
+        //     console.log('파일 업로드');
+        // });
         
         switch(true){
           case !req.body.title: return res.send("<script>alert('제목을 입력해주세요.'); location.href='/membership/faq/write';</script>");
@@ -44,24 +33,22 @@ const boardCtrl = {
           if(error) throw error;
           res.send("<script>alert('게시판 등록 완료!!'); location.href='/membership/faq/board/1';</script>");
         })
-        }
     },
     getInfo: async(req, res)=>{
         if(req.query.delete !== undefined){ // 삭제 눌렀을 때
             const id = req.query.id;
-            const sql = `DELETE FROM board WHERE id = ${id};`+
-            `ALTER TABLE board AUTO_INCREMENT=1;`+
-            `SET @COUNT = 0; `+
-            `UPDATE board SET id = @COUNT:=@COUNT+1;`;
-            
- 
-            connection.query(sql, (error, rows)=>{
-                if(error) throw error;
-                res.send("<script>alert('삭제완료!!'); location.href='/membership/faq/board/1';</script>");
-              })
+            console.log('삭제합니다.');
+            console.log('id: ', id);
+            console.log(req.query.delete);
+            const sql = `DELETE FROM board WHERE content = "${id}"`
+            // connection.query(sql, (error, rows)=>{
+            //     if(error) throw error;
+            //     res.send("<script>alert('삭제완료!!'); location.href='/membership/faq/board/1';</script>");
+            //   })
         }
         
         else if(req.query.delete !== true){
+        console.log('board getinfo');
         const sql = `SELECT * FROM board`;
         connection.query(sql, (error, rows)=>{
             if(error) throw error;

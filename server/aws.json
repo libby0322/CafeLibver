@@ -1,7 +1,0 @@
-{
-    "host": "db-test.cesqjkjwarob.ap-northeast-2.rds.amazonaws.com",
-    "user": "admin",
-    "password": "15689725",
-    "port": "3306",
-    "database": "cafe"
-}

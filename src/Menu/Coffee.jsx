@@ -13,7 +13,7 @@ const Coffee = () =>{
   
 const [dd, setDd] = useState([]);
 
-const [likeArr, setLikeArr] = useState(Array.from({length: 14})); // likeArr 배열 선언 ( 배열에 들어있는 변수들의 초기값은 296 으로 )
+const [likeArr, setLikeArr] = useState(Array.from({length: 14}, () => 296)); // likeArr 배열 선언 ( 배열에 들어있는 변수들의 초기값은 296 으로 )
 
 const [cartList, setCartList] = useState({price: 0});
 const [display2, setDisplay2] = useState(false);
@@ -21,6 +21,8 @@ const [display2, setDisplay2] = useState(false);
 const addCart = (a)=> {
   let arr = [];
 
+  // console.log('a', a); 
+  // alert("장바구니에 추가되었습니다.");
   for(let i = 0;i<coffeeList.coffeeList.length;i++){
    if(a === coffeeList.coffeeList[i].id){
       arr.push(coffeeList.coffeeList[i]);
@@ -33,23 +35,19 @@ const addCart = (a)=> {
 }
 
 const plusLike = (i) => {
-//   let _likeArr = [...likeArr];    //[296, 296, 296, 296, 296, 296...]
+  let _likeArr = [...likeArr];    //[296, 296, 296, 296, 296, 296...]
+  let element = document.getElementsByClassName("fa-heart");
 
-  
+  if(_likeArr[i] == 296){   // 배열에서 인덱스 i인 제품의 좋아요의 값이 296이니까 +1
+    _likeArr[i] += 1;    
+    setLikeArr(_likeArr);
+    element[i].className = 'fa-solid fa-heart'; //클래스 이름 수정
 
-//   if(_likeArr[i] == 296){   // 배열에서 인덱스 i인 제품의 좋아요의 값이 296이니까 +1
-//     _likeArr[i] += 1;    
-//     setLikeArr(_likeArr);
-//     element[i].className = 'fa-solid fa-heart'; //클래스 이름 수정
-
-//   }else{                  // 배열에서 인덱스 i인 제품의 좋아요의 값이 297이니까 -1
-//     _likeArr[i] -= 1;
-//     setLikeArr(_likeArr);   
-//     element[i].className = 'fa-regular fa-heart'; //클래스 이름 수정
-//   }  
-
-
-
+  }else{                  // 배열에서 인덱스 i인 제품의 좋아요의 값이 297이니까 -1
+    _likeArr[i] -= 1;
+    setLikeArr(_likeArr);   
+    element[i].className = 'fa-regular fa-heart'; //클래스 이름 수정
+  }  
 }
 
 const show =(listVal)=>{
@@ -73,6 +71,7 @@ const show =(listVal)=>{
   let list = [];
   
   for(let i =0 ; i < coffeeList.coffeeList.length;i++){
+    // console.log(coffeeList.coffeeList[i]);
     list.push(
         <>
             <li className='b_flexList' onClick={()=>show(i)} key={coffeeList.coffeeList[i].id}>
@@ -96,6 +95,8 @@ const show =(listVal)=>{
             </div>
         </>
      )
+
+// console.log(coffeeList.coffeeList[0].title);
 
   }
   return (

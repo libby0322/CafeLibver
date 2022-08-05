@@ -10,8 +10,7 @@ const connection = mysql.createConnection({
     user: conf.user,
     password: conf.password,
     port: conf.port,
-    database: conf.database,
-    multipleStatements: true // 다중쿼리문 허용
+    database: conf.database
 });
 
 connection.connect();

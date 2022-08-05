@@ -1,10 +1,11 @@
 import React from 'react'
-import styled from "styled-components"
+import styled, {keyframes} from "styled-components"
 import { Link } from 'react-router-dom'
 
 const Container = styled.div`
     height: 700px;
     background-image: url('image/K_image/coffee5.jpg');
+    background-color: green;
     opacity: 0.9;
     padding-top: 100px;
 `

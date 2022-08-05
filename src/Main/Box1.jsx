@@ -1,6 +1,10 @@
 import React from 'react'
 import styled from "styled-components"
 import 'bootstrap/dist/css/bootstrap.min.css'
+import "slick-carousel/slick/slick.css"
+import "slick-carousel/slick/slick-theme.css"
+import {Row, Col} from 'reactstrap'
+import AOS from "aos";
 import "aos/dist/aos.css"
 
 const Container = styled.div`
@@ -71,6 +75,7 @@ const Box1 = () => {
             <h1>인기 검색어</h1>
             <p style={{fontSize: "18px", color: "gray", paddingLeft: "10px"}}>오늘은 ... 뭐 먹지 ..</p>
           </Title>
+          
           <Content>
             <Hash>#연유라떼</Hash>
             <Hash style={{marginLeft: "20px"}}>#콜드브루</Hash>

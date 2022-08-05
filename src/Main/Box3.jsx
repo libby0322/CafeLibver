@@ -40,17 +40,10 @@ const Dev_box = styled.div`
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    border-radius: 10px;
 
     animation: ${props => props.active ? ani1 : ani2};
     animation-duration: 1s; 
     animation-fill-mode: forwards;
-
-    @media screen and (max-width: 768px) {
-        width: 250px;
-        height: 250px;
-        margin-bottom: 50px;
-    }
 `
 const Profile = styled.div`
     
@@ -59,14 +52,15 @@ const Profile = styled.div`
 const Box3 = () => {
     
     const [active1, setActive1] = useState(false); // DevBox 애니메이션 on off
-    const [name, setName] = useState();
- 
+    const [active2, setActive2] = useState(false); // info display on off
 
-    const slide = (e) => {
+    const slide = () => {
         setActive1(!active1);
-        setName(e);
+        setActive2(!active2);
     }
 
+    console.log('active1: ', active1);
+    console.log('active2: ', active2);
 
   return (
    <Container>
@@ -74,28 +68,28 @@ const Box3 = () => {
     <Dev>
         <Row>
         <Col md="3" xs="6">
-            <Dev_box active={active1} onClick={()=>slide(0)}>
+            <Dev_box active={active1} onClick={slide}>
                 <Profile>Developer : 권~태~훈~</Profile>
             </Dev_box>
         </Col>
         <Col md="3" xs="6">
-            <Dev_box active={active1} onClick={()=>slide(1)}>
+            <Dev_box active={active1} onClick={slide}>
             <Profile>Developer : 최◆보◆은</Profile>
             </Dev_box>
             
         </Col>
         <Col md="3" xs="6">
-            <Dev_box active={active1} onClick={()=>slide(2)}>
+            <Dev_box active={active1} onClick={slide}>
             <Profile>Developer : 홍★지★우</Profile>
             </Dev_box>
         </Col>
         <Col md="3" xs="6">
-            <Dev_box active={active1} onClick={()=>slide(3)}>
+            <Dev_box active={active1} onClick={slide}>
             <Profile>Developer : 임♪리♪비</Profile>
             </Dev_box>
         </Col>
         </Row>
-        <Info active1={active1} setActive1={setActive1} name={name}></Info>
+        <Info active1={active1} active2={active2} setActive1={setActive1} setActive2={setActive2}></Info>
     </Dev>
    </Container>
   )

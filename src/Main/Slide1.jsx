@@ -1,8 +1,13 @@
 import React, {useEffect} from 'react'
-import styled from "styled-components"
+import styled, {keyframes} from "styled-components"
 import {Row, Col} from 'reactstrap'
 import AOS from "aos";
 import "aos/dist/aos.css"
+
+const opacity = keyframes`
+  0% {transform: scale(1);}
+  100% {transform: scale(1.2);}
+`
 
 const Container = styled.div`
   height: 700px;

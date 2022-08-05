@@ -9,19 +9,19 @@ const B_Cart = (props) => {
 
 const {bb} = props;
 
-
 const [price,setPrice] = useState(0);
 
 const [total,setTotal] = useState(0);
 
 
+
 useEffect(()=>{
   let _price = bb.price;
-
   setPrice(_price);
   setTotal(total + _price);
 },[bb]);
 
+// console.log('bb : ',bb);
 
 const show = ()=>{
   $('.b_total').css('display','block');
@@ -36,11 +36,9 @@ const show = ()=>{
 let arr = [];
 let arr2 = [];
 let arr3 = [];
-let arrr3 = [];
 
-arrr3.push(bb.price)
 let _bb = bb;
-
+// console.log(_bb);
 
 if(_bb.id == undefined){
   
@@ -56,11 +54,6 @@ c.push(arr3[0]);
 _bb.id = undefined;
 }
 
-const addList2 = [
-  ...a,
-  ...b,
-  ...c
-]
 const list = [];
 
 for(let i = 0;i< a.length;i++){
@@ -68,7 +61,7 @@ for(let i = 0;i< a.length;i++){
 
      list.push(    
           <>
-          <img src={b[i]} alt="상품을 추가해주세용" key={bb.idd}/>
+          <img src={b[i]} alt="상품을 추가해주세용" key={bb.id}/>
            <p>{a[i]}</p> 
            <p>{c[i]} 원</p>
            </>
@@ -94,7 +87,6 @@ for(let i = 0;i< a.length;i++){
         </table>
         <p className="text-center mt-3 border-top border-dark pt-3">Total : {total} </p>
         <p className='btn btn-primary b_link' onClick={show}>바로 구매하기</p>
-      
         </div> 
        <Cart title={a} img={b} price={c} total={total} />
 

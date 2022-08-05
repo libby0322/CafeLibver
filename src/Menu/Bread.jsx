@@ -18,13 +18,16 @@ const Bread = () => {
   
   const addCart = (a)=> {
     let arr = [];
+    console.log('a', a); 
     // alert("장바구니에 추가되었습니다.");
     for(let i = 0;i<breadList.bread.length;i++){
       if(a === breadList.bread[i].id){
         arr.push(breadList.bread[i]);
       }
     }
+    console.log('arr: ', arr);
     setCartList(...arr);
+    console.log('cartList: ', cartList);
   }
   
   const plusLike = (i) => {
@@ -64,6 +67,7 @@ const Bread = () => {
   
     let list = [];
     for(let i =0 ; i < breadList.bread.length;i++){
+      // console.log(coffeeList.coffeeList[i]);
       list.push(
           <>
               <li className='flexList-dessert' onClick={()=>show(i)} key={breadList.bread[i].id}>

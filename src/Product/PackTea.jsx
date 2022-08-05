@@ -2,55 +2,47 @@ import React, { useState, useRef } from 'react';
 import PackTeaList  from './ProList.json';
 import PackCoffeeList from './ProList.json';
 import PackCapsuleList from './ProList.json';
-import Product from './Product';
 import * as Styled from "./Style";
-import P_Cart from './P_Cart';
 
-const Acc = (props) => {
 
-  const [addList, setAddList] = useState({});
+const PackTea = ({subTop2, setSubTop2, addList, setAddList,add}) => {
+
   const [test, setTest] = useState(1);
-  let [modal, setModal] = useState(false);
-  let [subList, setSubList] = useState(false);
-  let [tt, setTt] = useState(true);
-  let [subTop2, setSubTop2] = useState(false);
-  const add = () => {
-    setSubList(true);
-    setTt(false);
-  }
+ 
+
   const subTopClose2 = (props) =>{
     setSubTop2(false);
   }
 
   const PackTeaAdd = (r) => {
-    const arr = [];
+    let arr = [...addList];
     setTest(test+1);
     for(let i=0; i<PackTeaList.PackTeaList.length; i++){
       if(PackTeaList.PackTeaList[i].id === r){
         arr.push(PackTeaList.PackTeaList[i]);
       }
     }
-    setAddList(...arr);
+    setAddList(arr);
   }
   const PackCoffeeAdd = (r) => {
-    const arr = [];
+    let arr = [...addList];
     setTest(test+1);
     for(let i=0; i<PackCoffeeList.PackCoffeeList.length; i++){
       if(PackCoffeeList.PackCoffeeList[i].id === r){
         arr.push(PackCoffeeList.PackCoffeeList[i]);
       }
     }
-    setAddList(...arr);
+    setAddList(arr);
   }
   const PackCapsuleAdd = (r) => {
-    const arr = [];
+    let arr = [...addList];
     setTest(test+1);
     for(let i=0; i<PackCapsuleList.PackCapsuleList.length; i++){
       if(PackCapsuleList.PackCapsuleList[i].id === r){
         arr.push(PackCapsuleList.PackCapsuleList[i]);
       }
     }
-    setAddList(...arr);
+    setAddList(arr);
   }
 
 
@@ -97,7 +89,6 @@ const Acc = (props) => {
   };
 return (
   <>
-  <Product modal={modal} setModal={setModal}  subTop2={subTop2} setSubTop2={setSubTop2}/>
   <Styled.ProMenu2 style={{display: subTop2? "flex" : "none"}} onMouseLeave={subTopClose2}>
     <button type='button' className='proMenuBtn2' onClick={onOneClick}>티백</button>
     <button type='button' className='proMenuBtn2' onClick={onTwoClick}>스틱커피</button>
@@ -115,10 +106,10 @@ return (
       </div> 
       
         </Styled.ListWrap>
-        <P_Cart mug={addList} modal={modal} subList={subList} setSubList={setSubList} tt={tt} setTt={setTt}/>
+        {/* <P_Cart mug={addList} modal={modal} subList={subList} setSubList={setSubList} tt={tt} setTt={setTt}/> */}
     </>
   )
 
 }
 
-export default Acc
+export default PackTea

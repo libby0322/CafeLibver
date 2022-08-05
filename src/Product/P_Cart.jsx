@@ -1,14 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import * as Styled from "./Style";
-import styled from "styled-components"
-import Cup from './Cup';
-import Data from './ProList.json';
-import P_Pay from './P_Pay';
-
-
-
-
+import { Link } from 'react-router-dom';
+import styled from "styled-components";
 
 
 const CartList = styled.div`
@@ -36,8 +28,6 @@ h3{
   color: #fc5252;
   font-weight: bold;
 }
-
-
 
 `
 const ListBox = styled.div`
@@ -127,37 +117,35 @@ const StyledLink = styled(Link)`
 `
 
 
-const P_Cart = (props) => {
+const P_Cart = (modal, setModal, addList, setAddList, tt) => {
 
-  console.log(props.libby);
 
 
   //상품 클릭시 장바구니에 리스트업
-  const {mug, setMug} = props;
-  const {subList, setSubList} = props; 
 
   const [aa, setaa] = useState([]);
   const [bb, setbb] = useState([]);
   const [cc, setcc] = useState([]);
   const [dd, setdd] = useState([]);
 
+
   let arr = [];
   let arr2 = [];
   let arr3 = [];
   let arr4 = [];
 
-  if(mug.modal === aa){
+  if(addList.modal === aa){
 
   }else{
-    arr.push(mug.title);
-    arr2.push(mug.url);
-    arr3.push(mug.Price);
-    arr4.push(mug.modal);
+    arr.push(addList.title);
+    arr2.push(addList.url);
+    arr3.push(addList.Price);
+    arr4.push(addList.modal);
     aa.push(arr[0]);
     bb.push(arr2[0]);
     cc.push(arr3[0]);
     dd.push(arr4[1]);
-    mug.modal = aa;
+    addList.modal = aa;
   }
 
   
@@ -167,40 +155,41 @@ const P_Cart = (props) => {
   //장바구니 제품 수량 관련
 
   const [sum, setSum] = useState(0);
-  const [addList, setAddList] = useState([]);
   const [number, setNumber] = useState(1);
-  const [cost, setCost] = useState([]);
+  const [cost, setCost] = useState(0);
   const [costTest, setCostTest] = useState(Array.from((v, i) => i));
   const [wishTab, setWishTab] = useState(Array.from({length: 9}, () => 1));
  
  
   
+
   useEffect(()=> {
     console.log('useEffect');
-    addList.push(mug);
-    cost.push(mug.Price);
-    setCostTest(cc);
+
+    addList.map(x=>{
+      console.log('x: ', x.Price);
+      setSum(sum + x.Price);
+    })
+    // cost.push(addList.Price);
     for(let i=0; i<cc.length; i++){
       if(cc[i] !== undefined){
         setSum(sum + cc[i]);
       }
     }
-    console.log('use끝');
-  }, [mug]);
+
+  }, [addList]);
 
 
-  useEffect(()=>{
-    console.log('useEffect2');
-    addList.shift();
-    cost.shift();
-  }, [])
+  // useEffect(()=>{
+  //   console.log('useEffect2');
+  //   addList.shift();
+  //   cost.shift();
+  // }, [])
 
   const plus = (e, price) => {
-    console.log(e);
-    console.log(price);
+
     let arr = [...wishTab];
     arr[e] = arr[e] +1;
-    cost[e] = cost[e] + price;
     setWishTab(arr);
     setSum(sum + price);
    
@@ -218,61 +207,57 @@ const P_Cart = (props) => {
  
 
 
-    const remove = (r,price,index)=>{
+    // const remove = (r)=>{
+    //   let arr = [...addList];
+    //   arr.splice(r,1, '');
+    //   cost.splice(r,1);
+    //   setWishTab(arr2);
+    //   setSum(cost);
+    // }
+    const remove = (r,index)=>{
+      console.log('r: ', r);
       let arr = [...addList];
       let arr2 = [...wishTab];
-      arr2[r] = price * arr2[r]
-      arr.splice(r,1, '');
-      console.log('cost', cost);
+      arr.splice(r,1);
+      arr2.splice(r,1);
       setAddList(arr);
-      setSum(sum - arr2[r])
-    
+      setWishTab(arr2);
+      setSum(cost);
     }
- 
-
-  console.log('addList: ', addList);
-  console.log('sum: ', sum);
-  console.log('cost: ', cost);
-  console.log('wish: ', wishTab);
-  console.log('dd: ', dd);
 
 
 
 
 
- const List1 = () => {
-  let arr = [];
-  addList.map((i, index)=>{
-    console.log('map 실행');
-    if(i !== ''){
-   arr.push(
-            <ListBox style={{display: props.subList? "block" : "none"}} key={index}>
-            <button className='del' onClick={()=>remove(index, i.Price)}  ><i className="fa-solid fa-xmark"/></button>
-            <span style={{display:"none"}}>{dd[i]}</span>
-            <div className='subListBox'>
-            <span className='listTitle'>{i.title}</span>
-            <img src={i.url}/>
-            </div>
-            <span className='pmbtn'>
-            <button onClick={()=>plus(index, i.Price)}><i className="fa-solid fa-plus"/></button>
-            {wishTab[index]}
-            <button onClick={()=>minus(index, i.Price)}><i className="fa-solid fa-minus"/></button>
-            </span>
-            <span className='listPrice'>금액 : {i.Price} 원</span>
-            </ListBox>
-    )
-   }
+    const List1 = () => {
+      let arr = [];
+      addList.map((i, index)=>{
+    
+       arr.push(
+                <ListBox  key={index}>
+                <button className='del' onClick={()=>remove(index, i.Price)}  ><i className="fa-solid fa-xmark"/></button>
+                <span style={{display:"none"}}>{dd[i]}</span>
+                <div className='subListBox'>
+                <span className='listTitle'>{i.title}</span>
+                <img src={i.url}/>
+                </div>
+                <span className='pmbtn'>
+                <button onClick={()=>plus(index, i.Price)}><i className="fa-solid fa-plus"/></button>
+                {wishTab[index]}
+                <button onClick={()=>minus(index, i.Price)}><i className="fa-solid fa-minus"/></button>
+                </span>
+                <span className='listPrice'>금액 : {i.Price} 원</span>
+                </ListBox>
+        )
+      
+    
+       })
+      
+      return arr;
+    
+     }
 
-   })
-  
-  return arr;
 
- }
-
- const k = ()=>{
-  console.log('k');
-  props.setLibby(2);
- }
   
 
    
@@ -282,27 +267,26 @@ const P_Cart = (props) => {
 
 
 
-
-  return (
-    <>
-  <CartList style={{display: props.modal? "inline-block" : "none"}}>
-    <button onClick={k}>button</button>
-    <h3>🎁 Wish List 🎁</h3>
-  <p style={{display: props.subList? "none" : "flex"}}>선택한 상품이 없습니다. <br/> 상품을 클릭해 담아보세요😊</p>
-    <List1 />
-    <Cost>
-     Total: {sum} 원
-    </Cost>
-    <StyledLink to="/ppay" state={addList} ><span>구매하기</span>
-    <div className='payT'>결제페이지로 이동할게요😊</div> 
-    </StyledLink> 
-  </CartList>
+     return (
+      <>
+    <CartList style={{display: modal? "inline-block" : "none"}}>
+      <button >button</button>
+      <h3>🎁 Wish List 🎁</h3>
+    <p style={{display: tt? "block" : "none"}}>선택한 상품이 없습니다. <br/> 상품을 클릭해 담아보세요😊</p>
+      <List1 />
+      <Cost>
+       Total: {sum} 원
+      </Cost>
+      <StyledLink to="/ppay" state={addList} ><span>구매하기</span>
+      <div className='payT'>결제페이지로 이동할게요😊</div> 
+      </StyledLink> 
+    </CartList>
+    
+   
+   
+   
+      </>
+    )
+  }
   
- 
- 
- 
-    </>
-  )
-}
-
-export default P_Cart
+  export default P_Cart

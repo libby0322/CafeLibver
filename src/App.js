@@ -26,7 +26,7 @@ import HPay from './Hee/HPay';
 import Login from './Login/Login_page'
 import SignUp from './Login/SignUp'
 import P_Pay from './Product/P_Pay'
-import P_Cart from './Product/P_Cart'
+
 
 
 const App = () => {

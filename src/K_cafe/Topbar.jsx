@@ -31,7 +31,7 @@ const Topbar = () => {
                   <div className='k-topbar-box-nav-bottom'>
                       <div className='k-topbar-box-navbar'>
                         <Link to={'/coffee'}><div onMouseOver={subnav_display_in}>메뉴</div></Link>
-                        <Link to={"/productMain"}><div onMouseOver={subnav_display_in}>상품</div></Link>
+                        <Link to={"/product"}><div onMouseOver={subnav_display_in}>상품</div></Link>
                         <Link to={"/membership"}><div onMouseOver={subnav_display_in}>멤버쉽/앱</div></Link>
                         <Link to={"/login/"}><div onMouseOver={subnav_display_in}>마이페이지</div></Link>
                       </div>

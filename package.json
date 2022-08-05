@@ -71,5 +71,17 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.16"
-  }
+  },
+  "description": "<드링크 - 빽다방 참고>\r - 커피(15 에스프레소 빼고 HOT&ICE): 아메리카노, 라떼, 바닐라라떼, 모카라떼, 연유라떼, 카라멜 라떼, 콜드브루, 에스프레소",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/libby0322/Cafe_Lib_ver.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/libby0322/Cafe_Lib_ver/issues"
+  },
+  "homepage": "https://github.com/libby0322/Cafe_Lib_ver#readme"
 }

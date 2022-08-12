@@ -90,9 +90,8 @@ const del = (proNum, title) => {
             <span className="h_xmark" onClick={xmark}><i class="fa-solid fa-xmark"></i></span>
           </div>
           <div className="h_box-in">
-                    {arr}
             <div className="h_pick">
-              
+                {arr}
             </div>
 
           </div>

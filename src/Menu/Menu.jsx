@@ -7,12 +7,14 @@ import desert from './MenuList.json';
 import mini from './MenuList.json';
 import Footer from './Footer';
 import GoTop from './GoTop';
+import $ from 'jquery'
 
 
 
 
 const Menu = ({addList,setAddList,non,dessert}) => {
- // 하트 버튼
+
+//하트 버튼
  const [likeArr, setLikeArr] = useState(Array.from({length: 14}, () => 296)); // likeArr 배열 선언 ( 배열에 들어있는 변수들의 초기값은 296 으로 )
   
  const plusLike = (i) => {
@@ -34,11 +36,10 @@ const Menu = ({addList,setAddList,non,dessert}) => {
 
 
  // cart 버튼 클릭 시 장바구니에 추가
-   const add = (e) => {
-       let arr = [...addList];
-       arr.push(e);
-       setAddList(arr);
-     
+   const add = (e) => {  
+      let arr = [...addList];
+      arr.push(e);
+      setAddList(arr);
    }
 
    const coffee = [];
@@ -47,9 +48,9 @@ const Menu = ({addList,setAddList,non,dessert}) => {
            <>
            <li className='b_flexList' key={coffeeList.coffeeList[i].idd}>
              <img src={coffeeList.coffeeList[i].url} alt={coffeeList.coffeeList[i].id}  />
-        
              <li className='b_icon'>
-             <i class="fa-regular fa-heart" onClick={()=>plusLike(i)} style={{color:"#fa6464", cursor:"pointer"}}><span style={{color:"black",display:"inline-block", paddingLeft:"5px"}}></span></i>
+             <i class="fa-regular fa-heart" style={{color:"#fa6464", cursor:"pointer"}} ></i>
+          
              <i class="fa-solid fa-cart-arrow-down" id={coffeeList.coffeeList[i].id} style={{color:"skyblue", cursor:"pointer"}} onClick={()=>add({id : coffeeList.coffeeList[i].id,title :coffeeList.coffeeList[i].title,price : coffeeList.coffeeList[i].price ,url : coffeeList.coffeeList[i].url})}></i>
              </li>
              <p className='text-center'>{coffeeList.coffeeList[i].title}</p>
@@ -73,10 +74,9 @@ const Menu = ({addList,setAddList,non,dessert}) => {
                <li className='b_flexList' key={tea.Beverage[i].id}>
                  <img src={tea.Beverage[i].url} alt={tea.Beverage[i].id}  />
                  <li className='b_icon'>
-                 <i class="fa-regular fa-heart" onClick={()=>plusLike(i)} style={{color:"#fa6464", cursor:"pointer"}}><span style={{color:"black",display:"inline-block", paddingLeft:"5px"}}></span></i>
-                 <i class="fa-solid fa-cart-arrow-down" id={tea.Beverage.id} style={{color:"skyblue", cursor:"pointer"}} onClick={()=>add({id : tea.Beverage.id,title :tea.Beverage[i].title,price : tea.Beverage[i].price ,url : tea.Beverage[i].url})}></i>
+                 <i class="fa-regular fa-heart" onClick={()=>plusLike(i)} style={{color:"#fa6464", cursor:"pointer"}}></i>
+                 <i class="fa-solid fa-cart-arrow-down" key={tea.Beverage.id} style={{color:"skyblue", cursor:"pointer"}} onClick={()=>add({id : tea.Beverage.id,title :tea.Beverage[i].title,price : tea.Beverage[i].price ,url : tea.Beverage[i].url})}></i>
                  </li>
-           
                  <p className='text-center'>{tea.Beverage[i].title}</p>
                </li>  
            </>

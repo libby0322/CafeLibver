@@ -238,13 +238,12 @@ return (
               <option value="서울역점">서울역점</option>
               <option value="홍대입구역점">홍대입구역점</option>
             </select>  
-          
           </form>  
   
           <div className='d-flex justify-content-around mt-5'>
           <span className='btn btn-warning' onClick={remove}>전체 삭제</span>  
             <span className='btn btn-warning' onClick={sumConfirm}>주문하기</span>
-           
+
           </div> 
           
           </div>

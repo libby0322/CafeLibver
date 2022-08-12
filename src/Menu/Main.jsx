@@ -20,10 +20,11 @@ const Main = () => {
       const [jw,setJw] = useState(false);
 // cart에 전달
       const [addList, setAddList] = useState([]);
-    
+// 보은 장바구니 모달
     const modal_test = () =>{
       setModal(!modal)
     }
+// 지우 장바구니 모달
     const modal_ =()=>{
      setJw(!jw);
     }

@@ -1,9 +1,31 @@
 import React from 'react'
+import $ from 'jquery'
 
-export const JwCart = () => {
+const JwCart = ({modal,setModal,addList}) => {
+  //결제페이지 넘어가기
+  const goPayment =  () => {
+    alert('죄송합니다. 지금은 서버폭주로 주문이 어렵습니다. 잠시 후 다시 시도 바랍니다^_^');
+  }
+
+  // 창 닫기
+  const xmark = () => {
+    if ($('#jwCart').is(":visible")) {
+      $('#jwCart').hide();
+    }
+  }
+
+  //모두 비우기
+  const allDel = () => {
+    $('.h_pick').empty();
+    $('.j_total').text(0);
+    return;
+  }
+
+
+
   return (
     <>
-     <div id="jwCart" style={{ display: props.display2 ? "flex" : "none" }}>
+     <div id="jwCart" style={{ display: modal ? "flex" : "none" }}>
       <div className='h-cart'>
         <div className="h_box">
           <div className="h_box-top">
@@ -13,7 +35,7 @@ export const JwCart = () => {
           <div className="h_box-in">
 
             <div className="h_pick">
-              <List />
+            
             </div>
 
           </div>
@@ -30,3 +52,4 @@ export const JwCart = () => {
     </>
   )
 }
+export default JwCart

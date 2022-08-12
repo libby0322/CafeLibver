@@ -41,7 +41,7 @@ const Main = () => {
 </ul>
 <Menu addList={addList} setAddList={setAddList} non={non} dessert={dessert} />
 <CartTest modal={modal} setModal={setModal} addList={addList}   />
-<JwCart modal={modal} setModal={setModal} addList={addList} />
+<JwCart modal={jw} setModal={setJw} addList={addList} />
 
 </>
   )

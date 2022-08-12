@@ -10,11 +10,6 @@ import FAQ from './K_cafe/FAQ/FAQ'
 import View2 from './K_cafe/FAQ/View2'
 import Write from './K_cafe/FAQ/Write'
 import Modify from './K_cafe/FAQ/Modify'
-import Tea from './Menu/Tea'
-import Desert from './Menu/Desert'
-import Bread from './Menu/Bread'
-import Juice from './Menu/Juice'
-import Mini from './Menu/Mini'
 import Product from './Product/Product'
 import ProductMain from './Product/ProductMain'
 import Cup from './Product/Cup'
@@ -26,6 +21,7 @@ import HPay from './Hee/HPay';
 import Login from './Login/Login_page'
 import SignUp from './Login/SignUp'
 import P_Pay from './Product/P_Pay'
+import MenuMain from './Menu/Main'
 
 
 
@@ -37,12 +33,7 @@ const App = () => {
       <Topnav />
       <Routes>
         <Route path='/' element = {<Main />} />
-        <Route path='/coffee' element= {<Coffee/>}/>
-        <Route path='/noncoffee' element={<Tea/>} />
-        <Route path="/desert" element={<Desert/>}/>
-        <Route path="/Bread" element={<Bread/>}/>
-        <Route path="/juice" element={<Juice/>} />
-        <Route path="/mini" element={<Mini/>}/>
+        {/* <Route path='/coffee' element= {<Coffee/>}/> */}
         <Route path='/membership' element={<Membership />}/>
         <Route path='/membership/app' element={<MembershipApp />}/>
         <Route path='/membership/faq' element={<MembershipFaq />}/>
@@ -58,9 +49,9 @@ const App = () => {
         <Route path='/acc' element={<Acc />} />
         <Route path='/packTea' element={<PackTea />} />
         <Route path='/pay' element= {<HPay/>}/>
-        <Route path="/cart" element={<Cart/>}/>
         <Route path="/login" element={<Login />}/>
         <Route path="/signup" element={<SignUp />}/>
+        <Route path="/menu" element={<MenuMain />}/>
       </Routes>
     </BrowserRouter>
   )

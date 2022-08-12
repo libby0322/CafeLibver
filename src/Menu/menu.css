@@ -167,13 +167,10 @@ font-weight: 800;
 }
 
 li.b_icon{
-    width: 300px;
+
     display: flex;
     justify-content: space-evenly;
-    position: absolute;
-    bottom: 0;
-    font-size: 20px;
-    padding-top: 20px;
+  
 }
 /* 최보은이 만든 cartbOX */
 .b_cart{
@@ -348,10 +345,7 @@ form>label{
 .b_desc>li{
     left: -200px;
 }
-li.b_icon{
-    bottom: -10px;
-    left: -255px;
-}
+
 .b_total{
     width: 90%;
     height: 400px;
@@ -414,14 +408,14 @@ li.b_icon{
    margin-top: 50px;
    font-size: 13px;
 }
-li.b_icon{
+/* li.b_icon{
     width: 300px;
     padding-top: 20px;
     display: inline-block;
     font-size: 15px;
     padding-left: 10px;
     bottom: 140px;
-}
+} */
 .b_mNav{
     margin-top: 20px;
     margin-bottom: 20px;

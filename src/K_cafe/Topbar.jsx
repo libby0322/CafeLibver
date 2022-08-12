@@ -30,7 +30,7 @@ const Topbar = () => {
                   <div className='k-topbar-box-nav-top'></div>
                   <div className='k-topbar-box-nav-bottom'>
                       <div className='k-topbar-box-navbar'>
-                        <Link to={'/coffee'}><div onMouseOver={subnav_display_in}>메뉴</div></Link>
+                        <Link to={'/menu'}><div onMouseOver={subnav_display_in}>메뉴</div></Link>
                         <Link to={"/product"}><div onMouseOver={subnav_display_in}>상품</div></Link>
                         <Link to={"/membership"}><div onMouseOver={subnav_display_in}>멤버쉽/앱</div></Link>
                         <Link to={"/login/"}><div onMouseOver={subnav_display_in}>마이페이지</div></Link>
@@ -44,9 +44,7 @@ const Topbar = () => {
                     <div className='k-topbar-subbox-box-right'>
                         <div className='k-topbar-subbox-box-navbar'>
                             <div className='k-topbar-subbox-box-navbar-box'>
-                                <Link to={"/coffee"}><div>Coffee</div></Link>
-                                <Link to={"/noncoffee"}><div>Non Coffee</div></Link> 
-                                <Link to={"/desert"}><div>Dessert</div></Link> 
+                             
                             </div>
                             <div className='k-topbar-subbox-box-navbar-box'>
                                 <Link to={"/cup"}><div>Cup</div></Link>

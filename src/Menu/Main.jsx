@@ -32,7 +32,7 @@ const Main = () => {
 
   return (
 <>
-
+<div className='b_nav'>
 <ul className='b_mNav b_Nflex'>
   <li className='nav'>Coffee</li>
   <li className='nav' onClick={nonClick}>Non coffee</li>
@@ -40,6 +40,7 @@ const Main = () => {
   <li className='nav'><i class="fa-solid fa-basket-shopping" onClick={modal_test}></i> </li>
   <li className='nav'><i class="fa-solid fa-cart-shopping" onClick={modal_}>지우</i> </li>
 </ul>
+</div>
 <Menu addList={addList} setAddList={setAddList} non={non} dessert={dessert} />
 <CartTest modal={modal} setModal={setModal} addList={addList}   />
 <JwCart modal={jw} setModal={setJw} addList={addList} />

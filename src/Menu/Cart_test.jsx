@@ -2,7 +2,7 @@ import React,{useState,useEffect} from 'react'
 import $ from 'jquery'
 
 const Cart_test = ({modal, addList}) => {
-  const [add,setAdd] = useState(Array.from({length : 14},()=> 1));
+  const [add,setAdd] = useState(Array.from({length : 14},()=> 0));
   const [price,setPrice] = useState(Array.from({length : 58}));
   const [sum,setSum] = useState(Array.from({length : 15}));
 

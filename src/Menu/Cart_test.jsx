@@ -1,12 +1,11 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState} from 'react'
 import $ from 'jquery'
 
 const Cart_test = ({modal, addList}) => {
   const [add,setAdd] = useState(Array.from({length : 14},()=> 0));
   const [price,setPrice] = useState(Array.from({length : 58}));
   const [sum,setSum] = useState(Array.from({length : 15}));
-
-
+const [sum22,setSum22]= useState([]);
 
 
 // 장바구니 닫기   
@@ -57,11 +56,14 @@ const sumConfirm = ()=>{
 let arr = []; //prop으로 받아온 addList를 뿌려줄 빈 배열
 let add_ = [...add]; // useState로 설정한 배열 복사
 let _price = [...price]; 
-let a = [];
 
+
+let sumTest = [];
 for(let i =0; i < addList.length; i++){
 let cost = addList[i].price;
- 
+  sumTest.push(addList[i].price);
+  
+console.log('sumTest :',sumTest)
 // 수량 및 가격 증가
 
 const plus = ()=>{
@@ -69,10 +71,6 @@ const plus = ()=>{
   setAdd(add_);
   _price[i] = cost * add_[i];
   setPrice(_price);
-  console.log('sum : ',sum)
-  console.log('_price : ',_price[i]);
-
-  setSum( _price[i]);
 
 }  
 
@@ -101,13 +99,13 @@ const minus = ()=>{
         </td>
         <td>{price[i]}</td>
         </tr>
-        
+
 
         </>
      )
      
     }
-  
+
   return (
     <>
 <div className='b_total overflow-scroll' style={{display : modal ? "block" : "none"}}>
@@ -125,7 +123,7 @@ const minus = ()=>{
           {arr}
           </table>
           <form action="/" className='text-center pt-3'>
-              <span className='text-center mx-5'>총 가격 : {sum}원</span>
+          <span className='text-center mx-5'>총 가격 : {sumTest}원</span>
             <select name="store" id="store" className='text-center mx-5' >
               <option value="default">-----매장을 선택하세요-----</option>  
               <option value="김포 장기점">김포 장기점</option>

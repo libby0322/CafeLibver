@@ -1,5 +1,6 @@
 import React from 'react'
-import Main from './Main/Main_page'
+import Main from  './Main/Main';
+import Main_menu from './Menu/Main'
 import Topnav from './K_cafe/Topbar'
 import Coffee from './Menu/Coffee'
 import Membership from './K_cafe/Member/Member_page'
@@ -33,7 +34,7 @@ const App = () => {
       <Routes>
         <Route path='/' element = {<Main />} />
         <Route path='/coffee' element= {<Coffee/>}/>
-      
+        <Route path='/menu' element= {<Main_menu/>}/>
         <Route path='/membership' element={<Membership />}/>
         <Route path='/membership/app' element={<MembershipApp />}/>
         <Route path='/membership/faq' element={<MembershipFaq />}/>

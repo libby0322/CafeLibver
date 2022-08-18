@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import styled, { keyframes } from "styled-components"
-import {Row, Col} from 'reactstrap'
+import styled from "styled-components"
 import { useLocation } from 'react-router-dom'
 
 const Container = styled.div`
@@ -41,25 +40,32 @@ const Fotter = styled.div`
 `
 const Modify = () => {
 
-  const info = useLocation().state;
- 
-  console.log('modify info: ',info);
+  const info = useLocation().state.info;
+  const id = useLocation().state.id;
+  console.log('id: ', id);
+  
+
+  useEffect(()=>{
+    console.log('modify useEffect');
+    const arr = info.filter((x, index) => {
+        if(x.id === parseInt(id)){
+            return x;
+        }
+    });
+    console.log('arr: ', arr);
+    setModify_info(arr);
+  }, []);
+
+  const [modify_info, setModify_info] = useState([]);
+  console.log('modify info: ',modify_info);
 
   const List = () => {
-    
-  }
-
-  const aa = () => {
-
-  }
-  
-return (
-  <Container>
-      <Header>글 쓰기</Header>
-      <form action="/api/board" method="post" encType='multipart/form-data'>
-      <Main>
-          <Title>
-              <input type="text" name="title" placeholder='제목' value="title" onChange={aa}
+    let arr = [];
+    modify_info.map(x => {
+    arr.push(
+        <div key={x.id}>
+        <Title>
+              <input type="text" name="title" placeholder={x.title} onChange={aa}
               style={{
                   border: "none",
                   height: "80px",
@@ -68,13 +74,29 @@ return (
                   }}></input>
           </Title>
           <Content>
-              <input type="text" name="content" value="content" onChange={aa}
-              style={{
-                  width: "100%",
-                  height: "600px",
-                  paddingBottom: "570px"
-              }}></input>
-          </Content>
+          <input type="text" name="content" placeholder={x.content} onChange={aa}
+          style={{
+              width: "100%",
+              height: "600px",
+              paddingBottom: "570px"
+          }}></input>
+      </Content>
+      </div>
+    )
+})
+    return arr;
+  }
+
+  const aa =() => {
+    
+  }
+  
+return (
+  <Container>
+      <Header>글 쓰기</Header>
+      <form action={`/api/board?modify=true&id=24`} method="post" encType='multipart/form-data'>
+      <Main>
+          <List />
           <ImageAdd>
               <input type="file" name="image" placholder="이미지"></input>
           </ImageAdd>

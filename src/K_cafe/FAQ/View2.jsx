@@ -2,11 +2,9 @@ import React, {useState, useEffect} from 'react'
 import styled from "styled-components"
 import {Row, Col} from 'reactstrap'
 import { Link, useParams } from 'react-router-dom'
-import { useLocation } from 'react-router-dom'
 import cookies from 'react-cookies'
-// import kk from '/image/Logo/Logo.png'
 import axios from 'axios'
-import tt from './base.png'
+import tt  from './base.png'
 
 const Container = styled.div`
   width: 80%;
@@ -44,6 +42,13 @@ const Main_left = styled.div`
     display: none;    
 }
 `
+const CurrentBox = styled.div`
+  height: 200px;
+  margin-bottom: 20px;
+  background-image: url('/image/K_image/coffee9.jpg');
+  background-size : cover;
+  background-position: center;
+`
 
 const CurrentWriting = styled.div`
   font-size: 13px;
@@ -67,27 +72,38 @@ const Main_right = styled.div`
 const Top1 = styled.div`
   height: 50px;
   font-size: 30px;
+  display: flex;
+`
+const Top1_left = styled.div`
+  flex: 0 0 88%;
+`
+const Top1_right = styled.div`
+  flex: 0 0 12%;
+  font-size: 15px;
+
+  button{
+    width: 80%;
+    height: 30px;
+  }
 `
 const Top2 = styled.div`
-  border-bottom: 1px solid #ddd;
   height: 30px;
   display: flex;
 `
 const Top2_left = styled.div`
   flex: 0 0 88%;
+  display: flex;
 `
 const Top2_right = styled.div`
   flex: 0 0 12%;
   font-size: 15px;
+  padding-left: 5px;
 `
 const Middle = styled.div`
   padding-top: 20px;
   margin-bottom: 20px;
 `
-const Bottom = styled.div`
-
-
-`
+const Bottom = styled.div``
 const Comment_Box = styled.div`
   margin-top: 100px;
   background-color: #ddd;
@@ -117,12 +133,24 @@ const Comment_bottom = styled.div`
   margin-top: 30px;
 `
 const Comment = styled.div`
-  margin-top: 10px;
+  margin-top: 20px;
 
   div{
-    padding: 5px;
+    display: flex;
+    margin-left: 10px;
   }
 `
+const Score = styled.div`
+  background-color: pink;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  margin-right: 3px;
+`
+
 const View2 = () => { 
 
   // const info = useLocation().state;
@@ -144,38 +172,57 @@ const View2 = () => {
       const response = await axios.get('/api/board');
       setInfo(response.data.rows.reverse());
     }
+    async function c(){
+      const response = await axios.get('/api/login');
+      setMember_info(response.data.rows.reverse());
+    }
     a();
     b();
+    c();
     }, []);
 
   const [info, setInfo] = useState([]);
   const [comment_info, setComment_info] = useState([]); // 댓글 테이블 정보
   const [revise, setRevise] = useState('none'); // 수정 | 삭제 유무
-  const [comment_count, setComment_count] = useState(0); // 댓글 총갯수
-  const [image_Display, setImage_Display] = useState('none');
+  const [member_info, setMember_info] = useState([]);
   
   console.log('view2 comment: ', comment_info);
   console.log('id: ', id);
   console.log('view2 comment 길이: ', comment_info.length);
   console.log('info: ', info);
+  console.log('member info: ', member_info);
 
   const List = () => {
     const arr2 = [];
+    let rank = '';
     info.map((x, index)=>{
-      if(info.length - parseInt(id) === index){
+      member_info.map(i => {
+      if(info.length - parseInt(id) === index && i.id === x.writer){
         console.log('view2 image: ', x.image);
+        switch(true){
+          case i.score < 200 : rank = 1; break;
+          case i.score > 500 : rank = 2; break;
+          default : rank = 3; break;
+        }
+
         arr2.push(
           <DD key={x.id}>
-            <Top1>{x.title}</Top1>
+            <Top1>
+              <Top1_left>{x.title}</Top1_left>
+              <Top1_right><Link to="/membership/faq/board/1"><button>목록으로</button></Link></Top1_right>
+            </Top1>
             <Top2>
-              <Top2_left>{x.writer}&nbsp; | &nbsp;{x.date}</Top2_left>
-              <Top2_right style={{display: revise}}><Link to="/membership/faq/modify" state={{"info": info, "id": id}}>수정</Link> | <a href={`/api/board?id=${x.content}&delete=true`}>삭제</a></Top2_right>
+              <Top2_left><Score>{rank}</Score>{x.writer}&nbsp; | &nbsp;{x.date}</Top2_left>
+              <Top2_right style={{display: revise}}><Link to="/membership/faq/modify" state={{"info": info, "id": id}}>수정</Link> | <span onClick={() =>Delete(x.id)}>삭제</span></Top2_right>
+
+              {/* <a href={`/api/board?id=${x.id}&delete=true`}>삭제</a> */}
             </Top2>
             <Middle>{x.content}</Middle>
             <Bottom><img src={x.image} width="300px" height="200px" alt="" onError={base_image}></img></Bottom>
           </DD>
         )
       }
+    })
       if(x.writer === cookies.load('key')){;
         setRevise('block');
       }
@@ -185,14 +232,24 @@ const View2 = () => {
 
   const List2 = () => {
     let arr = [];
-    for(let i of comment_info){
+    let rank = '';
+    comment_info.map(i => {
+      member_info.map(x => {
+        if(i.writer === x.id){
+          switch(true){
+            case x.score < 200 : rank = 1; break;
+            case x.score > 500 : rank = 2; break;
+            default : rank = 3; break;
+          }
       arr.push(
         <Comment key={i.id}>
-          <div>{i.writer} &nbsp;|&nbsp; {i.date}</div>
+          <div><Score>{rank}</Score>{i.writer} &nbsp;|&nbsp; {i.date}</div>
           <div style={{background: "skyblue", display: "inline-block", marginLeft: "20px", fontSize: "15px"}}>{i.content}</div>
         </Comment>
       )
-    }
+        }
+        })
+    })
     return arr;
   }
 
@@ -209,6 +266,7 @@ const View2 = () => {
     }
     return arr;
   }
+
   const List4 = () => { // 최신 댓글
     let arr= [];
     let count = 0;
@@ -226,17 +284,25 @@ const View2 = () => {
   const base_image = (e) => {
     e.target.src = tt;
   }
+  const Delete = (e) => {
+    console.log('kwon');
+    if(window.confirm('삭제하시겠습니까??') === true){
+      console.log('삭제합니다');
+      window.location.href=`/api/board?id=${e}&delete=true`;
+    }
+  }
 
   return (
     <Container>
         <Header>
-          <View2_title>자유게시판</View2_title>
+          <View2_title>CHK 게시판 ^_^</View2_title>
           <Write><Link to={"/membership/faq/write"}><button>글 작성</button></Link></Write>
         </Header>
         <Row>
         <Main>
           <Col md="3">
             <Main_left>
+              <CurrentBox />
               <div>최신 글</div>
               <CurrentWriting>
                 <List3 />

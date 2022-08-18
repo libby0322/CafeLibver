@@ -1,8 +1,0 @@
-.wow{
-    opacity: 0;
-}
-
-.wow-enter-active{
-    opacity: 1;
-    transition: 1000s;
-}

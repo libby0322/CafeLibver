@@ -12,16 +12,20 @@ const Container = styled.div`
 
 const Loginok = (props) => {
 
-  const {loginid} = props;
-  console.log('loginok에서 loginid: ', loginid);
-
+  const logout = () => {
+    console.log('logout');
+    if(props.token !== true){
+      window.location.href=`/api/logout`;
+    }else {
+      localStorage.removeItem('token');
+      window.location.href='/';
+    }
+  }
+  // window.location.href=`/api/logout?kakao=${2}`;
 
   return (
     <Container>
-      {loginid.name}
-      <form action="/api/logout">
-      <input type="submit" value="로그아웃"></input>
-      </form>
+      <button onClick={logout}>로그아웃</button>
     </Container>
   )
 }

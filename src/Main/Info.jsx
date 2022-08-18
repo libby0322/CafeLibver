@@ -1,58 +1,24 @@
 import React, {useState, useEffect} from 'react'
-import styled, {keyframes} from "styled-components"
-import {Row, Col} from 'reactstrap'
+import Choi from './Choi'
+import Hong from './Hong'
+import Lim from './Lim'
 
-const ani2 = keyframes`
-    0% {
-        visibility: hidden;
-        transform: translateX(2000px);
-    }
-    100%{
-        visibility: visible;
-        transform: translateX(-150px);
-    }
-`
+const Info = ({active1, setActive1, name}) => {
 
-const Container = styled.div`
-    position: absolute;
-    width: 80%;
-    height: 600px;
-    border: 1px solid black;
-    background-color: white;
-    top: 150px;
-    right: 0;
-    visibility: hidden;
-   
-    animation: ${props => props.active ? ani2 : ""};
-    animation-fill-mode: forwards;
-    animation-duration: 2s;
-`
-const Header = styled.div`
-    border: 1px solid black;
-    width: 100%;
-    height: 30px;
-    display: flex;
-    justify-content: end;
-`
+    const [arr, setArr] = useState(Array.from({ length: 4 }, () => { return "none" }));
 
-const Info = (props) => {
-
-    const [test, setTest] = useState(false);
-
-    console.log('test: ', test);
-
-    const slide = (e) => {
-        // e.setActive2(!e.active2);
-        setTest(!test);
-        e.setActive1(!e.active1);
-    }
-
-
+    useEffect(()=> {
+        let arr2 = Array.from({ length: 4 }, () => { return "none" });
+        arr2[name] = 'block';
+        setArr(arr2);
+    }, [name]);
 
   return (
-    <Container  active={props.active1} test={test}>
-        <Header><button onClick={()=>slide(props)}>닫기</button></Header>
-    </Container>
+    <>
+        <Choi active1={active1} setActive1={setActive1} name={name} arr={arr}/>
+        <Hong active1={active1} setActive1={setActive1} name={name} arr={arr}/>
+        <Lim active1={active1} setActive1={setActive1} name={name} arr={arr}/>
+    </>
   )
 }
 

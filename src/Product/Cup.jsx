@@ -9,11 +9,27 @@ import styled from "styled-components";
 
 
 
-const Cup = ({subTop, subTopClose, addList, setAddList, add}) => {
+const Cup = ({subTop, subTopClose, addList, setAddList}) => {
 
 
+  let [modal, setModal] = useState(false);
+  let [subList, setSubList] = useState(false);
+  let [tt, setTt] = useState(true);
+
+
+  let [libby, setLibby] = useState(1);
+
+  const add = () => {
+    setSubList(true);
+    setTt(false);
+  }
+  
+ 
+  
+  
 
   const mugAdd = (r) => {
+    console.log('r', r);
     let arr = [...addList];
     for(let i=0; i<MugList.MugList.length; i++){
       if(MugList.MugList[i].id === r){

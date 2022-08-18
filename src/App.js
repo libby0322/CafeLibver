@@ -21,7 +21,7 @@ import Cup from './Product/Cup'
 import Acc from './Product/Acc'
 import PackTea from './Product/PackTea'
 import { BrowserRouter,Routes,Route } from "react-router-dom";
-import Cart from './Menu/Cart';
+import P_Cart from './Product/P_Cart';
 import HPay from './Hee/HPay';
 import Login from './Login/Login_page'
 import SignUp from './Login/SignUp'
@@ -58,7 +58,7 @@ const App = () => {
         <Route path='/acc' element={<Acc />} />
         <Route path='/packTea' element={<PackTea />} />
         <Route path='/pay' element= {<HPay/>}/>
-        <Route path="/cart" element={<Cart/>}/>
+        <Route path="/pcart" element={<P_Cart/>}/>
         <Route path="/login" element={<Login />}/>
         <Route path="/signup" element={<SignUp />}/>
       </Routes>

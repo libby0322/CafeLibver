@@ -2,16 +2,22 @@ import React, { useState, useRef } from 'react';
 import BagList  from './ProList.json';
 import CardList from './ProList.json';
 import EtcList from './ProList.json';
+import Product from './Product';
 import * as Styled from "./Style";
+import P_Cart from './P_Cart';
 
-const Acc = ({subTop1, setSubTop1, addList, setAddList, add}) => {
+const Acc = ({subTop1, setSubTop1, addList, setAddList}) => {
+
+  // console.log('accaddList: ', addList);
 
   const [test, setTest] = useState(1);
   let [modal, setModal] = useState(false);
   let [subList, setSubList] = useState(false);
   let [tt, setTt] = useState(true);
-
-
+  const add = () => {
+    setSubList(true);
+    setTt(false);
+  }
   const subTopClose1 = (props) =>{
     setSubTop1(false);
   }
@@ -51,9 +57,7 @@ const Acc = ({subTop1, setSubTop1, addList, setAddList, add}) => {
 
 
 
-
-
-  let list = BagList.BagList.map((BagList, index)=>{
+     let list = BagList.BagList.map((BagList, index)=>{
     return (
       <Styled.ListImgBox key={index} onClick={()=>bagAdd(index+1)}> 
         <img src={BagList.url} />

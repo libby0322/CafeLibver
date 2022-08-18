@@ -102,7 +102,7 @@ const show =(listVal)=>{
   return (
       <>
       <RLayout display2={display2} setDisplay2={setDisplay2}/>
-      <B_Cart bb={cartList}/>
+      {/* <B_Cart bb={cartList}/> */}
       <GoTop/>
       <JW_Cart2 jw={cartList} display2={display2}/>
       <div className='b_imgbox'> 

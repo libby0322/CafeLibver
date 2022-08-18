@@ -99,10 +99,10 @@ font-weight: 800;
     height: 40px;
     padding-top: 5px;
     font-size: 20px;
-    position: absolute;
     transform: translate(50%, -400%);
     opacity: 0.8;
     display: none;
+    position: absolute;
 }
 .flexList-dessert>img{
     width: 267px;
@@ -114,8 +114,9 @@ font-weight: 800;
    text-align: center;
   cursor: pointer;
 }
-.b_flexList img:hover + .clickMe{
+.b_flexList>img:hover + .clickMe{
     display: block; 
+  
 }
 .flexList-dessert img:hover + .clickMe{
     display: block; 
@@ -129,7 +130,7 @@ font-weight: 800;
     margin:20px 0;
  }
 .b_mNav{
-    margin: 50px 0;
+    height: 120px;
 }
 
 .b-cart{
@@ -149,6 +150,7 @@ font-weight: 800;
     text-overflow: ellipsis;
     display: none;
 }
+
 .b_desc li{
     position: absolute;
     left: -300px;
@@ -167,14 +169,12 @@ font-weight: 800;
 }
 
 li.b_icon{
-    width: 300px;
+
     display: flex;
     justify-content: space-evenly;
-    position: absolute;
-    bottom: 0;
-    font-size: 20px;
-    padding-top: 20px;
+  
 }
+
 /* 최보은이 만든 cartbOX */
 .b_cart{
     width: 200px;
@@ -348,10 +348,7 @@ form>label{
 .b_desc>li{
     left: -200px;
 }
-li.b_icon{
-    bottom: -10px;
-    left: -255px;
-}
+
 .b_total{
     width: 90%;
     height: 400px;
@@ -398,7 +395,6 @@ li.b_icon{
     width: 100%;
     white-space: wrap;
     text-overflow: ellipsis;
-    display: none;
     font-size: 13px;
     font-weight: 200;
 }
@@ -407,21 +403,21 @@ li.b_icon{
     left: -100px;
 }
 
-.w_li{
+/* .w_li{
     display: none;
-}
+} */
 .w_li2{
    margin-top: 50px;
    font-size: 13px;
 }
-li.b_icon{
+/* li.b_icon{
     width: 300px;
     padding-top: 20px;
     display: inline-block;
     font-size: 15px;
     padding-left: 10px;
     bottom: 140px;
-}
+} */
 .b_mNav{
     margin-top: 20px;
     margin-bottom: 20px;

@@ -4,8 +4,7 @@ import $ from 'jquery'
 const Cart_test = ({modal, addList}) => {
   const [add,setAdd] = useState(Array.from({length : 14},()=> 0));
   const [price,setPrice] = useState(Array.from({length : 58}));
-  const [sum,setSum] = useState(Array.from({length : 15}));
-const [sum22,setSum22]= useState([]);
+  const [sum,setSum] = useState(0);
 
 
 // 장바구니 닫기   
@@ -55,33 +54,40 @@ const sumConfirm = ()=>{
 // 장바구니에 추가된 것
 let arr = []; //prop으로 받아온 addList를 뿌려줄 빈 배열
 let add_ = [...add]; // useState로 설정한 배열 복사
-let _price = [...price]; 
+let _price = [...price]; //금액 복사
 
-
-let sumTest = [];
 for(let i =0; i < addList.length; i++){
 let cost = addList[i].price;
-  sumTest.push(addList[i].price);
+
   
-console.log('sumTest :',sumTest)
+
+
+
 // 수량 및 가격 증가
 
 const plus = ()=>{
   add_[i] +=1
   setAdd(add_);
   _price[i] = cost * add_[i];
-  setPrice(_price);
+  setPrice(_price); 
+  setSum(sum + cost);
 
 }  
 
 // 수량 및 가격 빼기
 const minus = ()=>{
-  add_[i] -=1
+  if(add[i] < 1){
+    alert('최소 주문 수량은 1개 이상입니다!')
+  }else{
+      add_[i] -=1
   setAdd(add_);
   _price[i] = price[i] - cost;
   setPrice(_price);
-  setSum(sum - _price[i]);  
+  setSum(sum - cost);  
+  }
+
 }
+
      arr.push(
         <>
         <tr key={addList[i].id} id="list">
@@ -123,7 +129,7 @@ const minus = ()=>{
           {arr}
           </table>
           <form action="/" className='text-center pt-3'>
-          <span className='text-center mx-5'>총 가격 : {sumTest}원</span>
+          <span className='text-center mx-5'>총 가격 : {sum}원</span>
             <select name="store" id="store" className='text-center mx-5' >
               <option value="default">-----매장을 선택하세요-----</option>  
               <option value="김포 장기점">김포 장기점</option>

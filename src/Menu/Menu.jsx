@@ -33,19 +33,7 @@ const Menu = ({addList,setAddList,non,dessert}) => {
    }  
  }
 
-//클릭하면 상품 설명 보이기
-// let test1 = [];
-// let test2 = [];
-// const showDesc = (e)=>{
-// if(e){
-//   $('.b_desc').toggle();
-// }else{
-//   $('.b_desc').toggle();
-// }
-//  console.log('test1 :',test1);
-//  console.log('test2 :',test2)
 
-// }
 
  // cart 버튼 클릭 시 장바구니에 추가
    const add = (e) => {  
@@ -56,9 +44,31 @@ const Menu = ({addList,setAddList,non,dessert}) => {
 
    const coffee = [];
    for(let i=0;i<coffeeList.coffeeList.length;i++){
+    // 클릭하면 상품 설명 보이기
+
+    const showDesc = (e)=>{
+      console.log('e : ',e);
+      // $('.b_desc')[e]
+      // if(e == coffeeList.coffeeList[e].id){
+        
+      //   console.log('e :::: ',$('.b_desc')[e]);
+      // }else{
+      //   console.log('실패다');
+      //   console.log('e :::: ',$('.b_desc')[e]);
+      // }
+      let listId = e;
+      if(e.id != e.e){
+        console.log('성공');
+        $(listId).css("display","block")
+      }else{
+        console.log('실패')
+      }
+      }
+
+    
        coffee.push(
            <>
-           <li className='b_flexList'  key={coffeeList.coffeeList[i].idd}>
+           <li className='b_flexList' onClick={()=>showDesc({id :coffeeList.coffeeList[i].id,e:i})} key={coffeeList.coffeeList[i].idd}>
          
              <img src={coffeeList.coffeeList[i].url} alt={coffeeList.coffeeList[i].id} className="img" />
               <div className="clickMe">

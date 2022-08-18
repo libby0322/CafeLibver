@@ -23,6 +23,7 @@ import SignUp from './Login/SignUp'
 import P_Pay from './Product/P_Pay'
 import './app.css'
 import Auth from './Auth'
+import Menu from './Menu/Main'
 
 
 
@@ -55,6 +56,7 @@ const App = () => {
         <Route path="/cart" element={<Cart/>}/>
         <Route path="/login" element={<Login />}/>
         <Route path="/signup" element={<SignUp />}/>
+        <Route path="/menu" element={<Menu />}/>
       </Routes>
     </BrowserRouter>
   )

@@ -5,6 +5,7 @@ import JwCart from './JwCart';
 
 
 const Main = () => {
+  
     // 해당 pointer로 이동
     const non = useRef();
     const dessert = useRef();

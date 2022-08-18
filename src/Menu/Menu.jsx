@@ -35,40 +35,22 @@ const Menu = ({addList,setAddList,non,dessert}) => {
 
 
 
- // cart 버튼 클릭 시 장바구니에 추가
+ // cart 버튼 클릭 시 장바구니에 추가 + 알림멘트
    const add = (e) => {  
       let arr = [...addList];
       arr.push(e);
       setAddList(arr);
-   }
 
+     alert('장바구니에 추가되었습니다!')
+   }
+ 
    const coffee = [];
    for(let i=0;i<coffeeList.coffeeList.length;i++){
-    // 클릭하면 상품 설명 보이기
-
-    const showDesc = (e)=>{
-      console.log('e : ',e);
-      // $('.b_desc')[e]
-      // if(e == coffeeList.coffeeList[e].id){
-        
-      //   console.log('e :::: ',$('.b_desc')[e]);
-      // }else{
-      //   console.log('실패다');
-      //   console.log('e :::: ',$('.b_desc')[e]);
-      // }
-      let listId = e;
-      if(e.id != e.e){
-        console.log('성공');
-        $(listId).css("display","block")
-      }else{
-        console.log('실패')
-      }
-      }
-
+  
     
        coffee.push(
            <>
-           <li className='b_flexList' onClick={()=>showDesc({id :coffeeList.coffeeList[i].id,e:i})} key={coffeeList.coffeeList[i].idd}>
+           <li className='b_flexList' key={coffeeList.coffeeList[i].idd}>
          
              <img src={coffeeList.coffeeList[i].url} alt={coffeeList.coffeeList[i].id} className="img" />
               <div className="clickMe">
@@ -96,13 +78,13 @@ const Menu = ({addList,setAddList,non,dessert}) => {
    for(let i=0; i< tea.Beverage.length;i++){
      nonCoffee.push(
            <>
-               <li className='b_flexList' key={tea.Beverage[i].id}>
+               <li className='b_flexList'  key={tea.Beverage[i].id}>
                  <img src={tea.Beverage[i].url} alt={tea.Beverage[i].id}  />
                  <div className="clickMe">
                <i class="fa-regular fa-hand-pointer">  ClickMe!</i>
               </div>
                  <li className='b_icon'>
-                 <i class="fa-regular fa-heart" onClick={()=>plusLike(i)} style={{color:"#fa6464", cursor:"pointer"}}></i>
+                 <i class="fa-regular fa-heart" style={{color:"#fa6464", cursor:"pointer"}}></i>
                  <i class="fa-solid fa-cart-arrow-down" key={tea.Beverage.id} style={{color:"skyblue", cursor:"pointer"}} onClick={()=>add({id : tea.Beverage.id,title :tea.Beverage[i].title,price : tea.Beverage[i].price ,url : tea.Beverage[i].url})}></i>
                  </li>
                  <p className='text-center'>{tea.Beverage[i].title}</p>
@@ -120,7 +102,7 @@ const Menu = ({addList,setAddList,non,dessert}) => {
                <i class="fa-regular fa-hand-pointer">  ClickMe!</i>
               </div>
                <li className='b_icon'>
-                 <i class="fa-regular fa-heart" onClick={()=>plusLike(i)} style={{color:"#fa6464", cursor:"pointer"}}><span style={{color:"black",display:"inline-block", paddingLeft:"5px"}}></span></i>
+                 <i class="fa-regular fa-heart" style={{color:"#fa6464", cursor:"pointer"}}><span style={{color:"black",display:"inline-block", paddingLeft:"5px"}}></span></i>
                <i class="fa-solid fa-cart-arrow-down" id={juice.fruit.id} style={{color:"skyblue", cursor:"pointer"}} onClick={()=>add({id : juice.fruit.id ,title :juice.fruit[i].title,price : juice.fruit[i].price ,url : juice.fruit[i].url})}></i>
               </li>
                <p className='text-center'>{juice.fruit[i].title}</p>
@@ -140,7 +122,7 @@ for(let i=0; i< desert.desert.length;i++){
                <i class="fa-regular fa-hand-pointer">  ClickMe!</i>
               </div>
             <li className='b_icon'>
-              <i class="fa-regular fa-heart" onClick={()=>plusLike(i)} style={{color:"#fa6464", cursor:"pointer"}}><span style={{color:"black",display:"inline-block", paddingLeft:"5px"}}></span></i>
+              <i class="fa-regular fa-heart"style={{color:"#fa6464", cursor:"pointer"}}><span style={{color:"black",display:"inline-block", paddingLeft:"5px"}}></span></i>
             <i class="fa-solid fa-cart-arrow-down" id={desert.desert.id} style={{color:"skyblue", cursor:"pointer"}} onClick={()=>add({id : desert.desert.id ,title :desert.desert[i].title,price : desert.desert[i].price ,url : desert.desert[i].url})}></i>
            </li>
             <p className='text-center'>{desert.desert[i].title}</p>
@@ -158,7 +140,7 @@ for(let i=0; i< bread.bread.length;i++){
                <i class="fa-regular fa-hand-pointer">  ClickMe!</i>
               </div>
             <li className='b_icon'>
-              <i class="fa-regular fa-heart" onClick={()=>plusLike(i)} style={{color:"#fa6464", cursor:"pointer"}}><span style={{color:"black",display:"inline-block", paddingLeft:"5px"}}></span></i>
+              <i class="fa-regular fa-heart"  style={{color:"#fa6464", cursor:"pointer"}}><span style={{color:"black",display:"inline-block", paddingLeft:"5px"}}></span></i>
             <i class="fa-solid fa-cart-arrow-down" id={bread.bread.id} style={{color:"skyblue", cursor:"pointer"}} onClick={()=>add({id : bread.bread.id ,title :bread.bread[i].title,price : bread.bread[i].price ,url : bread.bread[i].url})}></i>
            </li>
             <p className='text-center'>{bread.bread[i].title}</p>
@@ -175,7 +157,7 @@ for(let i=0; i< mini.mini.length;i++){
                <i class="fa-regular fa-hand-pointer">  ClickMe!</i>
               </div>
             <li className='b_icon'>
-              <i class="fa-regular fa-heart" onClick={()=>plusLike(i)} style={{color:"#fa6464", cursor:"pointer"}}><span style={{color:"black",display:"inline-block", paddingLeft:"5px"}}></span></i>
+              <i class="fa-regular fa-heart"  style={{color:"#fa6464", cursor:"pointer"}}><span style={{color:"black",display:"inline-block", paddingLeft:"5px"}}></span></i>
             <i class="fa-solid fa-cart-arrow-down" id={mini.mini.id} style={{color:"skyblue", cursor:"pointer"}} onClick={()=>add({id :mini.mini.id ,title :mini.mini[i].title,price : mini.mini[i].price ,url : mini.mini[i].url})}></i>
            </li>
             <p className='text-center'>{mini.mini[i].title}</p>

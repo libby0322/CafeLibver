@@ -26,13 +26,7 @@ const check = () =>{
       $('.b_cimg').remove();
       $('.b_textTotal').remove();
   }
-  // 선택삭제 버튼
-  const select = ()=>{
-    let check = $('.check').is('.checked');
-    if($('.check').is(':checked')){
-      $('tr#list').remove(check);
-    }
-  }
+ 
 
 const sumConfirm = ()=>{
 
@@ -143,7 +137,7 @@ const minus = ()=>{
   
           <div className='d-flex justify-content-around mt-5'>
           <span className='btn btn-warning'onClick={remove} >전체 삭제</span>  
-          <span className='btn btn-warning' onClick={select}> 선택 삭제</span>  
+         
             <span className='btn btn-warning' onClick={sumConfirm}>주문하기</span>
           </div> 
     </div>

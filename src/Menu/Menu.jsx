@@ -12,14 +12,24 @@ import styled from 'styled-components';
 
 
 const Show = styled.div`
-  width: 200px;
-  height: 100px;
-  background-color : rgba(0,0,0,0.1);
+  width: 300px;
+  height: 150px;
+  background-color : #ffd8d89e;
+  position: fixed;
+  z-index : 1;
+  left : 700px;
+  top: 200px;
+  display : flex;
+  justify-content: center;
+  align-items:center;
+
 `
 
 const Menu = ({addList,setAddList,non,dessert}) => {
+const [pop,setpop] = useState(false);
 
-//하트 버튼
+
+//하트 버튼 
  const [likeArr, setLikeArr] = useState(Array.from({length: 14}, () => 296)); // likeArr 배열 선언 ( 배열에 들어있는 변수들의 초기값은 296 으로 )
   
  const plusLike = (i) => {
@@ -46,7 +56,11 @@ const Menu = ({addList,setAddList,non,dessert}) => {
       arr.push(e);
       setAddList(arr);
 
-     alert('장바구니에 추가되었습니다!')
+     if(e){
+      setTimeout($('.popup').fadeIn(2000,function(){
+        $('.popup').fadeOut(2000);
+      }),1000);
+     }
    }
  
    const coffee = [];
@@ -55,16 +69,13 @@ const Menu = ({addList,setAddList,non,dessert}) => {
     
        coffee.push(
            <>
-           <li className='b_flexList' key={coffeeList.coffeeList[i].idd}>
+           <li className='b_flexList' key={coffeeList.coffeeList[i].idd} onClick={()=>add({id : coffeeList.coffeeList[i].id,title :coffeeList.coffeeList[i].title,price : coffeeList.coffeeList[i].price ,url : coffeeList.coffeeList[i].url})}>
          
              <img src={coffeeList.coffeeList[i].url} alt={coffeeList.coffeeList[i].id} className="img" />
               <div className="clickMe">
                <i class="fa-regular fa-hand-pointer">  ClickMe!</i>
               </div>
-              <li className='b_icon'>
-             <i class="fa-regular fa-heart" style={{color:"#fa6464", cursor:"pointer"}} ></i>
-             <i class="fa-solid fa-cart-arrow-down" id={coffeeList.coffeeList[i].id} style={{color:"skyblue", cursor:"pointer"}} onClick={()=>add({id : coffeeList.coffeeList[i].id,title :coffeeList.coffeeList[i].title,price : coffeeList.coffeeList[i].price ,url : coffeeList.coffeeList[i].url})}></i>
-             </li>
+         
              <p className='text-center'>{coffeeList.coffeeList[i].title}</p>
            </li>  
          <div className='b_descBox'>
@@ -83,15 +94,11 @@ const Menu = ({addList,setAddList,non,dessert}) => {
    for(let i=0; i< tea.Beverage.length;i++){
      nonCoffee.push(
            <>
-               <li className='b_flexList'  key={tea.Beverage[i].id}>
+               <li className='b_flexList'  key={tea.Beverage[i].id} onClick={()=>add({id : tea.Beverage.id,title :tea.Beverage[i].title,price : tea.Beverage[i].price ,url : tea.Beverage[i].url})} >
                  <img src={tea.Beverage[i].url} alt={tea.Beverage[i].id}  />
                  <div className="clickMe">
                <i class="fa-regular fa-hand-pointer">  ClickMe!</i>
               </div>
-                 <li className='b_icon'>
-                 <i class="fa-regular fa-heart" style={{color:"#fa6464", cursor:"pointer"}}></i>
-                 <i class="fa-solid fa-cart-arrow-down" key={tea.Beverage.id} style={{color:"skyblue", cursor:"pointer"}} onClick={()=>add({id : tea.Beverage.id,title :tea.Beverage[i].title,price : tea.Beverage[i].price ,url : tea.Beverage[i].url})}></i>
-                 </li>
                  <p className='text-center'>{tea.Beverage[i].title}</p>
                </li>  
            </>
@@ -101,15 +108,11 @@ const Menu = ({addList,setAddList,non,dessert}) => {
    for(let i=0; i< juice.fruit.length;i++){
      nonCoffee.push(
          <>
-             <li className='b_flexList' key={juice.fruit[i].idd}>
+             <li className='b_flexList' key={juice.fruit[i].idd}  onClick={()=>add({id : juice.fruit.id ,title :juice.fruit[i].title,price : juice.fruit[i].price ,url : juice.fruit[i].url})}> 
                <img src={juice.fruit[i].url} alt={juice.fruit[i].id}  />
                <div className="clickMe">
                <i class="fa-regular fa-hand-pointer">  ClickMe!</i>
               </div>
-               <li className='b_icon'>
-                 <i class="fa-regular fa-heart" style={{color:"#fa6464", cursor:"pointer"}}><span style={{color:"black",display:"inline-block", paddingLeft:"5px"}}></span></i>
-               <i class="fa-solid fa-cart-arrow-down" id={juice.fruit.id} style={{color:"skyblue", cursor:"pointer"}} onClick={()=>add({id : juice.fruit.id ,title :juice.fruit[i].title,price : juice.fruit[i].price ,url : juice.fruit[i].url})}></i>
-              </li>
                <p className='text-center'>{juice.fruit[i].title}</p>
              </li>  
          </>
@@ -121,15 +124,12 @@ const breadList = [];
 for(let i=0; i< desert.desert.length;i++){
   breadList.push(
       <>
-          <li className='b_flexList'   key={desert.desert[i].idd}>
+          <li className='b_flexList'   key={desert.desert[i].idd} onClick={()=>add({id : desert.desert.id ,title :desert.desert[i].title,price : desert.desert[i].price ,url : desert.desert[i].url})}>
             <img src={desert.desert[i].url} alt={desert.desert[i].id}  />
             <div className="clickMe">
                <i class="fa-regular fa-hand-pointer">  ClickMe!</i>
               </div>
-            <li className='b_icon'>
-              <i class="fa-regular fa-heart"style={{color:"#fa6464", cursor:"pointer"}}><span style={{color:"black",display:"inline-block", paddingLeft:"5px"}}></span></i>
-            <i class="fa-solid fa-cart-arrow-down" id={desert.desert.id} style={{color:"skyblue", cursor:"pointer"}} onClick={()=>add({id : desert.desert.id ,title :desert.desert[i].title,price : desert.desert[i].price ,url : desert.desert[i].url})}></i>
-           </li>
+
             <p className='text-center'>{desert.desert[i].title}</p>
           </li>  
  
@@ -139,15 +139,11 @@ for(let i=0; i< desert.desert.length;i++){
 for(let i=0; i< bread.bread.length;i++){
   breadList.push(
       <>
-          <li className='b_flexList' key={bread.bread[i].idd}>
+          <li className='b_flexList' key={bread.bread[i].idd}  onClick={()=>add({id : bread.bread.id ,title :bread.bread[i].title,price : bread.bread[i].price ,url : bread.bread[i].url})}> 
             <img src={bread.bread[i].url} alt={bread.bread[i].id}  />
             <div className="clickMe">
                <i class="fa-regular fa-hand-pointer">  ClickMe!</i>
               </div>
-            <li className='b_icon'>
-              <i class="fa-regular fa-heart"  style={{color:"#fa6464", cursor:"pointer"}}><span style={{color:"black",display:"inline-block", paddingLeft:"5px"}}></span></i>
-            <i class="fa-solid fa-cart-arrow-down" id={bread.bread.id} style={{color:"skyblue", cursor:"pointer"}} onClick={()=>add({id : bread.bread.id ,title :bread.bread[i].title,price : bread.bread[i].price ,url : bread.bread[i].url})}></i>
-           </li>
             <p className='text-center'>{bread.bread[i].title}</p>
           </li>  
       </>
@@ -156,15 +152,11 @@ for(let i=0; i< bread.bread.length;i++){
 for(let i=0; i< mini.mini.length;i++){
   breadList.push(
       <>
-          <li className='b_flexList' key={mini.mini[i].idd}>
+          <li className='b_flexList' key={mini.mini[i].idd} onClick={()=>add({id :mini.mini.id ,title :mini.mini[i].title,price : mini.mini[i].price ,url : mini.mini[i].url})}>
             <img src={mini.mini[i].url} alt={mini.mini[i].id}  />
             <div className="clickMe">
                <i class="fa-regular fa-hand-pointer">  ClickMe!</i>
               </div>
-            <li className='b_icon'>
-              <i class="fa-regular fa-heart"  style={{color:"#fa6464", cursor:"pointer"}}><span style={{color:"black",display:"inline-block", paddingLeft:"5px"}}></span></i>
-            <i class="fa-solid fa-cart-arrow-down" id={mini.mini.id} style={{color:"skyblue", cursor:"pointer"}} onClick={()=>add({id :mini.mini.id ,title :mini.mini[i].title,price : mini.mini[i].price ,url : mini.mini[i].url})}></i>
-           </li>
             <p className='text-center'>{mini.mini[i].title}</p>
           </li>  
       </>
@@ -202,8 +194,8 @@ for(let i=0; i< mini.mini.length;i++){
         {breadList}
     </ul> 
 </div>
-<Show>
-  <p>안녕하셍?</p>
+<Show className='popup' style={{display:"none"}}>
+  <p>고객님! 장바구니에 추가되었습니다!!</p>
 </Show>
 <GoTop/>
 <Footer/>

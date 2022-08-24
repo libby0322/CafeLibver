@@ -8,9 +8,14 @@ import mini from './MenuList.json';
 import Footer from './Footer';
 import GoTop from './GoTop';
 import $ from 'jquery'
+import styled from 'styled-components';
 
 
-
+const Show = styled.div`
+  width: 200px;
+  height: 100px;
+  background-color : rgba(0,0,0,0.1);
+`
 
 const Menu = ({addList,setAddList,non,dessert}) => {
 
@@ -197,7 +202,9 @@ for(let i=0; i< mini.mini.length;i++){
         {breadList}
     </ul> 
 </div>
-
+<Show>
+  <p>안녕하셍?</p>
+</Show>
 <GoTop/>
 <Footer/>
 </>

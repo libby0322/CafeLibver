@@ -3,7 +3,7 @@ import $ from 'jquery'
 
 const JwCart = ({modal,setModal,addList}) => {
 
-const [number,setNumber] = useState(Array.from({ length: 14 }, () => { return 1 }));
+const [number,setNumber] = useState(Array.from({ length: 14 }, () => { return 0 }));
 const [price,setPrice] = useState(Array.from({ length: 14 }));
 const [total, setTotal] = useState(0);  //총합의 기본 값=0
 
@@ -30,16 +30,20 @@ const [total, setTotal] = useState(0);  //총합의 기본 값=0
 // 장바구니에 추가 된 목록
 
 let arr = [];  
+let _price = [...price];
 
 for(let i =0; i<addList.length;i++){
-
+let cost = addList[i].price;
  // + 버튼 누르면 증가
  const onIncrease = () => {  
   let test2 = [...number];  //수량 복사 
   test2[i] += 1;   //``각 인덱스의 수량이 1씩 증가
   setNumber(test2);  //화면에 출력됨    
-
+_price[i] = cost * test2[i] 
+  setPrice(_price);
+  setTotal(total + cost);
 }
+// - 버튼 누르면 감소
 const onDecrease = () => {
   let test2 = [...number];
   if (number[i] === 1) {   //수량이 1일때
@@ -48,7 +52,9 @@ const onDecrease = () => {
   }
   test2[i] -= 1;
   setNumber(test2);
-
+  _price[i] = price[i] - cost;
+  setPrice(_price);
+  setTotal(total - cost);
 }
 // 삭제버튼
 const del = (proNum, title) => {
@@ -60,7 +66,7 @@ const del = (proNum, title) => {
         
         const delPro = document.getElementById(title);
         delPro.remove();
-        
+        setTotal(total - _price[i]);
       }else{   //취소
           return false;
       }
@@ -71,7 +77,7 @@ const del = (proNum, title) => {
     <ul className="h_pick-pd" id={addList[i].title}>
             <li><img src={addList[i].url} alt="product" /></li>
             <li className='proTitle'>{addList[i].title}</li>
-            <li className='pprice'>{addList[i].price} \</li>  
+            <li className='pprice'>{price[i]} \</li>  
             <li>수량: <button className="uuu" onClick={() => onIncrease()}>+</button> {number[i]} <button onClick={() => onDecrease()}>-</button></li>
             <li><button className="h_cancle" onClick={() => del(addList[i].price,addList[i].title)} > 삭 제 </button></li>
           </ul>

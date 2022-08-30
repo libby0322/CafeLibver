@@ -17,7 +17,6 @@ import Cup from './Product/Cup'
 import Acc from './Product/Acc'
 import PackTea from './Product/PackTea'
 import { BrowserRouter,Routes,Route } from "react-router-dom";
-import Cart from './Menu/Cart';
 import Login from './Login/Login_page'
 import SignUp from './Login/SignUp'
 import P_Pay from './Product/P_Pay'
@@ -37,7 +36,6 @@ const App = () => {
       <Routes>
         <Route path='/' element = {<Main />} />
         <Route path='/kakao/callback' element = {<Auth />} />
-        <Route path='/coffee' element= {<Coffee/>}/>
         <Route path='/membership' element={<Membership />}/>
         <Route path='/membership/app' element={<MembershipApp />}/>
         <Route path='/membership/faq' element={<MembershipFaq />}/>
@@ -53,7 +51,6 @@ const App = () => {
         <Route path='/cup' element={<Cup />}/>
         <Route path='/acc' element={<Acc />} />
         <Route path='/packTea' element={<PackTea />} />
-        <Route path="/cart" element={<Cart/>}/>
         <Route path="/login" element={<Login />}/>
         <Route path="/signup" element={<SignUp />}/>
         <Route path="/menu" element={<Menu />}/>

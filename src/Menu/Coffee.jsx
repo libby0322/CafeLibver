@@ -3,7 +3,7 @@ import coffeeList from './MenuList.json';
 import './menu.css';
 import RLayout from './RLayout';
 import $ from 'jquery';
-import B_Cart from './B_Cart'
+
 import GoTop from './GoTop';
 import JW_Cart2 from './JW_Cart2';
 import Footer from './Footer';
@@ -102,7 +102,6 @@ const show =(listVal)=>{
   return (
       <>
       <RLayout display2={display2} setDisplay2={setDisplay2}/>
-      {/* <B_Cart bb={cartList}/> */}
       <GoTop/>
       <JW_Cart2 jw={cartList} display2={display2}/>
       <div className='b_imgbox'> 

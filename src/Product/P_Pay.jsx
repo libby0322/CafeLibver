@@ -135,9 +135,9 @@ const P_Pay = (location) => {
       arr.splice(r,1, '');
       setAddList(arr);
       setSum(sum - arr2[r])
-    
     }
  
+    
   
 const PayList = () => {
   let arr = [];

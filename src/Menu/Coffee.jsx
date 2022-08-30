@@ -77,7 +77,7 @@ const show =(listVal)=>{
             <li className='b_flexList' onClick={()=>show(i)} key={coffeeList.coffeeList[i].id}>
               <img src={coffeeList.coffeeList[i].url} alt={coffeeList.coffeeList[i].id}  />
               <div className="clickMe" style={{disply:"none"}}>
-                ClickMe! <i class="fa-regular fa-hand-pointer"></i>
+                ClickMe! <i className="fa-regular fa-hand-pointer"></i>
               </div>
               <p className='text-center'>{coffeeList.coffeeList[i].title}</p>
             </li>  
@@ -89,7 +89,7 @@ const show =(listVal)=>{
                 <li className="w_li2">매장 상황에 따라 판매하지 않을 수도 있습니다.</li>
                 <li className='b_icon'>
                   <i class="fa-regular fa-heart" onClick={()=>plusLike(i)} style={{color:"#fa6464", cursor:"pointer"}}><span style={{color:"black",display:"inline-block", paddingLeft:"5px"}}></span></i>
-                  <i class="fa-solid fa-cart-arrow-down" id={coffeeList.coffeeList[i].id} style={{color:"skyblue", cursor:"pointer"}} onClick={()=>{addCart(coffeeList.coffeeList[i].id)}}></i>
+                  <i className="fa-solid fa-cart-arrow-down" id={coffeeList.coffeeList[i].id} style={{color:"skyblue", cursor:"pointer"}} onClick={()=>{addCart(coffeeList.coffeeList[i].id)}}></i>
                 </li>
               </ul>
             </div>

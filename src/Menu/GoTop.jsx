@@ -32,7 +32,7 @@ const GoTop = () => {
   return (
     <GoGO>
         <button onClick={up}>
-            <i class="fa-solid fa-angle-up"></i>
+            <i className="fa-solid fa-angle-up"></i>
             <p>GoTop</p>
         </button>
     </GoGO>

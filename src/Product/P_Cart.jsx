@@ -154,7 +154,7 @@ const P_Cart = ({modal, setModal, addList, setAddList, tt}) => {
   //장바구니 제품 수량 관련
 
   const [sum, setSum] = useState(0);
-
+  const [test, setTest] = useState(0);
   const [number, setNumber] = useState(1);
   const [cost, setCost] = useState(0);
   const [costTest, setCostTest] = useState(Array.from((v, i) => i));
@@ -184,9 +184,9 @@ const P_Cart = ({modal, setModal, addList, setAddList, tt}) => {
 
   // useEffect(()=>{
 
-  //   // addList.shift();
-  //   cost.shift();
-  // }, [])
+  //   addList.shift(0);
+  //   cost.shift(0);
+  // }, [addList])
 
   const plus = (e, price) => {
 
@@ -209,27 +209,25 @@ const P_Cart = ({modal, setModal, addList, setAddList, tt}) => {
  
 
       // console.log('ll',ll)
-    const remove = (r,index)=>{
-      console.log('r: ', r);
+    const remove = (r,price,index)=>{
+      
       let arr = [...addList];
       let arr2 = [...wishTab];
-      arr.splice(r,1);
-      arr2.splice(r,1);
+      arr2[r] = price * arr2[r];
+      arr.splice(r,1,'');
+      arr2.splice(r,1,'');
       setAddList(arr);
       setWishTab(arr2);
+      cost.shift(0);
+
+      setSum(sum - arr2[r]);
       
-
-      // setSum(sum - costTest[i]);
-      // // test2[r] = test2[r]-aa[i];
-      // setTest(aa.splice(aa[i], i));
-      // setTest(bb.splice(bb[i], i));
-      // aa[i].filter(remove);
-      // bb[i].filter(remove);
-      // console.log('del addList: ', addList );    
-      // console.log('del i: ', i);
+   
+      
     }
- 
 
+    console.log('removesum :' , sum);
+    console.log('removewishtab :' , wishTab);
  
 
 
@@ -239,7 +237,7 @@ const P_Cart = ({modal, setModal, addList, setAddList, tt}) => {
  const List1 = () => {
   let arr = [];
   addList.map((i, index)=>{
-
+    if(i !== ''){
    arr.push(
             <ListBox  key={index}>
             <button className='del' onClick={()=>remove(index, i.Price)}  ><i className="fa-solid fa-xmark"/></button>
@@ -256,7 +254,7 @@ const P_Cart = ({modal, setModal, addList, setAddList, tt}) => {
             <span className='listPrice'>금액 : {i.Price} 원</span>
             </ListBox>
     )
-  
+   }
 
    })
   

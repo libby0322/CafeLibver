@@ -20,7 +20,7 @@ const RLayout = ({display2, setDisplay2}) => {
     <li><Link to = "/noncoffee" >Non Coffee</Link></li>
     <li><Link to = "/desert" >Dessert</Link></li>
     {/* <li className='b-cart'><Link to="/cart"><i class="fa-solid fa-cart-shopping"></i></Link></li> */}
-    <li className='h-cart'><i class="fa-solid fa-cart-arrow-down " onClick={test}></i></li>
+    <li className='h-cart'><i className="fa-solid fa-cart-arrow-down " onClick={test}></i></li>
    </ul>
  
    </>

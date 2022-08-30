@@ -73,7 +73,7 @@ const [pop,setpop] = useState(false);
          
              <img src={coffeeList.coffeeList[i].url} alt={coffeeList.coffeeList[i].id} className="img" />
               <div className="clickMe">
-               <i class="fa-regular fa-hand-pointer">  ClickMe!</i>
+               <i className="fa-regular fa-hand-pointer">  ClickMe!</i>
               </div>
          
              <p className='text-center'>{coffeeList.coffeeList[i].title}</p>
@@ -97,7 +97,7 @@ const [pop,setpop] = useState(false);
                <li className='b_flexList'  key={tea.Beverage[i].id} onClick={()=>add({id : tea.Beverage.id,title :tea.Beverage[i].title,price : tea.Beverage[i].price ,url : tea.Beverage[i].url})} >
                  <img src={tea.Beverage[i].url} alt={tea.Beverage[i].id}  />
                  <div className="clickMe">
-               <i class="fa-regular fa-hand-pointer">  ClickMe!</i>
+               <i className="fa-regular fa-hand-pointer">  ClickMe!</i>
               </div>
                  <p className='text-center'>{tea.Beverage[i].title}</p>
                </li>  
@@ -111,9 +111,9 @@ const [pop,setpop] = useState(false);
              <li className='b_flexList' key={juice.fruit[i].idd}  onClick={()=>add({id : juice.fruit.id ,title :juice.fruit[i].title,price : juice.fruit[i].price ,url : juice.fruit[i].url})}> 
                <img src={juice.fruit[i].url} alt={juice.fruit[i].id}  />
                <div className="clickMe">
-               <i class="fa-regular fa-hand-pointer">  ClickMe!</i>
+               <i className="fa-regular fa-hand-pointer">  ClickMe!</i>
               </div>
-               <p className='text-center'>{juice.fruit[i].title}</p>
+               <p classNameName='text-center'>{juice.fruit[i].title}</p>
              </li>  
          </>
      )
@@ -127,7 +127,7 @@ for(let i=0; i< desert.desert.length;i++){
           <li className='b_flexList'   key={desert.desert[i].idd} onClick={()=>add({id : desert.desert.id ,title :desert.desert[i].title,price : desert.desert[i].price ,url : desert.desert[i].url})}>
             <img src={desert.desert[i].url} alt={desert.desert[i].id}  />
             <div className="clickMe">
-               <i class="fa-regular fa-hand-pointer">  ClickMe!</i>
+               <i className="fa-regular fa-hand-pointer">  ClickMe!</i>
               </div>
 
             <p className='text-center'>{desert.desert[i].title}</p>
@@ -142,7 +142,7 @@ for(let i=0; i< bread.bread.length;i++){
           <li className='b_flexList' key={bread.bread[i].idd}  onClick={()=>add({id : bread.bread.id ,title :bread.bread[i].title,price : bread.bread[i].price ,url : bread.bread[i].url})}> 
             <img src={bread.bread[i].url} alt={bread.bread[i].id}  />
             <div className="clickMe">
-               <i class="fa-regular fa-hand-pointer">  ClickMe!</i>
+               <i className="fa-regular fa-hand-pointer">  ClickMe!</i>
               </div>
             <p className='text-center'>{bread.bread[i].title}</p>
           </li>  
@@ -155,7 +155,7 @@ for(let i=0; i< mini.mini.length;i++){
           <li className='b_flexList' key={mini.mini[i].idd} onClick={()=>add({id :mini.mini.id ,title :mini.mini[i].title,price : mini.mini[i].price ,url : mini.mini[i].url})}>
             <img src={mini.mini[i].url} alt={mini.mini[i].id}  />
             <div className="clickMe">
-               <i class="fa-regular fa-hand-pointer">  ClickMe!</i>
+               <i className="fa-regular fa-hand-pointer">  ClickMe!</i>
               </div>
             <p className='text-center'>{mini.mini[i].title}</p>
           </li>  

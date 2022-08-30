@@ -38,8 +38,8 @@ const Main = () => {
   <li className='nav'>Coffee</li>
   <li className='nav' onClick={nonClick}>Non coffee</li>
   <li className='nav' onClick={dessertClick}>Bread</li>
-  <li className='nav'><i class="fa-solid fa-basket-shopping" onClick={modal_test}></i> </li>
-  <li className='nav'><i class="fa-solid fa-cart-shopping" onClick={modal_}>지우</i> </li>
+  <li className='nav'><i className="fa-solid fa-basket-shopping" onClick={modal_test}></i> </li>
+  <li className='nav'><i className="fa-solid fa-cart-shopping" onClick={modal_}>지우</i> </li>
 </ul>
 </div>
 <Menu addList={addList} setAddList={setAddList} non={non} dessert={dessert} />

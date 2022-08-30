@@ -26,28 +26,6 @@ const Show = styled.div`
 `
 
 const Menu = ({addList,setAddList,non,dessert}) => {
-const [pop,setpop] = useState(false);
-
-
-//하트 버튼 
- const [likeArr, setLikeArr] = useState(Array.from({length: 14}, () => 296)); // likeArr 배열 선언 ( 배열에 들어있는 변수들의 초기값은 296 으로 )
-  
- const plusLike = (i) => {
-   let _likeArr = [...likeArr];    //[296, 296, 296, 296, 296, 296...]
-   let element = document.getElementsByClassName('fa-heart');
-   
-   if(_likeArr[i] === 296){   // 배열에서 인덱스 i인 제품의 좋아요의 값이 296이니까 +1
-     _likeArr[i] += 1;    
-     setLikeArr(_likeArr);
-     element[i].className = 'fa-solid fa-heart'; //클래스 이름 수정
- 
-   }else{                  // 배열에서 인덱스 i인 제품의 좋아요의 값이 297이니까 -1
-     _likeArr[i] -= 1;
-     setLikeArr(_likeArr);   
-     element[i].className = 'fa-regular fa-heart'; //클래스 이름 수정
-   }  
- }
-
 
 
  // cart 버튼 클릭 시 장바구니에 추가 + 알림멘트

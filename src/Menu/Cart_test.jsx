@@ -1,11 +1,34 @@
-import React,{useState} from 'react'
+import {React,useState,useEffect} from 'react'
 import $ from 'jquery'
+
 
 const Cart_test = ({modal, addList}) => {
   const [add,setAdd] = useState(Array.from({length : 14},()=> 0));
-  const [price,setPrice] = useState(Array.from({length : 58}));
+  const [price,setPrice] = useState(Array.from({length : 15},() => 0));
   const [sum,setSum] = useState(0);
+ 
+  let test = [];
+  
+  test.push(addList.price)
 
+  useEffect(()=>{
+
+    addList.map(x=>{
+      console.log('x: ', x.price);   
+      test.push(x.price);
+    })
+    for(let i =0; i < test.length; i++){
+      if(test[i] !== undefined){}
+      console.log('test ',test)
+    }
+  
+    // // cost.push(addList.Price);
+    // for(let i=0; i<cc.length; i++){
+    //   if(cc[i] !== undefined){
+    //     setSum(sum + cc[i]);
+    //   }
+    // }
+  },[addList])
 
 // 장바구니 닫기   
     const hide =()=>{

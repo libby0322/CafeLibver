@@ -1,11 +1,14 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import $ from 'jquery'
 
 const JwCart = ({modal,setModal,addList}) => {
 
+
 const [number,setNumber] = useState(Array.from({ length: 14 }, () => { return 0 }));
-const [price,setPrice] = useState(Array.from({ length: 14 }));
+const [price,setPrice] = useState(Array.from({ length: 14 },()=> 0));
 const [total, setTotal] = useState(0);  //총합의 기본 값=0
+
+
 
   //결제페이지 넘어가기
   const goPayment =  () => {
@@ -33,6 +36,7 @@ let arr = [];
 let _price = [...price];
 
 for(let i =0; i<addList.length;i++){
+  
 let cost = addList[i].price;
  // + 버튼 누르면 증가
  const onIncrease = () => {  

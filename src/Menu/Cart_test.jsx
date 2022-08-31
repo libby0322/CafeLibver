@@ -7,7 +7,7 @@ const Cart_test = ({modal, addList}) => {
   const [price,setPrice] = useState(Array.from({length : 15}));
   const [sum,setSum] = useState(0); // 전체 가격의 총합의 기본값은 0으로 기본 설정
  
-  let addListPrice = [];
+
 
 // 장바구니 닫기   
     const hide =()=>{
@@ -51,24 +51,25 @@ const sumConfirm = ()=>{
 let arr = []; //prop으로 받아온 addList를 뿌려줄 빈 배열
 let add_ = [...add]; // useState로 설정한 배열 복사
 let _price = [...price]; //금액 복사
+let addListPrice = [];
 
 for(let i =0; i < addList.length; i++){
 
 let cost = addList[i].price;
-
+addListPrice[i] = addList[i].price;
 
 // 수량 및 가격 증가
 
 const plus = ()=>{
   add_[i] +=1
   setAdd(add_);
-  addListPrice[i] = cost * add_[i];
-  setPrice(addListPrice); 
+  _price[i] = cost * add_[i];
+  setPrice(_price); 
   setSum(sum + cost);
 
 }  
 
-// 수량 및 가격 빼기
+// 수량 및 가격 빼기  
 const minus = ()=>{
   if(add[i] < 1){
     alert('최소 주문 수량은 1개 이상입니다!')
@@ -81,9 +82,7 @@ const minus = ()=>{
   }
 
 }
-addListPrice.push(addList[i].price);
 
-console.log('test',addListPrice);
 
 
      arr.push(

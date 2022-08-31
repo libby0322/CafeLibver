@@ -173,6 +173,7 @@ const P_Cart = ({modal, setModal, addList, setAddList, tt}) => {
       setSum(sum + x.Price);
     })
     // cost.push(addList.Price);
+    
     for(let i=0; i<cc.length; i++){
       if(cc[i] !== undefined){
         setSum(sum + cc[i]);
@@ -194,17 +195,16 @@ const P_Cart = ({modal, setModal, addList, setAddList, tt}) => {
     arr[e] = arr[e] +1;
     setWishTab(arr);
     setSum(sum + price);
-   
+   setCostTest(sum);
   }
 
   const minus = (t, price) => {
     let arr = [...wishTab];
     arr[t] = arr[t] -1;
     setWishTab(arr);
-    cost[t] = cost[t] - price;
     setSum(sum - price);
-    
-  }
+    setCostTest(sum);
+    }
     //버튼 클릭시 아이템 삭제
  
 
@@ -217,10 +217,9 @@ const P_Cart = ({modal, setModal, addList, setAddList, tt}) => {
       arr.splice(r,1,'');
       arr2.splice(r,1,'');
       setAddList(arr);
-      setWishTab(arr2);
-      cost.shift(0);
+      // cost.shift(0);
 
-      setSum(sum - arr2[r]);
+      setSum(costTest - arr2[r]);
       
    
       
@@ -275,7 +274,6 @@ const P_Cart = ({modal, setModal, addList, setAddList, tt}) => {
   return (
     <>
   <CartList style={{display: modal? "inline-block" : "none"}}>
-    <button >button</button>
     <h3>🎁 Wish List 🎁</h3>
   <p style={{display: tt? "block" : "none"}}>선택한 상품이 없습니다. <br/> 상품을 클릭해 담아보세요😊</p>
     <List1 />

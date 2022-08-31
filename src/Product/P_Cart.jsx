@@ -189,44 +189,44 @@ const P_Cart = ({modal, setModal, addList, setAddList, tt}) => {
   //   cost.shift(0);
   // }, [addList])
 
-  const plus = (e, price) => {
+  const plus = (e, Price) => {
 
     let arr = [...wishTab];
     arr[e] = arr[e] +1;
     setWishTab(arr);
-    setSum(sum + price);
+    setSum(sum + Price);
    setCostTest(sum);
   }
 
-  const minus = (t, price) => {
+  const minus = (t, Price) => {
     let arr = [...wishTab];
     arr[t] = arr[t] -1;
     setWishTab(arr);
-    setSum(sum - price);
+    setSum(sum - Price);
     setCostTest(sum);
     }
     //버튼 클릭시 아이템 삭제
  
 
       // console.log('ll',ll)
-    const remove = (r,price,index)=>{
+    const remove = (r,Price,index)=>{
       
       let arr = [...addList];
       let arr2 = [...wishTab];
-      arr2[r] = price * arr2[r];
+      arr2[r] = Price * (arr2[r] + 1);
       arr.splice(r,1,'');
       arr2.splice(r,1,'');
       setAddList(arr);
-      // cost.shift(0);
-
-      setSum(costTest - arr2[r]);
+      setWishTab(wishTab);
+      setSum(sum - arr2[r]);
       
-   
+      console.log('r :' ,arr2[r]);
       
     }
 
     console.log('removesum :' , sum);
     console.log('removewishtab :' , wishTab);
+    console.log('addList: ', addList);
  
 
 

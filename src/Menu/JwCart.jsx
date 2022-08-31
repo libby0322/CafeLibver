@@ -5,10 +5,10 @@ const JwCart = ({modal,setModal,addList}) => {
 
 
 const [number,setNumber] = useState(Array.from({ length: 14 }, () => { return 0 }));
-const [price,setPrice] = useState(Array.from({ length: 14 },()=> 0));
+const [price,setPrice] = useState(Array.from({ length: 14 },()=> 1));
 const [total, setTotal] = useState(0);  //총합의 기본 값=0
 
-
+let addlistPrice = []; // addList의 가격만 받아오기위해서 만드는 빈 배열
 
   //결제페이지 넘어가기
   const goPayment =  () => {
@@ -37,17 +37,21 @@ let _price = [...price];
 
 for(let i =0; i<addList.length;i++){
   
+addlistPrice.push(addList[i].price); //빈 배열에 누른 메뉴의 가격을 삽입
+
 let cost = addList[i].price;
  // + 버튼 누르면 증가
+
  const onIncrease = () => {  
   let test2 = [...number];  //수량 복사 
   test2[i] += 1;   //``각 인덱스의 수량이 1씩 증가
   setNumber(test2);  //화면에 출력됨    
-_price[i] = cost * test2[i] 
-  setPrice(_price);
+  addlistPrice[i] = cost * test2[i] 
+  setPrice(addlistPrice);
   setTotal(total + cost);
 }
 // - 버튼 누르면 감소
+
 const onDecrease = () => {
   let test2 = [...number];
   if (number[i] === 1) {   //수량이 1일때
@@ -88,6 +92,13 @@ const del = (proNum, title) => {
     </>
   )
 }
+
+// addList에 들어간 메뉴의 기본값 설정을 위한 useEffect
+useEffect(()=>{
+  setPrice(addlistPrice);
+
+},[addList]);
+
 
 
   return (

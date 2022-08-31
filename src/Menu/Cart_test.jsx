@@ -3,32 +3,11 @@ import $ from 'jquery'
 
 
 const Cart_test = ({modal, addList}) => {
-  const [add,setAdd] = useState(Array.from({length : 14},()=> 0));
+  const [add,setAdd] = useState(Array.from({length : 14},()=> 1));
   const [price,setPrice] = useState(Array.from({length : 15},() => 0));
-  const [sum,setSum] = useState(0);
+  const [sum,setSum] = useState(0); // 전체 가격의 총합의 기본값은 0으로 기본 설정
  
-  let test = [];
-  
-  test.push(addList.price)
-
-  useEffect(()=>{
-
-    addList.map(x=>{
-      console.log('x: ', x.price);   
-      test.push(x.price);
-    })
-    for(let i =0; i < test.length; i++){
-      if(test[i] !== undefined){}
-      console.log('test ',test)
-    }
-  
-    // // cost.push(addList.Price);
-    // for(let i=0; i<cc.length; i++){
-    //   if(cc[i] !== undefined){
-    //     setSum(sum + cc[i]);
-    //   }
-    // }
-  },[addList])
+  let addListPrice = [];
 
 // 장바구니 닫기   
     const hide =()=>{
@@ -74,10 +53,8 @@ let add_ = [...add]; // useState로 설정한 배열 복사
 let _price = [...price]; //금액 복사
 
 for(let i =0; i < addList.length; i++){
+
 let cost = addList[i].price;
-
-  
-
 
 
 // 수량 및 가격 증가
@@ -85,8 +62,8 @@ let cost = addList[i].price;
 const plus = ()=>{
   add_[i] +=1
   setAdd(add_);
-  _price[i] = cost * add_[i];
-  setPrice(_price); 
+  addListPrice[i] = cost * add_[i];
+  setPrice(addListPrice); 
   setSum(sum + cost);
 
 }  
@@ -104,6 +81,10 @@ const minus = ()=>{
   }
 
 }
+addListPrice.push(addList[i].price);
+
+console.log('test',addListPrice);
+
 
      arr.push(
         <>
@@ -126,8 +107,15 @@ const minus = ()=>{
 
         </>
      )
-     
     }
+
+// addList에 들어간 메뉴의 기본값 설정을 위한 useEffect
+useEffect(()=>{
+  setPrice(addListPrice);
+
+},[addList]);
+
+
 
   return (
     <>

@@ -3,8 +3,8 @@ import $ from 'jquery'
 
 
 const Cart_test = ({modal, addList}) => {
-  const [add,setAdd] = useState(Array.from({length : 14},()=> 1));
-  const [price,setPrice] = useState(Array.from({length : 15},() => 0));
+  const [add,setAdd] = useState(Array.from({length : 14},()=> 0));
+  const [price,setPrice] = useState(Array.from({length : 15}));
   const [sum,setSum] = useState(0); // 전체 가격의 총합의 기본값은 0으로 기본 설정
  
   let addListPrice = [];

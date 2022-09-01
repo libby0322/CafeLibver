@@ -73,7 +73,7 @@ const Topbar2 = () => {
   return (
     <Container>
         <Header>
-            <Top />
+            {/* <Top /> */}
             <Bottom><Link to="/"><img src='/image/Logo/Logo.png' width="300px"></img></Link></Bottom>
         </Header>
         <Nav>
@@ -85,7 +85,6 @@ const Topbar2 = () => {
                 <Link to="/login/"><div>마이페이지</div></Link>
             </Nav_left>
             <Nav_right>
-                
                 <div><i className="fa-brands fa-facebook-f"></i></div>
                 <div><i className="fa-brands fa-instagram"></i></div>
                 <div><i className="fa-brands fa-twitter"></i></div>

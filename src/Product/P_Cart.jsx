@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo, memo } from 'react';
 import { Link } from 'react-router-dom';
 import styled from "styled-components"
 
@@ -123,71 +123,39 @@ const P_Cart = ({modal, setModal, addList, setAddList, tt}) => {
 
 
   //상품 클릭시 장바구니에 리스트업
-  const [aa, setaa] = useState([]);
-  const [bb, setbb] = useState([]);
-  const [cc, setcc] = useState([]);
+ 
   const [dd, setdd] = useState([]);
-
-  let arr = [];
-  let arr2 = [];
-  let arr3 = [];
-  let arr4 = [];
-
-  if(addList.modal === aa){
-
-  }else{
-    arr.push(addList.title);
-    arr2.push(addList.url);
-    arr3.push(addList.Price);
-    arr4.push(addList.modal);
-    aa.push(arr[0]);
-    bb.push(arr2[0]);
-    cc.push(arr3[0]);
-    dd.push(arr4[1]);
-    addList.modal = aa;
-  }
-
-  
-  
-
 
   //장바구니 제품 수량 관련
 
   const [sum, setSum] = useState(0);
   const [test, setTest] = useState(0);
   const [number, setNumber] = useState(1);
-  const [cost, setCost] = useState(0);
-  const [costTest, setCostTest] = useState(Array.from((v, i) => i));
+  const [costTest, setCostTest] = useState(Array.from({ length: 9 }, () => 1));
   const [wishTab, setWishTab] = useState(Array.from({length: 9}, () => 1));
-
-  console.log('cost: ', cost);
+  let addPrice = [];
+  // console.log('cost: ', cost);
   console.log('wishtap: ', wishTab);
   console.log('sum: ', sum);
  
+
+
   
   useEffect(()=> {
     console.log('useEffect');
-
     addList.map(x=>{
       console.log('x: ', x.Price);
       setSum(sum + x.Price);
-    })
-    // cost.push(addList.Price);
-    
-    for(let i=0; i<cc.length; i++){
-      if(cc[i] !== undefined){
-        setSum(sum + cc[i]);
-      }
+
+   
     }
+   
+  )}, [addList]);
 
-  }, [addList]);
+    
 
 
-  // useEffect(()=>{
 
-  //   addList.shift(0);
-  //   cost.shift(0);
-  // }, [addList])
 
   const plus = (e, Price) => {
 
@@ -213,16 +181,15 @@ const P_Cart = ({modal, setModal, addList, setAddList, tt}) => {
       
       let arr = [...addList];
       let arr2 = [...wishTab];
-      arr2[r] = Price * (arr2[r] + 1);
+      arr2[r] = Price * (arr2[r]);
       arr.splice(r,1,'');
-      arr2.splice(r,1,'');
       setAddList(arr);
-      setWishTab(wishTab);
       setSum(sum - arr2[r]);
       
       console.log('r :' ,arr2[r]);
       
     }
+
 
     console.log('removesum :' , sum);
     console.log('removewishtab :' , wishTab);
@@ -253,12 +220,12 @@ const P_Cart = ({modal, setModal, addList, setAddList, tt}) => {
             <span className='listPrice'>금액 : {i.Price} 원</span>
             </ListBox>
     )
-   }
+  }
 
-   })
-  
+  })
+ 
   return arr;
-
+ 
  }
 
   

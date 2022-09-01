@@ -1,4 +1,5 @@
 import React,{useState,useEffect} from 'react'
+import './jw_cart.css';
 import $ from 'jquery'
 
 const JwCart = ({modal,setModal,addList}) => {
@@ -17,8 +18,8 @@ const [total, setTotal] = useState(0);  //총합의 기본 값=0
 
   // 창 닫기
   const xmark = () => {
-    if ($('#jwCart').is(":visible")) {
-      $('#jwCart').hide();
+    if ($('#jw_Cart').is(":visible")) {
+      $('#jw_Cart').hide();
     }
   }
 
@@ -40,7 +41,7 @@ let addListPrice = []; // addList의 가격만 받아오기위해서 만드는 �
 for(let i =0; i<addList.length;i++){
   
   let cost = addList[i].price;
-  addListPrice[i] = addList[i].price;
+  addListPrice[i] = addList[i].price * number[i];
 
   addListPrice.push(addList[i].price); //빈 배열에 누른 메뉴의 가격을 삽입
 
@@ -73,16 +74,24 @@ const onDecrease = () => {
 
 
 // 삭제버튼
-const del = (proNum, title) => {
+const del = (proNum, title) => {   //proNum은 아이디, title은 제목
   if(window.confirm("장바구니에서 정말 삭제하시겠습니까?") == true){    //확인
-        const test = number[i.idd];
-        const proPri = $('.j_total').text();
-        const totalVal= parseInt(proPri)-(proNum*test);  
-        $('.j_total').text(totalVal);
+      addListPrice.pop();
+      const index = addListPrice.indexOf(addListPrice[i]);
+      if( index > -1 ){  //해당 배열에서 해당 인덱스 삭제하기 
+        addListPrice.splice(index, 1);
+      }
         
-        const delPro = document.getElementById(title);
-        delPro.remove();
-        setTotal(total - _price[i]);
+      
+      console.log("이거", addListPrice);   
+        // const test = number[i.idd];
+        // const proPri = $('.j_total').text();
+        // const totalVal= parseInt(proPri)-(proNum*test);  
+        // $('.j_total').text(totalVal);
+        
+         const delPro = document.getElementById(title);
+         delPro.remove();
+         setTotal(total - _price[i]);
       }else{   //취소
           return false;
       }
@@ -95,7 +104,7 @@ const del = (proNum, title) => {
             <li className='proTitle'>{addList[i].title}</li>
             <li className='pprice'>{price[i]} \</li>  
             <li>수량: <button className="uuu" onClick={() => onIncrease()}>+</button> {number[i]} <button onClick={() => onDecrease()}>-</button></li>
-            <li><button className="h_cancle" onClick={() => del(addList[i].price,addList[i].title)} > 삭 제 </button></li>
+            <li><button className="h_cancle" onClick={() => del(addList[i].id, addList[i].title)} > 삭 제 </button></li>
           </ul>
     </>
   )
@@ -104,8 +113,6 @@ const del = (proNum, title) => {
 // addList에 들어간 메뉴의 기본값 설정을 위한 useEffect
 useEffect(()=>{
   setPrice(addListPrice); 
-  
-
 },[addList]);
 
 useEffect(()=>{
@@ -113,7 +120,7 @@ useEffect(()=>{
   let aa = 0;
   for (let i = 0; i < addListPrice.length; i++) {
     console.log("이거 왜 개", addListPrice);
-   aa += addListPrice[i];
+    aa += addListPrice[i];
     console.log(aa);
     setTotal(aa);
   }

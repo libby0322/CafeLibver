@@ -1,35 +1,34 @@
-import {React,useState,useEffect} from 'react'
+import {React,useState,useEffect,useMemo} from 'react'
 import $ from 'jquery'
 
 
 const Cart_test = ({modal, addList}) => {
-  const [add,setAdd] = useState(Array.from({length : 14},()=> 0));
+  const [add,setAdd] = useState(Array.from({length : 14},()=> 1));
   const [price,setPrice] = useState(Array.from({length : 15}));
   const [sum,setSum] = useState(0); // 전체 가격의 총합의 기본값은 0으로 기본 설정
  
-
 
 // 장바구니 닫기   
     const hide =()=>{
         $('.b_total').css('display','none');
         $('.b_cart').css('opacity','1');
       }  
-// 체크박스 전체 선택
-const check = () =>{
-    let checked = $('.allcheck').is(':checked');
-    if(checked){
-    $('input:checkbox').prop('checked',true)
-  }else $('input:checkbox').prop('checked',false)
-  }
+
   // 전체 삭제 버튼
   const remove = ()=>{
       $('tr#list').remove();
       setSum(sum - sum);
+
+   
       $('.b_cimg').remove();
       $('.b_textTotal').remove();
   }
- 
-
+ // 단품 삭제 버튼
+ const selectRemove = (price) =>{
+  let select = document.querySelector('#list');
+  select.parentNode.removeChild(select);
+    setSum(sum - price);
+ }
 const sumConfirm = ()=>{
 
   if(!window.confirm('주문하시는 매장은 '+ $("select[name=store] option:selected").text() +'이며, 총 결제 금액은 '+ sum +'원 맞으십니까?')){
@@ -66,6 +65,7 @@ const plus = ()=>{
   _price[i] = cost * add_[i];
   setPrice(_price); 
   setSum(sum + cost);
+  
 
 }  
 
@@ -83,12 +83,10 @@ const minus = ()=>{
 
 }
 
-
-
      arr.push(
         <>
         <tr key={addList[i].id} id="list">
-        <td><input type="checkbox" className='check' key={addList[i].id} /></td>
+        <td>{i+1}</td>
         <td>
         <div className='b_cimgs'>
             <img src={addList[i].url} alt="001" style={{width:"150px"}} />
@@ -101,6 +99,7 @@ const minus = ()=>{
          <input type="button" value="+" onClick={plus} />
         </td>
         <td>{price[i]}</td>
+        <td><button className='btn btn-primary' onClick={()=>selectRemove(addList[i].price)}>삭제</button> </td>
         </tr>
 
 
@@ -110,10 +109,15 @@ const minus = ()=>{
 
 // addList에 들어간 메뉴의 기본값 설정을 위한 useEffect
 useEffect(()=>{
-  setPrice(addListPrice);
+  setPrice(addListPrice);  // 선택한 메뉴의 기본 가격
+  let addListP = 0;       // 총 가격에 대한 기본 값을 만들기위해 생성
+  for(let j=0;j <addList.length;j++){
+    addListP += addList[j].price;
 
+  }
+  setSum(addListP);
+  
 },[addList]);
-
 
 
   return (
@@ -125,15 +129,16 @@ useEffect(()=>{
        </div>
         <table className='b_cartListBox'>
           <tr className='cartNames'>
-            <td><input type="checkbox" className='allcheck' onClick={check}></input></td>
+            <td>No</td>
             <td>상품</td>
             <td>수량</td>
             <td>가격</td>
+            <td></td>
           </tr>
           {arr}
           </table>
           <form action="/" className='text-center pt-3'>
-          <span className='text-center mx-5'>총 가격 : {sum}원</span>
+          <span className='text-center mx-5 sumsum'>총 가격 : {sum}원</span>
             <select name="store" id="store" className='text-center mx-5' >
               <option value="default">-----매장을 선택하세요-----</option>  
               <option value="김포 장기점">김포 장기점</option>

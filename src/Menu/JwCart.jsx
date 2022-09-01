@@ -1,5 +1,6 @@
 import React,{useState,useEffect} from 'react'
 import $ from 'jquery'
+import './jw_cart.css'
 
 const JwCart = ({modal,setModal,addList}) => {
 
@@ -77,6 +78,7 @@ const del = (proNum, title) => {
   if(window.confirm("장바구니에서 정말 삭제하시겠습니까?") == true){    //확인
         const test = number[i.idd];
         const proPri = $('.j_total').text();
+        console.log('proPri',proPri);
         const totalVal= parseInt(proPri)-(proNum*test);  
         $('.j_total').text(totalVal);
         
@@ -118,7 +120,6 @@ useEffect(()=>{
     setTotal(aa);
   }
 },[addList]);
-
 
 
   return (

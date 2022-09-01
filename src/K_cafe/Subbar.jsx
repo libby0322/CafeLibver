@@ -96,19 +96,19 @@ const Subbar = ({display, setDisplay}) => {
           <div>마이페이지</div>
         </Main>
         <Main2>
-          <Link to=""><div>Coffee</div></Link>
+          <Link to="/menu"><div>Coffee</div></Link>
           <Link to=""><div>Cup/Bottle</div></Link>
           <Link to="/membership"><div onClick={()=> setDisplay(!display)}>Membership</div></Link>
           <div>-</div>
         </Main2>
         <Main2>
-          <Link to=""><div>non-Coffee</div></Link>
+          <Link to="/menu"><div>non-Coffee</div></Link>
           <Link to=""><div>Acc</div></Link>
           <Link to="/membership/app"><div onClick={()=> setDisplay(!display)}>App</div></Link>
           <div>-</div>
         </Main2>
         <Main2>
-          <Link to=""><div>Desert</div></Link>
+          <Link to="/menu"><div>Desert</div></Link>
           <Link to=""><div onClick={()=> setDisplay(!display)}>Tea-Package</div></Link>
           <Link to="/membership/faq"><div onClick={()=> setDisplay(!display)}>FAQ/게시판</div></Link>
           <div>-</div>

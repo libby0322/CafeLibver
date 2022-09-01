@@ -2,6 +2,7 @@ import React,{useState,useRef} from 'react'
 import CartTest from './Cart_test';
 import Menu from './Menu';
 import JwCart from './JwCart';
+import'./menu.css'
 
 
 const Main = () => {

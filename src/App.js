@@ -1,7 +1,6 @@
 import React from 'react'
 import Main from './Main/Main_page'
 import Topnav from './K_cafe/Topbar2'
-import Coffee from './Menu/Coffee'
 import Membership from './K_cafe/Member/Member_main'
 import MembershipApp from './K_cafe/App/APP_main'
 import MembershipFaq from './K_cafe/FAQ/FAQ_main'

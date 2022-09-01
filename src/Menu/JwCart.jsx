@@ -4,11 +4,11 @@ import $ from 'jquery'
 const JwCart = ({modal,setModal,addList}) => {
 
 
-const [number,setNumber] = useState(Array.from({ length: 14 }, () => { return 0 }));
-const [price,setPrice] = useState(Array.from({ length: 14 },()=> 1));
+const [number,setNumber] = useState(Array.from({ length: 14 }, () => 1));
+const [price,setPrice] = useState(Array.from({ length: 14 }, () => 1));
 const [total, setTotal] = useState(0);  //총합의 기본 값=0
 
-let addlistPrice = []; // addList의 가격만 받아오기위해서 만드는 빈 배열
+
 
   //결제페이지 넘어가기
   const goPayment =  () => {
@@ -33,37 +33,45 @@ let addlistPrice = []; // addList의 가격만 받아오기위해서 만드는 �
 // 장바구니에 추가 된 목록
 
 let arr = [];  
-let _price = [...price];
+let _number = [...number];  //수량 복사한거
+let _price = [...price];   //가격복사한거
+let addListPrice = []; // addList의 가격만 받아오기위해서 만드는 빈 배열
 
 for(let i =0; i<addList.length;i++){
   
-addlistPrice.push(addList[i].price); //빈 배열에 누른 메뉴의 가격을 삽입
+  let cost = addList[i].price;
+  addListPrice[i] = addList[i].price;
 
-let cost = addList[i].price;
+  addListPrice.push(addList[i].price); //빈 배열에 누른 메뉴의 가격을 삽입
+
+
  // + 버튼 누르면 증가
 
  const onIncrease = () => {  
-  let test2 = [...number];  //수량 복사 
-  test2[i] += 1;   //``각 인덱스의 수량이 1씩 증가
-  setNumber(test2);  //화면에 출력됨    
-  addlistPrice[i] = cost * test2[i] 
-  setPrice(addlistPrice);
+
+  _number[i] += 1;
+  setNumber(_number);
+  _price[i] = cost * _number[i];
+  setPrice(_price); 
   setTotal(total + cost);
 }
+
+
 // - 버튼 누르면 감소
 
 const onDecrease = () => {
-  let test2 = [...number];
   if (number[i] === 1) {   //수량이 1일때
     alert('최소 주문수량은 1개입니다. 주문을 완전 취소하시려면 "삭제"를 눌러주세욧!');
     return;
   }
-  test2[i] -= 1;
-  setNumber(test2);
-  _price[i] = price[i] - cost;
-  setPrice(_price);
+  _number[i] -= 1;
+  setNumber(_number);
+  _price[i] = cost * _number[i];
+  setPrice(_price); 
   setTotal(total - cost);
 }
+
+
 // 삭제버튼
 const del = (proNum, title) => {
   if(window.confirm("장바구니에서 정말 삭제하시겠습니까?") == true){    //확인
@@ -95,15 +103,27 @@ const del = (proNum, title) => {
 
 // addList에 들어간 메뉴의 기본값 설정을 위한 useEffect
 useEffect(()=>{
-  setPrice(addlistPrice);
+  setPrice(addListPrice); 
+  
 
+},[addList]);
+
+useEffect(()=>{
+  addListPrice.pop();
+  let aa = 0;
+  for (let i = 0; i < addListPrice.length; i++) {
+    console.log("이거 왜 개", addListPrice);
+   aa += addListPrice[i];
+    console.log(aa);
+    setTotal(aa);
+  }
 },[addList]);
 
 
 
   return (
     <>
-     <div id="jwCart" style={{ display: modal ? "flex" : "none" }}>
+     <div id="jw_Cart" style={{ display: modal ? "flex" : "none" }}>
       <div className='h-cart'>
         <div className="h_box">
           <div className="h_box-top">

@@ -25,7 +25,7 @@ const Show = styled.div`
 
 `
 
-const Menu = ({addList,setAddList,non,dessert}) => {
+const Menu = ({addList,setAddList,non,dessert,Coffee}) => {
 
 
  // cart 버튼 클릭 시 장바구니에 추가 + 알림멘트
@@ -143,7 +143,7 @@ for(let i=0; i< mini.mini.length;i++){
     
   return (
 <>
-<div className='b_imgbox'> 
+<div className='b_imgbox' ref={Coffee}> 
         <img src="image/banner_coffee.jpg" className="banner-img"alt="banner_coffee" />
         <span className="banner_coffee_text">CHK Cafe만의 특별한 로스팅으로<br/><br/> 신선한 커피를 즐겨보세요.</span>
 </div>

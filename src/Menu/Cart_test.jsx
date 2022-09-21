@@ -7,7 +7,6 @@ const Cart_test = ({modal, addList}) => {
   const [price,setPrice] = useState(Array.from({length : 15}));
   const [sum,setSum] = useState(0); // 전체 가격의 총합의 기본값은 0으로 기본 설정
  
-
 // 장바구니 닫기   
     const hide =()=>{
         $('.b_total').css('display','none');
@@ -15,20 +14,25 @@ const Cart_test = ({modal, addList}) => {
       }  
 
   // 전체 삭제 버튼
+
   const remove = ()=>{
       $('tr#list').remove();
       setSum(sum - sum);
-
-   
       $('.b_cimg').remove();
       $('.b_textTotal').remove();
+
+
   }
  // 단품 삭제 버튼
  const selectRemove = (price) =>{
   let select = document.querySelector('#list');
   select.parentNode.removeChild(select);
     setSum(sum - price);
+  
  }
+
+
+// 주문 확인하는 함수 
 const sumConfirm = ()=>{
 
   if(!window.confirm('주문하시는 매장은 '+ $("select[name=store] option:selected").text() +'이며, 총 결제 금액은 '+ sum +'원 맞으십니까?')){
@@ -51,6 +55,7 @@ let arr = []; //prop으로 받아온 addList를 뿌려줄 빈 배열
 let add_ = [...add]; // useState로 설정한 배열 복사
 let _price = [...price]; //금액 복사
 let addListPrice = [];
+
 
 for(let i =0; i < addList.length; i++){
 

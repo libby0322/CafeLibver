@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 const Container = styled.div`
     height: 700px;
-    background-image: url('image/K_image/coffee5.jpg');
+    background-image: url('https://libby0322.github.io/CafeLibver/image/K_image/coffee5.jpg');
     opacity: 0.9;
     padding-top: 100px;
 `

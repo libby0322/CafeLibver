@@ -72,7 +72,7 @@ const slide2 = () => {
     <Row>
         <Col md="12">
             <Box1>
-                <ImageBox data-aos="fade-right" data-aos-duration="2000"><img src="image/desert/치즈.png" width="550px" style={{cursor: "pointer"}}></img></ImageBox>
+                <ImageBox data-aos="fade-right" data-aos-duration="2000"><img src={process.env.PUBLIC_URL + "/image/desert/치즈.png"} width="550px" style={{cursor: "pointer"}}></img></ImageBox>
                 <Subtitle data-aos="fade-left" data-aos-duration="2000" >치즈 <span style={{color: "red"}}>"조각"</span> 케이크 6200원</Subtitle>
             </Box1>
         </Col>
@@ -80,7 +80,7 @@ const slide2 = () => {
     <Row>
         <Col md="12">
             <Box2>
-            <ImageBox data-aos="fade-left" data-aos-duration="2000"><img src="image/desert/딸기치즈라운드.png" style={{cursor: "pointer"}}></img></ImageBox>
+            <ImageBox data-aos="fade-left" data-aos-duration="2000"><img src={process.env.PUBLIC_URL +"/image/desert/딸기치즈라운드.png"} style={{cursor: "pointer"}}></img></ImageBox>
             <Subtitle data-aos="fade-right" data-aos-duration="2000"><span style={{color: "red"}}>"딸기"</span> 생크림 홀 케이크 39000원</Subtitle>
             </Box2>
         </Col>

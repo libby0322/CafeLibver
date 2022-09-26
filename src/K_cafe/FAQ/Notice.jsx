@@ -44,7 +44,7 @@ const Main_left = styled.div`
 const CurrentBox = styled.div`
   height: 200px;
   margin-bottom: 20px;
-  background-image: url('/image/K_image/coffee9.jpg');
+  background-image: url('https://libby0322.github.io/CafeLibver/image/K_image/coffee9.jpg');
   background-size : cover;
   background-position: center;
 `

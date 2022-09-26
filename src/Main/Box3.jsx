@@ -16,7 +16,7 @@ const Container = styled.div`
     width: 100%;
     height: 800px;
     border: 1px solid black;
-    background-image: url('image/K_image/computer.jpg');
+    background-image: url('https://libby0322.github.io/CafeLibver/image/K_image/computer.jpg');
     background-size: cover;
     position: relative;
 `

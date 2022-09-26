@@ -165,7 +165,7 @@ const Bottom = styled.div`
 const CurrentBox = styled.div`
   height: 200px;
   margin-bottom: 20px;
-  background-image: url('/image/K_image/coffee9.jpg');
+  background-image: url('https://libby0322.github.io/CafeLibver/image/K_image/coffee9.jpg');
   background-size : cover;
   background-position: center;
 `
@@ -349,7 +349,7 @@ const Board = () => {
       count++;
       arr.push(
         <Notice_Bar key={count}>
-          <Notice1><img src="/image/Logo/Logo.png" width="50px"></img></Notice1>
+          <Notice1><img src={process.env.PUBLIC_URL +"/image/Logo/Logo.png"}width="50px"></img></Notice1>
           <Notice2><Link to={`/membership/faq/notice/${i.id}`} state={notice_info}>{i.title}</Link></Notice2>
           <Notice3>CHK</Notice3>
         </Notice_Bar>

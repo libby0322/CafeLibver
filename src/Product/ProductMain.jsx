@@ -69,16 +69,16 @@ const refClick = () => {
            <Styled.topText>상품</Styled.topText>
            <Styled.bText>CHK만의 색다른 매력이 담긴 새로운 상품들을 만나보세요!</Styled.bText>
           </Styled.mainText>
-        <img src="image/Product/Main01.jpg" alt="proMainBox"/>
+        <img src={process.env.PUBLIC_URL +"/image/Product/Main01.jpg"} alt="proMainBox"/>
         <span ><button type="button" className='newProBtn' onClick={refClick}>찾아오시는 길 / 상품문의 안내</button></span>
         </Styled.proMainBox>
     <Styled.newProBox style={{display: menu? "block" : "none"}}>
     <p className="newProduct" >이 달의 신제품</p>
     <ul className="contentBox" >
-    <StyledLink to="/cup" ><img src="image/Mug/Mug_B.jpg" alt="contentBox" className="newProImg" /></StyledLink>
-    <StyledLink to="/acc" ><img src="image/Acc/Acc_Bag02.jpg" alt="contentBox" className="newProImg" /></StyledLink>
-    <StyledLink to="/acc" ><img src="image/Acc/Acc_Card01.jpg" alt="contentBox" className="newProImg" /></StyledLink>
-    <StyledLink to="/cup" ><img src="image/Mug/Mug_Classic.jpg" alt="contentBox" className="newProImg" /></StyledLink>
+    <StyledLink to="/cup" ><img src={process.env.PUBLIC_URL +"/image/Mug/Mug_B.jpg"} alt="contentBox" className="newProImg" /></StyledLink>
+    <StyledLink to="/acc" ><img src={process.env.PUBLIC_URL +"/image/Acc/Acc_Bag02.jpg"} alt="contentBox" className="newProImg" /></StyledLink>
+    <StyledLink to="/acc" ><img src={process.env.PUBLIC_URL +"/image/Acc/Acc_Card01.jpg"} alt="contentBox" className="newProImg" /></StyledLink>
+    <StyledLink to="/cup" ><img src={process.env.PUBLIC_URL +"/image/Mug/Mug_Classic.jpg"} alt="contentBox" className="newProImg" /></StyledLink>
     </ul>
 
     </Styled.newProBox>

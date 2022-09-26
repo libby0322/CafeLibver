@@ -74,7 +74,7 @@ const Topbar2 = () => {
     <Container>
         <Header>
             {/* <Top /> */}
-            <Bottom><Link to="/"><img src='/image/Logo/Logo.png' width="300px"></img></Link></Bottom>
+            <Bottom><Link to="/"><img src={process.env.PUBLIC_URL +'/image/Logo/Logo.png'} width="300px"></img></Link></Bottom>
         </Header>
         <Nav>
             <Nav_left>

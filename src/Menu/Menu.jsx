@@ -144,7 +144,7 @@ for(let i=0; i< mini.mini.length;i++){
   return (
 <>
 <div className='b_imgbox' ref={Coffee}> 
-        <img src="image/banner_coffee.jpg" className="banner-img"alt="banner_coffee" />
+        <img src= {process.env.PUBLIC_URL +"/image/banner_coffee.jpg" }className="banner-img"alt="banner_coffee" />
         <span className="banner_coffee_text">CHK Cafe만의 특별한 로스팅으로<br/><br/> 신선한 커피를 즐겨보세요.</span>
 </div>
 <div className='b_container'>
@@ -154,7 +154,7 @@ for(let i=0; i< mini.mini.length;i++){
 </div>
 {/* non coffee */}
 <div className='b_imgbox' ref={non}> 
-    <img src="image/tea.png" alt="001" />
+    <img src={process.env.PUBLIC_URL +"/image/tea.png"} alt="001" />
     <span className="banner_tea_text">Non Coffee 음료도 CHK Cafe에서!</span>
 </div>
 <div className="b_container">
@@ -164,7 +164,7 @@ for(let i=0; i< mini.mini.length;i++){
 </div>
 {/* bread */}
 <div className='b_imgbox' ref={dessert} > 
-    <img src="image/dessetImg.png" alt="001" />
+    <img src={process.env.PUBLIC_URL +"/image/dessetImg.png"} alt="001" />
     <span className='banner_dessert_text'>엄선된 최고의 재료만을 사용해서 만든 <br></br><br></br>CHK만의 케이크를 드셔보세요!</span>
 </div>
 <div className='b_container'>

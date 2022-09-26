@@ -56,7 +56,7 @@ const Box2 = () => {
     <Container>
       <Row>
         <Col md="4" xs="12">
-          <Box style={{backgroundImage: "url('image/K_image/coffee6.jpg')", paddingTop: "20px"}}>
+          <Box style={{backgroundImage: "url('https://libby0322.github.io/CafeLibver/image/K_image/coffee6.jpg')", paddingTop: "20px"}}>
             <Title><i className="fa-solid fa-bullhorn"></i>&nbsp;&nbsp;CHK 소식</Title>
             <Content></Content>
             <Content>22년 하반기 이벤트 안내</Content>
@@ -67,13 +67,13 @@ const Box2 = () => {
           </Box>
         </Col>
         <Col md="4" xs="12">
-          <Box style={{backgroundImage: "url('image/K_image/coffee7.jpg')"}}></Box>
+          <Box style={{backgroundImage: "url('https://libby0322.github.io/CafeLibver/image/K_image/coffee7.jpg')"}}></Box>
         </Col>
         <Col md="4" xs="12">
           <Box style={{padding: "0px"}}>
-            <Box1 style={{backgroundImage: "url('image/K_image/coffee8.jpg')"}}></Box1>
+            <Box1 style={{backgroundImage: "url('https://libby0322.github.io/CafeLibver/image/K_image/coffee8.jpg')"}}></Box1>
             <div style={{height: "40px"}}></div>
-            <Box1 style={{backgroundImage: "url('image/K_image/coffee10.jpg')"}}></Box1>
+            <Box1 style={{backgroundImage: "url('https://libby0322.github.io/CafeLibver/image/K_image/coffee10.jpg')"}}></Box1>
           </Box>
         </Col>
        </Row>

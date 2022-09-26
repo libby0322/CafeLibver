@@ -35,7 +35,7 @@ const Header = styled.div`
 const MainBox0 = styled.div`
   width: 100%;
   height: 350px;
-  background-image: url('image/K_image/cafe1.jpg');
+  background-image: url('https://libby0322.github.io/CafeLibver/image/K_image/cafe1.jpg');
   background-size : cover;
 `
 const Main = styled.div`

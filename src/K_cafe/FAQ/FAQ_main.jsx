@@ -52,7 +52,7 @@ const Box1 = styled(Link)`
     font-size: 50px;
   }
   &:hover{  
-    background-image: url('/image/K_image/coffee4.jpg');
+    background-image: url('https://libby0322.github.io/CafeLibver/image/K_image/coffee4.jpg');
   } 
 `
 const Box2 = styled(Box1)``

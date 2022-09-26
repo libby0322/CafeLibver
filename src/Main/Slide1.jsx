@@ -6,7 +6,7 @@ import "aos/dist/aos.css"
 
 const Container = styled.div`
   height: 700px;
-  background-image: url('image/K_image/coffee1.jpg');
+  background-image: url('https://libby0322.github.io/CafeLibver/image/K_image/coffee1.jpg');
   background-size : 100% 700px;
 `
 const Box1 = styled.div`

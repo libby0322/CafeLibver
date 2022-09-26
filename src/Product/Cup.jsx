@@ -49,7 +49,7 @@ const Cup = ({subTop, subTopClose, addList, setAddList, add}) => {
   let list = MugList.MugList.map((MugList, index)=>{
     return (
       <Styled.ListImgBox key={index} onClick={()=>mugAdd(index+1)}>
-        <img src={MugList.url} />
+        <img src={ MugList.url} />
         <p className='text-center'>{MugList.title}</p>
      
        
@@ -60,7 +60,7 @@ const Cup = ({subTop, subTopClose, addList, setAddList, add}) => {
 
     return (
       <Styled.ListImgBox key={index} onClick={()=>tumbAdd(index+1)}>
-        <img src={ TumbList.url}  />
+        <img src={TumbList.url}  />
         <p className='text-center'>{ TumbList.title}</p>
 
       </Styled.ListImgBox>

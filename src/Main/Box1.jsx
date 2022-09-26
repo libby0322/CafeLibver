@@ -38,7 +38,7 @@ const Box1_right = styled.div`
   flex: 0 0 70%;
   display: flex;
   position: relative;
-  background-image: url('image/K_image/board.jpg');
+  background-image: url('https://libby0322.github.io/CafeLibver/image/K_image/board.jpg');
   background-size : 100% 700px;
 `
 const Content2 = styled.div`
@@ -84,19 +84,19 @@ const Box1 = () => {
         </Box1_left>
         <Box1_right>
           <Content2 style={{right: "500px", top: "100px", transform: "rotate(-10deg)"}} data-aos="fade" data-aos-duration="2000">
-            <Content2_box><img src="image/coffee/(hot-)연유.png" width="180px"></img></Content2_box>
+            <Content2_box><img src={process.env.PUBLIC_URL +"/image/coffee/(hot-)연유.png"} width="180px"></img></Content2_box>
           </Content2>
           <Content2 style={{right: "300px" , top: "130px", transform: "rotate(10deg)"}} data-aos="fade" data-aos-duration="2000">
-          <Content2_box><img src="image/coffee/콜드브루.png" width="180px"></img></Content2_box>
+          <Content2_box><img src={process.env.PUBLIC_URL +"/image/coffee/콜드브루.png"} width="180px"></img></Content2_box>
           </Content2>
           <Content2 style={{right: "100px", top: "100px", transform: "rotate(-10deg)"}} data-aos="fade" data-aos-duration="2000">
-          <Content2_box><img src="image/Non coffee/블루베리스무디.png" width="180px"></img></Content2_box>
+          <Content2_box><img src={process.env.PUBLIC_URL +"/image/Non coffee/블루베리스무디.png"} width="180px"></img></Content2_box>
           </Content2>
           <Content2 style={{right: "400px", top: "300px"}} data-aos="fade" data-aos-duration="3000">
-          <Content2_box><img src="image/Non coffee/레몬에이드.png" width="180px"></img></Content2_box>
+          <Content2_box><img src={process.env.PUBLIC_URL +"/image/Non coffee/레몬에이드.png"} width="180px"></img></Content2_box>
           </Content2>
           <Content2 style={{right: "150px", top: "300px", transform: "rotate(7deg)"}} data-aos="fade" data-aos-duration="3000">
-          <Content2_box><img src="image/Non coffee/망고주스.png" width="180px"></img></Content2_box>
+          <Content2_box><img src={process.env.PUBLIC_URL +"/image/Non coffee/망고주스.png"} width="180px"></img></Content2_box>
           </Content2>
         </Box1_right>
     </Container>
